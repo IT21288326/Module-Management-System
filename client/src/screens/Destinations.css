@@ -1,0 +1,27 @@
+.blue-box-button {
+    display: inline-block;
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #200257; /* Blue color, you can change to your preferred color */
+    color: #fff; /* Text color */
+    text-decoration: none;
+    border: 2px solid rgb(52, 4, 142); /* Border color */
+    border-radius: 5px; /* Border radius for rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    float: left;
+  
+    /* Optional: Add hover styles */
+    &:hover {
+      background-color: #022b57; /* Darker shade on hover */
+      border-color: #022b57; /* Darker border color on hover */
+    }
+  }
+
+  .card1{
+    background-color: white;
+    box-shadow: 0 3px 7px rgba(121, 123, 126, 0.936);
+     
+  margin-left: 900px;
+}
+
+
+  
