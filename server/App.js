@@ -7,6 +7,7 @@ const cors = require('cors') //Cors will let us accept cross origin request from
 const dotenv = require('dotenv') //for keep secret and non shareable properies
 const multer = require('multer') //Multer is a middleware that will let us handle multipart/form data sent from our frontend form.
 const morgan = require('morgan') //used to log information of each request that server receives.
+const userRoutes = require('./routes/userRoutes');
 var forms = multer();
 
 //api configuration
@@ -25,6 +26,7 @@ dotenv.config()
 
 
 const server = http.createServer(app)
+app.use('/api', userRoutes);
 
 //mongo setup
 const PORT = process.env.PORT
