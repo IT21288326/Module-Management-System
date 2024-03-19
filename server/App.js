@@ -22,6 +22,8 @@ dotenv.config()
 // const userRoute = require('./routes/user.js')
 // app.use('/user', userRoute)
 
+
+
 const server = http.createServer(app)
 
 //mongo setup

@@ -1,5 +1,9 @@
 {
   "devDependencies": {
     "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "react-bootstrap": "^2.10.2"
   }
 }
