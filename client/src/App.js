@@ -1,14 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-import Sidebar from './componant/Sidebar';
-import Destinations from './screens/Destinations';
+import React from 'react';
+import { BrowserRouter, Navigate, Routes, Route} from 'react-router-dom'
+import SidebarSup from './componant/SidebarSup';
 
 function App() {
   return (
     <div className="App">
-      <Sidebar></Sidebar>
-      <Destinations></Destinations>
-
+      <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<SidebarSup />} />
+          </Routes>
+      </BrowserRouter>
     </div>
   );
 }

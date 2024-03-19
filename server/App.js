@@ -22,8 +22,7 @@ dotenv.config()
 // const userRoute = require('./routes/user.js')
 // app.use('/user', userRoute)
 
-const ambulanceDetailsRoute = require('./routes/ambulancedetails.js')
-app.use('/ambulancedetails', ambulanceDetailsRoute)
+
 
 const server = http.createServer(app)
 
