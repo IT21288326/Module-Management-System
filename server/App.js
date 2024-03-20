@@ -7,7 +7,7 @@ import dotenv from 'dotenv'; //for keep secret and non shareable properies
 import multer from 'multer'; //Multer is a middleware that will let us handle multipart/form data sent from our frontend form.
 import morgan from 'morgan'; //used to log information of each request that server receives.
 import userRoutes from './routes/userRoutes.js';
-import presentationSheduleRoute from './routes/project-member/presentation_shedule.js';
+import presentationSheduleRoute from './routes/project-member/presentationSheduleRoute.js';
 
 const app = express();
 
