@@ -1,6 +1,18 @@
 import React from 'react'
+import { useState } from 'react';
+import ReportMarks from '../screens/supervisor/ReportMarks'
 
 export default function SidebarSup() {
+  const [showReportMarks, setShowReportMarks] = useState(false);
+
+  const handleAboutClick = () => {
+    setShowReportMarks(true);
+  };
+
+  const handleOtherClick = () => {
+    setShowReportMarks(false);
+    // You can add logic here to handle other clicks if needed
+  };
   return (
     <div>
       <div className="wrapper d-flex align-items-stretch">
@@ -12,8 +24,8 @@ export default function SidebarSup() {
           <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Home</a>
           <ul className="collapse list-unstyled" id="homeSubmenu">
             <li>
-              <a href="#">Home 1</a>
-            </li>
+              <a href="#" onClick={handleOtherClick}>Home 1</a>
+            </li> 
             <li>
               <a href="#">Home 2</a>
             </li>
@@ -23,7 +35,7 @@ export default function SidebarSup() {
           </ul>
         </li>
         <li>
-          <a href="#">About</a>
+          <a href="#" onClick={handleAboutClick}>Marks</a>
         </li>
         <li>
           <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Pages</a>
@@ -40,7 +52,7 @@ export default function SidebarSup() {
           </ul>
         </li>
         <li>
-          <a href="#">Portfolio</a>
+          <a href="#" onClick={handleOtherClick}>Portfolio</a>
         </li>
         <li>
           <a href="#">Contact</a>
@@ -48,22 +60,15 @@ export default function SidebarSup() {
       </ul>
     </div>
   </nav>
-  {/* Page Content  */}
-  <div id="content" className="p-4 p-md-5">
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container-fluid">
-        <button type="button" id="sidebarCollapse" className="btn btn-primary">
-          <i className="fa fa-bars" />
-          <span className="sr-only">Toggle Menu</span>
-        </button>
-        <button className="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <i className="fa fa-bars" />
-        </button>
-        
-      </div>
-    </nav>
-    </div>
+  
+{/* Page Content  */}
+<div id="content" className="p-4 p-md-5">
+{showReportMarks && <ReportMarks />}
 </div>
+
+    {/* <ReportMarks></ReportMarks> */}
+    </div>
+
 
     </div>
   )
