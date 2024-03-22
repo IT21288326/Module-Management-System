@@ -16,8 +16,6 @@
   "version": "1.0.0",
   "main": "App.js",
   "type": "module",
-  
-  
   "scripts": {
     "start": "node App.js",
     "dev": "nodemon App.js"
