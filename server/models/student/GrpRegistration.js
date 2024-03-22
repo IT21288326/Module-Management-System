@@ -46,7 +46,7 @@ const StudentSchema = new mongoose.Schema({
 
 */
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const groupRegistrationSchema = new mongoose.Schema(
     {
@@ -175,7 +175,6 @@ groupRegistrationSchema.pre('save', async function (next) {
 });
 
 
-module.exports = mongoose.model("GroupRegistration", groupRegistrationSchema)
+const GroupRegistration = mongoose.model("GroupRegistration", groupRegistrationSchema);
 
-
-
+export default GroupRegistration;

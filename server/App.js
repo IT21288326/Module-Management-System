@@ -10,7 +10,8 @@ import morgan from 'morgan'; // Used to log information of each request that the
 import userRoutes from './routes/userRoutes.js';
 import otp from './routes/otpRoutes.js';
 import presentationSheduleRoute from './routes/project-member/presentationSheduleRoute.js';
-
+import studentReportRouter from './routes/supervisor/studentReportRouter.js'
+import formRoutes  from './routes/supervisor/formRoutes.js'
 const app = express();
 const forms = multer();
 
@@ -29,8 +30,14 @@ dotenv.config();
 //middlewares
 const server = http.createServer(app);
 app.use('/api', userRoutes);
+
+
+app.use('/studentReportid', studentReportRouter);
+app.use('/submitform', formRoutes);
+
 app.use('/presentation-shedule', presentationSheduleRoute);
 app.use('/otp', otp);
+
 
 
 // MongoDB setup
