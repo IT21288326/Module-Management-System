@@ -25,7 +25,7 @@ dotenv.config();
 
 //middlewares
 app.use('/api', userRoutes);
-app.use('/presentation/shedule', presentationSheduleRoute);
+app.use('/presentation-shedule', presentationSheduleRoute);
 
 //mongo setup
 const PORT = process.env.PORT || 5000; // use 5000 as default port if PORT is not defined in .env

@@ -6,12 +6,12 @@ const sheduleSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    pannelID: {
-        type: String,
-        required: true,
-    },
+    // pannelID: {
+    //     type: String,
+    //     required: true,
+    // },
     date: {
-        type: String,
+        type: Date,
         required: true,
     },
     time: {
@@ -32,3 +32,4 @@ export default mongoose.model("PresentationShedule", sheduleSchema);
     //     ref: 'Panel', // Name of the model (collection) containing the pannelID
     //     required: true
     // },
+    
