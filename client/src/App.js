@@ -6,7 +6,7 @@ import OTPver from './componant/OTPverify'
 
 import ReportMarks from './screens/supervisor/ReportMarks';
 import Addrecord from './screens/project-member/add-record-page/AddRecordPage';
-
+import DisplayRMarks from './screens/supervisor/DisplayRMarks';
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
       <BrowserRouter>
           <Routes>
             <Route path='/' element={<SidebarSup />} />
-
+            <Route path='/displayrmarks' element={<DisplayRMarks />} />
             <Route path='/otp' element={<OTPver/> } />
 
             <Route path='/reportmarks' element={<ReportMarks />} />
