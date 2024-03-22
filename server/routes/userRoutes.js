@@ -1,7 +1,6 @@
-// routes/userRoutes.js
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const userController = require('../controllers/userController');
+import * as userController from '../controllers/userController.js';
 
 // Route to create a new user
 router.post('/users', userController.createUser);
@@ -18,4 +17,5 @@ router.put('/users/:id', userController.updateUserById);
 // Route to delete a user by ID
 router.delete('/users/:id', userController.deleteUserById);
 
-module.exports = router;
+export default router;
+
