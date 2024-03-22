@@ -7,6 +7,8 @@ import OTPver from './componant/OTPverify'
 import ReportMarks from './screens/supervisor/ReportMarks';
 import Addrecord from './screens/project-member/add-record-page/AddRecordPage';
 import DisplayRMarks from './screens/supervisor/DisplayRMarks';
+import PresentationSheduleTable from './screens/project-member/presentation-shedule-tab-page/PresentationSheduletabPage';
+import UpdatePresentationShedule from './screens/project-member/update-presetation-shedule-page/UpdatepresetationShedulePage';
 
 
 function App() {
@@ -17,10 +19,10 @@ function App() {
             <Route path='/' element={<SidebarSup />} />
             <Route path='/displayrmarks' element={<DisplayRMarks />} />
             <Route path='/otp' element={<OTPver/> } />
-
             <Route path='/reportmarks' element={<ReportMarks />} />
             <Route path='/presentation-shedule/addrecord' element={<Addrecord />} />
-
+            <Route path='/presentation-shedule' element={<PresentationSheduleTable />} />
+            <Route path='/presentation-shedule/update/:id' element={<UpdatePresentationShedule />} />
 
 
           </Routes>

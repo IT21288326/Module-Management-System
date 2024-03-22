@@ -1,11 +1,11 @@
-.R_container {
+.R_container_update {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 60vh; /* Adjust as needed */
   padding-top: 120px;
 
-  .R_form-container{
+  .R_form-container_update{
     width: 100%;
     max-width: 800px;
     max-height: 1000px;
@@ -21,4 +21,3 @@
     padding-top: 20px; 
   }
 }
-
