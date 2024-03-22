@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+
 const userSchema = new mongoose.Schema({
     Email: {
         type: String,
@@ -76,3 +77,4 @@ export { User };
 export async function findOne(query) {
     return await User.findOne(query);
 }
+
