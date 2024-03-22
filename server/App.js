@@ -12,6 +12,7 @@ import otp from './routes/otpRoutes.js';
 import presentationSheduleRoute from './routes/project-member/presentationSheduleRoute.js';
 import studentReportRouter from './routes/supervisor/studentReportRouter.js'
 import formRoutes  from './routes/supervisor/formRoutes.js'
+import authentication from './routes/authenticationRouter.js'
 const app = express();
 const forms = multer();
 
@@ -37,7 +38,7 @@ app.use('/submitform', formRoutes);
 
 app.use('/presentation-shedule', presentationSheduleRoute);
 app.use('/otp', otp);
-
+app.use('/login', authentication)
 
 
 // MongoDB setup
