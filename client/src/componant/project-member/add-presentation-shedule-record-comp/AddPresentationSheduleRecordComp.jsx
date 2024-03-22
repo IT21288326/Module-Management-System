@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./AddPresentationSheduleRecordComp.scss";
 
 const AddRecord = () => {
@@ -10,7 +10,7 @@ const AddRecord = () => {
   const [venue, setVenue] = useState("");
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,7 +71,7 @@ const AddRecord = () => {
       setTime("");
       setVenue("");
       Swal.fire("Done", "record added successfully!", "success");
-    //   navigate("/supplierdash");
+      navigate("/presentation-shedule");
     }
   };
 
@@ -136,26 +136,26 @@ const AddRecord = () => {
           </div>
 
           <div className="form-group">
-          <label htmlFor="venue">Venue</label>
-          <select
-            className="form-control"
-            id="venue"
-            value={venue}
-            onChange={(e) => setVenue(e.target.value)}
-            required
-            style={{ 
-              maxWidth: "800px",
-              height: "45px",
-              border: "1px solid #ffb43c"
-            }} // Adjust the width as needed
-          >
-            <option value="">Select a venue</option>
-            <option value="Venue 1">Venue 1</option>
-            <option value="Venue 2">Venue 2</option>
-            <option value="Venue 3">Venue 3</option>
-            {/* Add more options as needed */}
-          </select>
-</div>
+            <label htmlFor="venue">Venue</label>
+            <select
+              className="form-control"
+              id="venue"
+              value={venue}
+              onChange={(e) => setVenue(e.target.value)}
+              required
+              style={{ 
+                maxWidth: "800px",
+                height: "45px",
+                border: "1px solid #ffb43c"
+              }} // Adjust the width as needed
+            >
+              <option value="">Select a venue</option>
+              <option value="Venue 1">Venue 1</option>
+              <option value="Venue 2">Venue 2</option>
+              <option value="Venue 3">Venue 3</option>
+              {/* Add more options as needed */}
+            </select>
+          </div>
 
         </div>
           <div className="text-center">
