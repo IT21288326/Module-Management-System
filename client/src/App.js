@@ -5,6 +5,7 @@ import SidebarSup from './componant/SidebarSup';
 import OTPver from './componant/OTPverify'
 
 import ReportMarks from './screens/supervisor/ReportMarks';
+import Addrecord from './screens/project-member/add-record-page/AddRecordPage';
 
 
 
@@ -18,6 +19,9 @@ function App() {
             <Route path='/otp' element={<OTPver/> } />
 
             <Route path='/reportmarks' element={<ReportMarks />} />
+            <Route path='/presentation-shedule/addrecord' element={<Addrecord />} />
+
+
 
           </Routes>
       </BrowserRouter>

@@ -29,8 +29,9 @@ dotenv.config();
 //middlewares
 const server = http.createServer(app);
 app.use('/api', userRoutes);
+app.use('/presentation-shedule', presentationSheduleRoute);
 app.use('/otp', otp);
-app.use('/presentation/shedule', presentationSheduleRoute);
+
 
 // MongoDB setup
 const PORT = process.env.PORT;
