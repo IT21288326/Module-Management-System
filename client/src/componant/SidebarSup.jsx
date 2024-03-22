@@ -21,21 +21,15 @@ export default function SidebarSup() {
       <a href="#" className="img logo rounded-circle mb-5" style={{backgroundImage: 'url(images/logo.jpg)'}} />
       <ul className="list-unstyled components mb-5">
         <li className="active">
-          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Home</a>
+          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Marks</a>
           <ul className="collapse list-unstyled" id="homeSubmenu">
             <li>
-              <a href="#" onClick={handleOtherClick}>Home 1</a>
+              <a href="#" onClick={handleAboutClick}>Enter Marks for Reports</a>
             </li> 
             <li>
-              <a href="#">Home 2</a>
-            </li>
-            <li>
-              <a href="#">Home 3</a>
+              <a href="#" onClick={handleOtherClick}>View Marks</a>
             </li>
           </ul>
-        </li>
-        <li>
-          <a href="#" onClick={handleAboutClick}>Marks</a>
         </li>
         <li>
           <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Pages</a>

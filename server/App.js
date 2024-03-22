@@ -8,7 +8,8 @@ import multer from 'multer'; //Multer is a middleware that will let us handle mu
 import morgan from 'morgan'; //used to log information of each request that server receives.
 import userRoutes from './routes/userRoutes.js';
 import presentationSheduleRoute from './routes/project-member/presentationSheduleRoute.js';
-
+import studentReportRouter from './routes/supervisor/studentReportRouter.js'
+import formRoutes  from './routes/supervisor/formRoutes.js'
 const app = express();
 
 //api configuration
@@ -26,6 +27,8 @@ dotenv.config();
 //middlewares
 app.use('/api', userRoutes);
 app.use('/presentation/shedule', presentationSheduleRoute);
+app.use('/studentReportid', studentReportRouter);
+app.use('/submitform', formRoutes);
 
 //mongo setup
 const PORT = process.env.PORT || 5000; // use 5000 as default port if PORT is not defined in .env
