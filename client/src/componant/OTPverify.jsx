@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import './OTPverify.css';
 
 const EmailVerification = () => {
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isOtpSent, setIsOtpSent] = useState(false);
+  axios.defaults.baseURL = 'http://localhost:3001';
 
   const handleEmailChange = (event) => {
     const { value } = event.target;
@@ -45,6 +47,10 @@ const EmailVerification = () => {
     event.preventDefault();
     try {
       await axios.post('/otp/verify-otp', { email, otp });
+      Swal.fire({
+        icon: 'success',
+        text: 'Success',
+      });
       // Redirect to registration form or perform other actions upon successful OTP verification
     } catch (error) {
       console.error('Error verifying OTP:', error);
@@ -64,11 +70,11 @@ const EmailVerification = () => {
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card">
+        <div className="col-md-6 ">
+          <div className="card " id='shashi_crd1'>
             <div className="card-body">
               <h2 className="card-title text-center mb-4">Email Verification</h2>
-              <form onSubmit={handleSubmit}>
+              <form id='shashi-form1' onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label">Email:</label>
                   <input
@@ -83,7 +89,7 @@ const EmailVerification = () => {
                   {!isValidEmail && <div className="invalid-feedback">Invalid email format</div>}
                 </div>
                 <div className="mb-3 d-grid">
-                  <button
+                  <button id='shashi_btn1'
                     type="button"
                     onClick={handleSendOtp}
                     className="btn btn-primary btn-sm"
@@ -92,19 +98,23 @@ const EmailVerification = () => {
                     {isOtpSent ? 'Resend OTP' : 'Send OTP'}
                   </button>
                 </div>
-                <div className="mb-3">
-                  <label htmlFor="otp" className="form-label">OTP:</label>
-                  <input
-                    type="text"
-                    id="otp"
-                    className="form-control"
-                    value={otp}
-                    onChange={handleOtpChange}
-                    placeholder="Enter OTP"
-                    required
-                  />
-                </div>
-                <button type="submit" className="btn btn-success btn-block">Submit</button>
+                {isOtpSent && (
+                  <>
+                    <div className="mb-3">
+                      <label htmlFor="otp" className="form-label">OTP:</label>
+                      <input
+                        type="text"
+                        id="otp"
+                        className="form-control"
+                        value={otp}
+                        onChange={handleOtpChange}
+                        placeholder="Enter OTP"
+                        required
+                      />
+                    </div>
+                    <button id='shashi_btn2' type="submit" className="btn btn-success btn-block">Submit</button>
+                  </>
+                )}
               </form>
             </div>
           </div>
@@ -115,3 +125,4 @@ const EmailVerification = () => {
 };
 
 export default EmailVerification;
+
