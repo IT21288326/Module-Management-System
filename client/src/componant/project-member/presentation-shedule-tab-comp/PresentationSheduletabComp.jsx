@@ -108,6 +108,7 @@ const PresentationSheduleTable = () => {
           "Date",
           "Time",
           "Venue",
+          "Pannel  Name"
         ],
       ],
       body: list.map((item) => [
@@ -115,6 +116,7 @@ const PresentationSheduleTable = () => {
         item.date,
         item.time,
         item.venue,
+        item.pannelID,
       ]),
     });
     doc.save("Presentation Shedule.pdf");
