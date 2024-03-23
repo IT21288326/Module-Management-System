@@ -4,10 +4,6 @@ export const PresentationSheduleColumns = [
     headerName: "Group Number", 
     width: 150,
   },
-  // { 
-  //   field: "pannelID", 
-  //   headerName: "Pannel ID", 
-  //   width: 250 },
   {
     field: "date",
     headerName: "Date",
@@ -17,12 +13,17 @@ export const PresentationSheduleColumns = [
   {
     field: "time",
     headerName: "Time",
-    width: 150,
+    width: 130,
   },
   {
     field: "venue",
     headerName: "Venue",
-    width: 150,
+    width: 130,
   },
-  
+
+  { 
+    field: "pannelID", 
+    headerName: "Pannel ID", 
+    width: 150 
+  },
 ];
