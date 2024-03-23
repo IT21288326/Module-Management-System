@@ -9,6 +9,7 @@ import Addrecord from './screens/project-member/add-record-page/AddRecordPage';
 import DisplayRMarks from './screens/supervisor/DisplayRMarks';
 import PresentationSheduleTable from './screens/project-member/presentation-shedule-tab-page/PresentationSheduletabPage';
 import UpdatePresentationShedule from './screens/project-member/update-presetation-shedule-page/UpdatepresetationShedulePage';
+import SidebarProjMember from './componant/project-member/SidebarProjMember';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path='/presentation-shedule/addrecord' element={<Addrecord />} />
             <Route path='/presentation-shedule' element={<PresentationSheduleTable />} />
             <Route path='/presentation-shedule/update/:id' element={<UpdatePresentationShedule />} />
+            <Route path='/projMemberSideBar' element={<SidebarProjMember />} />
 
 
           </Routes>

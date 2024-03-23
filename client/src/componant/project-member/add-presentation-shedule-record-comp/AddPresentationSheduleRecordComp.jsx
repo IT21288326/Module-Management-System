@@ -71,7 +71,7 @@ const AddRecord = () => {
       setTime("");
       setVenue("");
       Swal.fire("Done", "record added successfully!", "success");
-      navigate("/presentation-shedule");
+      navigate("/projMemberSideBar");
     }
   };
 

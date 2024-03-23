@@ -2,7 +2,7 @@ export const PresentationSheduleColumns = [
   {
     field: "groupNo", 
     headerName: "Group Number", 
-    width: 200,
+    width: 150,
   },
   // { 
   //   field: "pannelID", 
@@ -11,18 +11,18 @@ export const PresentationSheduleColumns = [
   {
     field: "date",
     headerName: "Date",
-    width: 250,
+    width: 150,
   },
 
   {
     field: "time",
     headerName: "Time",
-    width: 200,
+    width: 150,
   },
   {
     field: "venue",
     headerName: "Venue",
-    width: 350,
+    width: 150,
   },
   
 ];
