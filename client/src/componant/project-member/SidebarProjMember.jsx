@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PresentationSheduleTable from '../../screens/project-member/presentation-shedule-tab-page/PresentationSheduletabPage';
+import AddPresentationPannel from '../../screens/project-member/add-presentation-pannel-page/PresentationPannelPage';
 
 export default function SidebarProjMember() {
   const [showPresentationSchedule, setShowPresentationSchedule] = useState(false);

@@ -10,7 +10,8 @@ import DisplayRMarks from './screens/supervisor/DisplayRMarks';
 import PresentationSheduleTable from './screens/project-member/presentation-shedule-tab-page/PresentationSheduletabPage';
 import UpdatePresentationShedule from './screens/project-member/update-presetation-shedule-page/UpdatepresetationShedulePage';
 import SidebarProjMember from './componant/project-member/SidebarProjMember';
-
+import Addpresentationpannel from './screens/project-member/add-presentation-pannel-page/PresentationPannelPage'
+import Updatepresentationshedule from './screens/project-member/update-presentation-pannel-page/UpdatePresentationPannelPage'
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
             <Route path='/presentation-shedule' element={<PresentationSheduleTable />} />
             <Route path='/presentation-shedule/update/:id' element={<UpdatePresentationShedule />} />
             <Route path='/projMemberSideBar' element={<SidebarProjMember />} />
-
+            <Route path='/presentation-pannel/addpresentationpannel' element={<Addpresentationpannel />} />
+            <Route path='/presentation-pannel/update/:id' element={<Updatepresentationshedule/>} />
 
           </Routes>
       </BrowserRouter>
