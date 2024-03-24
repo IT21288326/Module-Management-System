@@ -123,7 +123,7 @@ const AddRecord = () => {
                   border: "1px solid #ffb43c"
                 }}
               />
-            </div>
+          </div>
 
             <div className="form-group">
               <label htmlFor="date">Date</label>

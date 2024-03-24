@@ -1,0 +1,28 @@
+.R_container_{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // height: 60vh; /* Adjust as needed */
+    padding-top: 10px;
+  
+    .R_form-container_{
+      width: 100%;
+      max-width: 550px;
+      max-height: 1000px;
+      border: 1px solid #ffb43c;
+      border-radius: 15px ;
+      padding: 20px;
+      background-color: rgb(235, 235, 235);    
+    }
+    
+    .form-group{
+        padding: 0px 90px;
+    }
+
+    .text-center {
+      text-align: center;
+      padding-top: 40px; 
+      padding-bottom: 10px;
+    }
+
+  }
