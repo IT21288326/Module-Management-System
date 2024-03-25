@@ -8,11 +8,14 @@ import multer from 'multer'; // Multer is middleware that handles multipart/form
 import morgan from 'morgan'; // Used to log information of each request that the server receives.
 import userRoutes from './routes/userRoutes.js';
 import otp from './routes/otpRoutes.js';
-import presentationSheduleRoute from './routes/project-member/presentationSheduleRoute.js';
 import studentReportRouter from './routes/supervisor/studentReportRouter.js'
 import formRoutes  from './routes/supervisor/formRoutes.js'
 import authentication from './routes/authenticationRouter.js'
 import presentationPannelRoute from './routes/project-member/presentationPannelRoute.js';
+import { getAllPannelNames } from './controllers/project-member/presentationPannelController.js'
+import getGrpRegistrationNumberRoute from './routes/student/getGrpRegistrationNumbersRoute.js'
+import presentationSheduleRoute from './routes/project-member/presentationSheduleRoute.js';
+
 
 const app = express();
 const forms = multer();
@@ -37,10 +40,18 @@ app.use('/api', userRoutes);
 app.use('/studentReportid', studentReportRouter);
 app.use('/submitform', formRoutes);
 
+//Rusith routes
 app.use('/presentation-shedule', presentationSheduleRoute);
 app.use('/presentation-pannel', presentationPannelRoute);
+app.use('/groupNumbers', getGrpRegistrationNumberRoute);
+app.get('/pannel-Ids', getAllPannelNames);//getPannelNames Route
+
+
 app.use('/otp', otp);
-app.use('/login', authentication)
+app.use('/login', authentication);
+
+
+
 
 
 // MongoDB setup
