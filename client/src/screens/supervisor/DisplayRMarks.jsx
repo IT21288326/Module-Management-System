@@ -38,7 +38,7 @@ function ReportsTable() {
   
 
   return (
-    <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+    <div style={{ maxWidth: '70%', margin: '0 auto' }}>
       <h2>Submitted Marks For Reports</h2>
       <Form id='savi_filterForm' style={{ marginTop:'5%',marginBottom:'5%'}}>
   <div className="row">
