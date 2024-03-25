@@ -10,10 +10,16 @@ const sheduleSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    time: {
+    startTime: {
         type: String,
         required: true,
     },
+
+    endTime: {
+        type: String,
+        required: true,
+    },
+    
     venue: {
         type: String,
         required: true
@@ -24,5 +30,7 @@ const sheduleSchema = new mongoose.Schema({
 });
 
 export default mongoose.model("PresentationShedule", sheduleSchema);
+
+
 
 
