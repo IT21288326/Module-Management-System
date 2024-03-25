@@ -11,10 +11,17 @@ export const PresentationSheduleColumns = [
   },
 
   {
-    field: "time",
-    headerName: "Time",
+    field: "startTime",
+    headerName: "Start Time", // Change from "Time" to "Start Time"
     width: 130,
   },
+
+  {
+    field: "endTime",
+    headerName: "End Time", // New field "End Time"
+    width: 130,
+  },
+
   {
     field: "venue",
     headerName: "Venue",
@@ -27,6 +34,7 @@ export const PresentationSheduleColumns = [
     width: 150 
   },
 ];
+
 
 export const PresentationPannelColumns = [
   {
