@@ -13,6 +13,7 @@ import presentationSheduleRoute from './routes/project-member/presentationShedul
 import studentReportRouter from './routes/supervisor/studentReportRouter.js'
 import formRoutes  from './routes/supervisor/formRoutes.js'
 import authentication from './routes/authenticationRouter.js'
+import PresentationRoutes from './routes/examiner/PresentationRoutes.js'
 const app = express();
 const forms = multer();
 
@@ -35,7 +36,7 @@ app.use('/api', userRoutes);
 
 app.use('/studentReportid', studentReportRouter);
 app.use('/submitform', formRoutes);
-
+app.use('/submitPresentation', PresentationRoutes);
 app.use('/presentation-shedule', presentationSheduleRoute);
 app.use('/otp', otp);
 app.use('/login', authentication)

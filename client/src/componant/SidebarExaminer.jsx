@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import ReportMarks from '../screens/supervisor/ReportMarks';
-import ReportsTable from '../screens/supervisor/DisplayRMarks';
+import PresentationsTable from '../screens/examiner/DisplayPMarks';
+import PrsentationMarks from '../screens/examiner/prsentationMarks';
 
-export default function SidebarSup() {
+export default function SidebarExaminer() {
   const [showReportMarks, setShowReportMarks] = useState(false);
 
   const handleAboutClick = () => {
@@ -40,7 +40,7 @@ export default function SidebarSup() {
         
         {/* Page Content  */}
         <div id="content" className="p-4 p-md-5">
-          {showReportMarks ? <ReportMarks /> : <ReportsTable />}
+          {showReportMarks ? <PrsentationMarks /> : <PresentationsTable />}
         </div>
       </div>
     </div>

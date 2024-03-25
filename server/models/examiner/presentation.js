@@ -1,11 +1,10 @@
-// models/report.js
 
 import mongoose from 'mongoose';
 
 const { Schema, model } = mongoose;
 
-const reportSchema = new Schema({
-  reportTitle: {
+const presentationSchema = new Schema({
+presentationTitle: {
     type: String,
     required: true
   },
@@ -35,4 +34,4 @@ const reportSchema = new Schema({
   ]
 });
 
-export default model('Report', reportSchema);
+export default model('Presentation', presentationSchema);

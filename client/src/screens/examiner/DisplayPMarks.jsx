@@ -2,44 +2,42 @@ import React, { useState, useEffect } from 'react';
 import { Table, Form } from 'react-bootstrap';
 import axios from 'axios';
 
-function ReportsTable() {
-  const [reports, setReports] = useState([]);
+function PresentationsTable() {
+  const [presentations, setpresentations] = useState([]);
   const [filterGroupId, setFilterGroupId] = useState('');
-  const [filterReportTitle, setFilterReportTitle] = useState('');
+  const [filterpresentationTitle, setFilterpresentationTitle] = useState('');
   const [filterSemester, setFilterSemester] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
   axios.defaults.baseURL = 'http://localhost:3001';
 
   useEffect(() => {
-    fetchReports();
+    fetchPresentations();
   }, []);
 
-  const fetchReports = async () => {
+  const fetchPresentations = async () => {
     try {
-      const response = await axios.get('submitform/reports');
-      setReports(response.data);
+      const response = await axios.get('submitPresentation/getPresentation');
+      setpresentations(response.data);
     } catch (error) {
-      console.error('Error fetching reports:', error);
+      console.error('Error fetching presentations:', error);
     }
   };
 
-  const filteredReports = reports.filter(report => {
+  const filteredPresentation = presentations.filter(presentation => {
     return (
-      (report.groupNumber?.toLowerCase().includes(filterGroupId.toLowerCase()) || filterGroupId === '') &&
-      (report.reportTitle?.toLowerCase().includes(filterReportTitle.toLowerCase()) || filterReportTitle === '') &&
-      (report.semester?.toLowerCase().includes(filterSemester.toLowerCase()) || filterSemester === '') &&
-      (report.students.some(student => student.name.toLowerCase().includes(searchTerm.toLowerCase())) || searchTerm === '')
+      (presentation.groupNumber?.toLowerCase().includes(filterGroupId.toLowerCase()) || filterGroupId === '') &&
+      (presentation.presentationTitle?.toLowerCase().includes(filterpresentationTitle.toLowerCase()) || filterpresentationTitle === '') &&
+      (presentation.semester?.toLowerCase().includes(filterSemester.toLowerCase()) || filterSemester === '') &&
+      (presentation.students.some(student => student.name.toLowerCase().includes(searchTerm.toLowerCase())) || searchTerm === '')
     );
   });
-  
-  
   
   
 
   return (
     <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-      <h2>Submitted Marks For Reports</h2>
+      <h2>Submitted Marks For Presentation</h2>
       <Form id='savi_filterForm' style={{ marginTop:'5%',marginBottom:'5%'}}>
   <div className="row">
     <div className="col">
@@ -53,12 +51,12 @@ function ReportsTable() {
       </Form.Group>
     </div>
     <div className="col">
-      <Form.Group controlId="formReportTitle">
-        <Form.Label>Filter by Report Title</Form.Label>
+      <Form.Group controlId="formPresentationTitle">
+        <Form.Label>Filter by Presentation Title</Form.Label>
         <Form.Control
           type="text"
-          value={filterReportTitle}
-          onChange={e => setFilterReportTitle(e.target.value)}
+          value={filterpresentationTitle}
+          onChange={e => setFilterpresentationTitle(e.target.value)}
         />
       </Form.Group>
     </div>
@@ -89,7 +87,7 @@ function ReportsTable() {
       <Table striped bordered hover style={{ width: '100%' }}>
         <thead>
           <tr>
-            <th style={{ width: '15%' }}>Report Title</th>
+            <th style={{ width: '15%' }}>presentation Title</th>
             <th style={{ width: '15%' }}>Semester</th>
             <th style={{ width: '15%' }}>Group Number</th>
             <th style={{ width: '25%' }}>Student Name</th>
@@ -98,13 +96,13 @@ function ReportsTable() {
           </tr>
         </thead>
         <tbody>
-          {filteredReports.map((report, reportIndex) => (
-            <React.Fragment key={reportIndex}>
-              {report.students.map((student, studentIndex) => (
-                <tr key={`${reportIndex}-${studentIndex}`}>
-                  <td>{studentIndex === 0 ? report.reportTitle : null}</td>
-                  <td>{studentIndex === 0 ? report.semester : null}</td>
-                  <td>{studentIndex === 0 ? report.groupNumber : null}</td>
+          {filteredPresentation.map((presentations, presentationIndex) => (
+            <React.Fragment key={presentationIndex}>
+              {presentations.students.map((student, studentIndex) => (
+                <tr key={`${presentationIndex}-${studentIndex}`}>
+                  <td>{studentIndex === 0 ? presentations.presentationTitle: null}</td>
+                  <td>{studentIndex === 0 ? presentations.semester : null}</td>
+                  <td>{studentIndex === 0 ? presentations.groupNumber : null}</td>
                   <td>{student.name}</td>
                   <td>{student.marks}</td>
                   <td>{student.grade}</td>
@@ -118,4 +116,4 @@ function ReportsTable() {
   );
 }
 
-export default ReportsTable;
+export default PresentationsTable;

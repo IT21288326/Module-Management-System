@@ -1,6 +1,6 @@
 // controllers/reportController.js
 
-import Report from '../../models/supervisor/report.js';
+import Presentation from '../../models/examiner/presentation.js';
 
 const calculateGrade = (marks) => {
   if (!marks) {
@@ -36,11 +36,11 @@ const calculateGrade = (marks) => {
 export const submitFormData = async (req, res) => {
     try {
       const formData = req.body;
-      console.log('Form Data:', formData); // Log the form data
+      console.log('Form Data:', formData); 
 
       // Check if there's an existing record with the same title, semester, and group number
-    const existingRecord = await Report.findOne({
-      reportTitle: formData.reportTitle,
+    const existingRecord = await Presentation.findOne({
+      presentationTitle: formData.presentationTitle,
       semester: formData.semester,
       groupNumber: formData.groupNumber
     });
@@ -60,11 +60,11 @@ export const submitFormData = async (req, res) => {
         ...formData,
         students: studentsWithGrades
     };
-      // Create a new report instance with the submitted data
-      const newReport = new Report(formData);
-      // Save the report to the database
-      const savedReport = await newReport.save();
-      res.status(201).json(savedReport);
+
+      const newPresentation = new Presentation(formData);
+    
+      const savedPresentation = await newPresentation.save();
+      res.status(201).json(savedPresentation);
     } catch (error) {
       console.error('Error submitting form data:', error);
       res.status(500).json({ message: 'Failed to submit form data' });
@@ -72,13 +72,13 @@ export const submitFormData = async (req, res) => {
 };
 
 
-  export const getReports = async (req, res) => {
+  export const getPresentation = async (req, res) => {
     try {
       // Fetch all reports from the database
-      const reports = await Report.find();
-      res.json(reports);
+      const Presentations = await Presentation.find();
+      res.json(Presentations);
     } catch (error) {
-      console.error('Error fetching reports:', error);
-      res.status(500).json({ message: 'Failed to fetch reports' });
+      console.error('Error fetching Presentation:', error);
+      res.status(500).json({ message: 'Failed to fetch Presentation' });
     }
   };
