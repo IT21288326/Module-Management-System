@@ -1,13 +1,13 @@
-.R_container {
+.R_container_update {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 60vh; /* Adjust as needed */
-  padding-top: 160px;
+  padding-top: 120px;
 
-  .R_form-container{
+  .R_form-container_update{
     width: 100%;
-    max-width: 500px;
+    max-width: 800px;
     max-height: 1000px;
     border: 2px solid #ffb43c;
     border-radius: 15px ;
@@ -21,4 +21,3 @@
     padding-top: 20px; 
   }
 }
-

@@ -1,7 +1,6 @@
 import express from 'express';
 import http from 'http';
 import bodyParser from 'body-parser';
-
 import mongoose from 'mongoose'; // MongoDB library
 import cors from 'cors'; // Cors will let us accept cross-origin requests from our frontend to backend.
 import dotenv from 'dotenv'; // For keeping secret and non-shareable properties
@@ -13,6 +12,8 @@ import presentationSheduleRoute from './routes/project-member/presentationShedul
 import studentReportRouter from './routes/supervisor/studentReportRouter.js'
 import formRoutes  from './routes/supervisor/formRoutes.js'
 import authentication from './routes/authenticationRouter.js'
+import presentationPannelRoute from './routes/project-member/presentationPannelRoute.js';
+
 const app = express();
 const forms = multer();
 
@@ -37,6 +38,7 @@ app.use('/studentReportid', studentReportRouter);
 app.use('/submitform', formRoutes);
 
 app.use('/presentation-shedule', presentationSheduleRoute);
+app.use('/presentation-pannel', presentationPannelRoute);
 app.use('/otp', otp);
 app.use('/login', authentication)
 

@@ -1,28 +1,22 @@
 import mongoose from 'mongoose';
 
-const sheduleSchema = new mongoose.Schema({
-    groupNo: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    date: {
+const pannelSchema = new mongoose.Schema({
+    pannelID: {
         type: String,
         required: true,
     },
-    time: {
+    examiner_1: {
         type: String,
         required: true,
     },
-    venue: {
+    examiner_2: {
+        type: String,
+        required: true,
+    },
+    examiner_3: {
         type: String,
         required: true
-    },
-    pannelID: {
-        type: String
     }
 });
 
-export default mongoose.model("PresentationShedule", sheduleSchema);
-
-
+export default mongoose.model("PresentationPannel", pannelSchema);
