@@ -90,9 +90,8 @@ const AddPresentationPannel = () => {
                 return;
             }
 
-            const formattedPanelID = formatPanelName(pannelID);
             const presentation_Pannel = {
-                pannelID: formattedPanelID,
+                pannelID,
                 examiner_1,
                 examiner_2,
                 examiner_3,
@@ -120,10 +119,6 @@ const AddPresentationPannel = () => {
         } catch (error) {
             console.error("Error adding panel:", error);
         }
-    };
-
-    const formatPanelName = (name) => {
-        return name.trim().toUpperCase();
     };
 
     return (
@@ -215,5 +210,6 @@ const AddPresentationPannel = () => {
 };
 
 export default AddPresentationPannel;
+
 
 
