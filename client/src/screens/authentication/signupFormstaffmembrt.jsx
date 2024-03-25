@@ -41,7 +41,13 @@ const StaffSignUpForm = () => {
 
   const validateForm = () => {
     let errors = {};
-    // Add validation rules for each field
+    if (!formData.Email || !formData.Email.trim()) {
+      errors.Email = 'Email is required';
+    }
+    if (formData.Password !== formData.ConfirmPassword) {
+      errors.ConfirmPassword = 'Passwords do not match';
+    }
+    // Add validation rules for other fields
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -85,7 +91,7 @@ const StaffSignUpForm = () => {
           <input
             type="text"
             name="Nic"
-            value={formData.Nic}
+            value={formData.Nic}i
             onChange={handleChange}
             className={`form-control ${formErrors.Nic ? 'is-invalid' : ''}`}
             required
@@ -136,7 +142,7 @@ const StaffSignUpForm = () => {
         </div>
 
         {/* Contact No */}
-        <div className="mb-3">
+        {/* <div className="mb-3">
           <label className="form-label">Contact No:</label>
           <input
             type="text"
@@ -147,7 +153,18 @@ const StaffSignUpForm = () => {
             required
           />
           {formErrors.contactNo && <div className="invalid-feedback">{formErrors.contactNo}</div>}
-        </div>
+        </div> */}
+        <div className="mb-3">
+                <label className="form-label">Contact No:</label>
+                <PhoneInput
+                  placeholder="Enter phone number"
+                  value={formData.contactNo}
+                  onChange={(value) => setFormData({ ...formData, contactNo: value })}
+                  className={`form-control ${formErrors.contactNo ? 'is-invalid' : ''}`}
+                  required
+                />
+                {formErrors.contactNo && <div className="invalid-feedback">{formErrors.contactNo}</div>}
+              </div>
 
         {/* Designation */}
         <div className="mb-3">
@@ -179,9 +196,24 @@ const StaffSignUpForm = () => {
           {formErrors.Password && <div className="invalid-feedback">{formErrors.Password}</div>}
         </div>
 
+        <div className="mb-3">
+                <label className="form-label">Confirm Password:</label>
+                <input
+                  type="password"
+                  name="ConfirmPassword"
+                  value={formData.ConfirmPassword}
+                  onChange={handleChange}
+                  className={`form-control ${formErrors.ConfirmPassword ? 'is-invalid' : ''}`}
+                  required
+                />
+                {formErrors.ConfirmPassword && <div className="invalid-feedback">{formErrors.ConfirmPassword}</div>}
+              </div>
+
         {/* Submit Button */}
-        <div className="d-grid gap-2 col-6 mx-auto mb-3">
-          <button type="submit" className="btn btn-primary btn-lg">Sign Up</button>
+        <div className="row justify-content-end mt-3">
+          <div className="col-md-6 d-flex justify-content-end align-items-start">
+            <button type="submit" className="btn btn-primary btn-lg mt-2">Sign Up</button>
+          </div>
         </div>
       </form>
     </div>
