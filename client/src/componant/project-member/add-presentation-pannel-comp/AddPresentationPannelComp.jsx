@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import "../add-presentation-shedule-record-comp/AddPresentationSheduleRecordComp.scss";
@@ -52,6 +50,17 @@ const AddPresentationPannel = () => {
         });
     };
 
+    const checkPanelID = async () => {
+        try {
+            const response = await fetch(`http://localhost:3001/presentation-pannel/panel/${pannelID}`);
+            const data = await response.json();
+            return data.exists; // Assuming the backend returns whether the panel ID exists or not
+        } catch (error) {
+            console.error("Error checking panel ID:", error);
+            return false;
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -75,6 +84,12 @@ const AddPresentationPannel = () => {
         }
 
         try {
+            const panelExists = await checkPanelID();
+            if (panelExists) {
+                Swal.fire("Error", "This Panel already exists!", "error");
+                return;
+            }
+
             const presentation_Pannel = {
                 pannelID,
                 examiner_1,
@@ -93,11 +108,7 @@ const AddPresentationPannel = () => {
             const json = await response.json();
 
             if (!response.ok) {
-                if (response.status === 500) {
-                    Swal.fire("Error", "This Panel already exists!", "error");
-                } else {
-                    setError(json.error);
-                }
+                setError(json.error);
             } else {
                 setPannelID("");
                 setExaminer_1("");
