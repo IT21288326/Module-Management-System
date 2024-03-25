@@ -90,8 +90,9 @@ const AddPresentationPannel = () => {
                 return;
             }
 
+            const formattedPanelID = formatPanelName(pannelID);
             const presentation_Pannel = {
-                pannelID,
+                pannelID: formattedPanelID,
                 examiner_1,
                 examiner_2,
                 examiner_3,
@@ -119,6 +120,10 @@ const AddPresentationPannel = () => {
         } catch (error) {
             console.error("Error adding panel:", error);
         }
+    };
+
+    const formatPanelName = (name) => {
+        return name.trim().toUpperCase();
     };
 
     return (
@@ -201,6 +206,7 @@ const AddPresentationPannel = () => {
                         <button type="submit" className="btn btn-primary" id="R_Button">
                             Submit Record
                         </button>
+
                     </div>
                 </form>
             </div>
