@@ -90,11 +90,29 @@ export const deleteUserById = async (req, res) => {
 // };
 
 
-// Controller for retrieving project members
+
+// // Controller for retrieving project members
+// export const getProjectMembers = async (req, res) => {
+//   try {
+//     // Find users with role "projectMember"
+//     const projectMembers = await User.find({ role: "staffMember" });
+
+//     // Extract full names from projectMembers
+//     const projectMemberFullnames = projectMembers.map(member => member.Fullname);
+
+//     // Send the array of full names as the response
+//     res.json(projectMemberFullnames);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'Internal server error' });
+//   }
+// };
+
+//Controller for retrieving "projectMember", "projectCoordinator," and "staffMember
 export const getProjectMembers = async (req, res) => {
   try {
-    // Find users with role "projectMember"
-    const projectMembers = await User.find({ designation: "Lecturer" });
+    // Find users with roles "projectMember," "projectCoordinator," and "staffMember"
+    const projectMembers = await User.find({ role: { $in: ["projectMember", "projectCoordinator", "staffMember"] } });
 
     // Extract full names from projectMembers
     const projectMemberFullnames = projectMembers.map(member => member.Fullname);
@@ -106,6 +124,7 @@ export const getProjectMembers = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+
 
 // Controller function to get all staff members with their name, email, and designation
 export const getStaffMembers = async (req, res) => {
@@ -140,3 +159,4 @@ const updateStaffRole = async (req, res) => {
 };
 
 export { updateStaffRole };
+

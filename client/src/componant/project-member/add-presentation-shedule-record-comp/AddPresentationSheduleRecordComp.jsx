@@ -6,34 +6,53 @@ import "./AddPresentationSheduleRecordComp.scss";
 const AddRecord = () => {
   const [groupNo, setGroupNo] = useState("");
   const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
   const [venue, setVenue] = useState("");
-  const [pannelID, setPannelID] = useState(""); // State for pannelID
-  const [pannelIDOptions, setPannelIDOptions] = useState([]); // State to store pannelID options
+  const [pannelID, setPannelID] = useState("");
+  const [pannelIDOptions, setPannelIDOptions] = useState([]);
+  const [groupNoOptions, setGroupNoOptions] = useState([]);
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch pannelID options from backend
-    const fetchPannelIDs = async () => {
+    const fetchPanelIDs = async () => {
       try {
-        const response = await fetch("http://localhost:3001/presentation-pannel");
+        const response = await fetch("http://localhost:3001/pannel-Ids");
+        
         if (response.ok) {
           const data = await response.json();
-          const pannelIDs = data.map(item => item.pannelID);
-          setPannelIDOptions(pannelIDs);
+          setPannelIDOptions(data);
         } else {
-          throw new Error("Failed to fetch pannelIDs");
+          throw new Error("Failed to fetch panel IDs");
         }
       } catch (error) {
-        console.error("Error fetching pannelIDs:", error);
-        // Handle error if needed
+        console.error("Error fetching panel IDs:", error);
       }
     };
 
-    fetchPannelIDs();
-  }, []); // Empty dependency array ensures this effect runs only once on component mount
+    fetchPanelIDs();
+  }, []);
+
+  useEffect(() => {
+    const fetchGroupNumbers = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/groupNumbers");
+        
+        if (response.ok) {
+          const data = await response.json();
+          setGroupNoOptions(data);
+        } else {
+          throw new Error("Failed to fetch group numbers");
+        }
+      } catch (error) {
+        console.error("Error fetching group numbers:", error);
+      }
+    };
+
+    fetchGroupNumbers();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,13 +64,16 @@ const AddRecord = () => {
     if (!date.trim()) {
       emptyFields.push("date");
     }
-    if (!time.trim()) {
-      emptyFields.push("time");
+    if (!startTime.trim()) {
+      emptyFields.push("startTime");
+    }
+    if (!endTime.trim()) {
+      emptyFields.push("endTime");
     }
     if (!venue.trim()) {
       emptyFields.push("venue");
     }
-    if (!pannelID.trim()) { // Validate pannelID
+    if (!pannelID.trim()) {
       emptyFields.push("pannelID");
     }
 
@@ -60,9 +82,8 @@ const AddRecord = () => {
       return;
     }
 
-    // Validate time format (HH:MM)
     const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
-    if (!timeRegex.test(time)) {
+    if (!timeRegex.test(startTime) || !timeRegex.test(endTime)) {
       Swal.fire("Error", "Please enter a valid time (format: HH:MM)", "error");
       return;
     }
@@ -70,9 +91,10 @@ const AddRecord = () => {
     const presentation_Shedule = {
       groupNo,
       date,
-      time,
+      startTime,
+      endTime,
       venue,
-      pannelID, // Include pannelID in the data to be sent to backend
+      pannelID,
     };
 
     const response = await fetch("http://localhost:3001/presentation-shedule", {
@@ -94,9 +116,10 @@ const AddRecord = () => {
     } else {
       setGroupNo("");
       setDate("");
-      setTime("");
+      setStartTime("");
+      setEndTime("");
       setVenue("");
-      setPannelID(""); // Reset pannelID after successful submission
+      setPannelID("");
       Swal.fire("Done", "record added successfully!", "success");
       navigate("/projMemberSideBar");
     }
@@ -107,13 +130,11 @@ const AddRecord = () => {
       <div className="R_form-container">
         <form onSubmit={handleSubmit}>
           <div>
-            <div className="form-group">
-              <label htmlFor="groupNo">Group No</label>
-              <input
-                type="text"
+          <div className="form-group">
+              <label htmlFor="groupNo">Group Number</label>
+              <select
                 className="form-control"
                 id="groupNo"
-                placeholder="Enter a group number"
                 value={groupNo}
                 onChange={(e) => setGroupNo(e.target.value)}
                 required
@@ -122,11 +143,16 @@ const AddRecord = () => {
                   height: "45px",
                   border: "1px solid #ffb43c"
                 }}
-              />
-          </div>
+              >
+                <option value="">Select a group No</option>
+                {groupNoOptions.map((option, index) => (
+                  <option key={index} value={option}>{option}</option>
+                ))}
+              </select>
+            </div>
 
             <div className="form-group">
-              <label htmlFor="date">Date</label>
+              <label htmlFor="date">Shedule Date</label>
               <input
                 type="date"
                 className="form-control"
@@ -145,14 +171,32 @@ const AddRecord = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="time">Time</label>
+              <label htmlFor="startTime">Starting Time</label>
               <input
                 type="text"
                 className="form-control"
-                id="time"
-                placeholder="Enter a time (Hours:Minutes)"
-                value={time}
-                onChange={(e) => setTime(e.target.value)}
+                id="startTime"
+                placeholder="Enter starting time (Hours:Minutes)"
+                value={startTime}
+                onChange={(e) => setStartTime(e.target.value)}
+                required
+                style={{
+                  maxWidth: "800px",
+                  height: "45px",
+                  border: "1px solid #ffb43c"
+                }}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="endTime">End Time</label>
+              <input
+                type="text"
+                className="form-control"
+                id="endTime"
+                placeholder="Enter ending time (Hours:Minutes)"
+                value={endTime}
+                onChange={(e) => setEndTime(e.target.value)}
                 required
                 style={{
                   maxWidth: "800px",
@@ -185,7 +229,7 @@ const AddRecord = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="pannelID">Pannel ID</label>
+              <label htmlFor="pannelID">Panel ID</label>
               <select
                 className="form-control"
                 id="pannelID"
@@ -198,13 +242,12 @@ const AddRecord = () => {
                   border: "1px solid #ffb43c"
                 }}
               >
-                <option value="">Select a Pannel ID</option>
+                <option value="">Select a Panel ID</option>
                 {pannelIDOptions.map((option, index) => (
                   <option key={index} value={option}>{option}</option>
                 ))}
               </select>
             </div>
-
           </div>
           <div className="text-center">
             <button type="submit" className="btn btn-primary" id="R_Button">
@@ -214,8 +257,11 @@ const AddRecord = () => {
         </form>
       </div>
     </div>
+
   );
 };
 
 export default AddRecord;
+
+
 

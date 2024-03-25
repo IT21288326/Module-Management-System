@@ -133,13 +133,13 @@ const PresentationPannelTable = () => {
     },
   ];
 
-  // const addPannelButton = (
-  //       <Link to="/presentation-pannel/addpresentationpannel" >
-  //         <button className="export">
-  //           Add Presentation Panel
-  //         </button>
-  //       </Link>
-  //     );  
+  const addPannelButton = (
+        <Link to="/presentation-pannel/addpresentationpannel" >
+          <button className="export">
+            Add Presentation Panel
+          </button>
+        </Link>
+      );  
 
   return (
     
@@ -157,7 +157,7 @@ const PresentationPannelTable = () => {
         placeholder="Search by Group Number"
         
       /> */}
-      <div className="R_presentation-grid-container">
+      
         <h1>Presentataion Pannels</h1>
         <DataGrid
           className="datagrid"
@@ -180,7 +180,18 @@ const PresentationPannelTable = () => {
           }}
         />
       </div>
-    </div>
+
   );
 };
 export default PresentationPannelTable;
+
+
+
+
+
+
+
+
+
+
+
