@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['projectCoodinator', 'projectMember', 'student'],
+        enum: ['staffMember', 'student'],
         required: true
     },
     GuardianName: {
@@ -60,9 +60,17 @@ const userSchema = new mongoose.Schema({
     },
     designation: {
         type: String,
-        required() {
-            return this.role === 'projectMember';
-        }
+        required: function() {
+            return this.role === 'staffMember';
+        },
+        enum: ['Instructor', 'Asst. Lec-temp', 'Asst. Lec', 'Lecturer -probation', 'Lecturer', 'Senior Lecturer', 'Senior Lecturer(Higher Grade)', 'Asst. Professor', 'Professor']
+    },
+    staffRoles: {
+        type: [String], // Array of staff roles
+        required: function() {
+            return this.role === 'staffMember';
+        },
+        enum: ['projectMember', 'co-supervisor', 'supervisor', 'examiner']
     },
     Password: {
         type: String,
