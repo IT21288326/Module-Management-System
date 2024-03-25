@@ -1,0 +1,122 @@
+.R_PresentationPannelTable{
+    height: 600px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 140px;
+
+    
+    h1{
+        color: #b69400;
+        font-size: 25px;
+        margin-left: 10px;
+        padding : 30px;
+        text-align: center;
+    }
+    
+
+    .R_presentation-grid-container {
+        border: 1px solid #ffb43c !important;
+        border-radius: 5px;
+        padding: 0px 50px 50px 50px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-color: #ffb43c;
+        margin-top: 30px;
+      }
+      
+      
+
+    .R_datatableTitle {
+        width: 100%;
+        font-size: 30px;
+        color: rgb(0, 0, 0);
+        font-weight: normal;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+
+    }
+    
+
+    .cellAction {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .updateButton {
+            padding: 5px 8px;
+            border-radius: 8px;
+            color: #ffb43c;
+            border: 2px solid #ffb43c;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #ffb43c;
+                color: rgb(255, 252, 253);
+                transition-duration: 0.3s;
+                
+            }
+        }
+
+        .deleteButton {
+            padding: 5px 5px;
+            border-radius: 8px;
+            color: rgb(255, 0, 0);
+            border: 2px solid rgba(237, 21, 21, 0.6);
+            background-color: rgb(255, 251, 251);
+            cursor: pointer;
+
+            &:hover {
+                background-color: red;
+                color: rgb(255, 252, 253);
+                transition-duration: 0.3s;
+                
+            }
+        }
+    }
+}
+
+
+.search {
+    display: flex;
+    width: 300px;
+    height: 30px;
+    margin-bottom: 20px;
+    margin-left: 1060px;
+    border: solid 2px #ffb43c;
+    border-radius: 10px;   
+    transition: border-color 0.3s ease-in-out;
+    
+    &:focus {
+      outline: none;
+      border-color:  #ffb43c;
+    }
+
+}
+.SearchIcon{
+   display: flex;
+   margin-bottom:-35px;
+   margin-left: 1030px;
+   color: #ffb43c;
+    
+    }
+    
+.export {
+    text-decoration: none;
+    background-color: #ffffff;
+    color: #ffb43c;
+    font-size: 16px;
+    font-weight: 400;
+    border: 2px solid #ffb43c;
+    padding: 5px;
+    margin: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #ffb43c;
+        color: #ffffff;
+        transition-duration: 0.2s;
+    }
+}

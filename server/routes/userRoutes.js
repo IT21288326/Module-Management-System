@@ -1,7 +1,7 @@
 import express from 'express';
 
 const router = express.Router();
-import {createUser, getAllUsers,getUserById,updateUserById,deleteUserById }  from '../controllers/userController.js';
+import {createUser, getAllUsers,getUserById,updateUserById,deleteUserById,getProjectMembers,getStaffMembers,updateStaffRole }  from '../controllers/userController.js';
 
 
 // Route to create a new user
@@ -19,5 +19,13 @@ router.put('/users/:id', updateUserById);
 // Route to delete a user by ID
 router.delete('/users/:id', deleteUserById);
 
-export default router;
 
+
+// Route to for retrieving project members
+router.get('/projectMembers', getProjectMembers);
+
+router.get('/staffMember', getStaffMembers);
+
+router.put('/update-staff-role',updateStaffRole );
+
+export default router;

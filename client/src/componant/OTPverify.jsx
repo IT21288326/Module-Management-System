@@ -47,11 +47,24 @@ const EmailVerification = () => {
     event.preventDefault();
     try {
       await axios.post('/otp/verify-otp', { email, otp });
+
+      // Extract domain from the email address
+      const domain = email.split('@')[1];
+      if (domain === 'my.sliit.lk') {
+        // Redirect to student signup form
+        window.location.href = '/signUp-student';
+      } else if (domain === 'sliit.lk') {
+        // Redirect to staff member signup form
+        window.location.href = '/signUp-staff';
+      } else {
+        // Unknown domain, handle appropriately
+        console.log('Unknown domain');
+      }
+
       Swal.fire({
         icon: 'success',
         text: 'Success',
       });
-      // Redirect to registration form or perform other actions upon successful OTP verification
     } catch (error) {
       console.error('Error verifying OTP:', error);
       Swal.fire({
@@ -125,4 +138,3 @@ const EmailVerification = () => {
 };
 
 export default EmailVerification;
-
