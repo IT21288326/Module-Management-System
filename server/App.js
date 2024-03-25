@@ -11,6 +11,7 @@ import otp from './routes/otpRoutes.js';
 import studentReportRouter from './routes/supervisor/studentReportRouter.js'
 import formRoutes  from './routes/supervisor/formRoutes.js'
 import authentication from './routes/authenticationRouter.js'
+import PresentationRoutes from './routes/examiner/PresentationRoutes.js'
 import presentationPannelRoute from './routes/project-member/presentationPannelRoute.js';
 import { getAllPannelNames } from './controllers/project-member/presentationPannelController.js'
 import getGrpRegistrationNumberRoute from './routes/student/getGrpRegistrationNumbersRoute.js'
@@ -40,7 +41,11 @@ app.use('/api', userRoutes);
 app.use('/studentReportid', studentReportRouter);
 app.use('/submitform', formRoutes);
 
+app.use('/submitPresentation', PresentationRoutes);
+
+
 //Rusith routes
+
 app.use('/presentation-shedule', presentationSheduleRoute);
 app.use('/presentation-pannel', presentationPannelRoute);
 app.use('/groupNumbers', getGrpRegistrationNumberRoute);

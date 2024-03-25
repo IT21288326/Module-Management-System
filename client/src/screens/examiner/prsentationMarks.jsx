@@ -1,13 +1,14 @@
+
 import React, { useState } from 'react';
 import axios from 'axios';
-import Swal from 'sweetalert2'; // Import sweetalert2
-import './ReportMarks.css';
+import Swal from 'sweetalert2';
+import './prsentationMarks.css';
 
-export default function ReportMarks() {
+export default function PrsentationMarks() {
   const [groupID, setGroupID] = useState('');
   const [students, setStudents] = useState([]);
   const [formData, setFormData] = useState({
-    reportTitle: '',
+    presentationTitle: '',
     semester: '',
     groupNumber: '',
     students: []
@@ -17,74 +18,41 @@ export default function ReportMarks() {
     baseURL: 'http://localhost:3001'
   });
 
-    // Helper function to calculate grade based on marks
-const calculateGrade = (marks) => {
-  if (!marks) {
-    return ''; // Return empty string if marks are not available
-  }
-  if (marks >= 90) {
-    return 'A+';
-  } else if (marks >= 80) {
-    return 'A';
-  } else if (marks >= 75) {
-    return 'A-';
-  }else if (marks >= 70) {
-    return 'B+';
-  } else if (marks >= 65) {
-    return 'B';
-  }else if (marks >= 60) {
-    return 'B-';
-  } else if (marks >= 55) {
-    return 'C+';
-  }else if (marks >= 45) {
-    return 'C';
-  } else if (marks >= 40) {
-    return 'C-';
-  }else if (marks >= 35) {
-    return 'D+';
-  } else if (marks >= 30) {
-    return 'D';
-  } else {
-    return 'E';
-  }
-};
-const validateMarks = (marks) => {
-  return !isNaN(marks) && marks >= 0 && marks <= 100;
-};
-const handleMarksChange = (index, marks) => {
-  if (!validateMarks(marks)) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Error',
-      text: 'Marks should be a number between 0 and 100'
-    });
-    return;
-  }
-  const updatedStudents = [...students];
-  updatedStudents[index].marks = marks;
-  setStudents(updatedStudents);
-};
-  const handleSearch = async () => {
-    try {
-      console.log('Search button clicked');
-      const response = await axiosInstance.get(`/studentReportid/groupRegistrations/${groupID}`);
-      // Add marks to each student object in the response data
-      const studentsWithMarks = response.data.map(student => ({
-        ...student,// Initialize marks to 0
-      }));
-      setStudents(studentsWithMarks);
-    } catch (error) {
-      console.error('Error fetching student data:', error);
-      // Show error message using sweetalert2
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Invaild Group Number'
-      });
+  const calculateGrade = (marks) => {
+    if (!marks) {
+      return '';
+    }
+    if (marks >= 90) {
+      return 'A+';
+    } else if (marks >= 80) {
+      return 'A';
+    } else if (marks >= 75) {
+      return 'A-';
+    } else if (marks >= 70) {
+      return 'B+';
+    } else if (marks >= 65) {
+      return 'B';
+    } else if (marks >= 60) {
+      return 'B-';
+    } else if (marks >= 55) {
+      return 'C+';
+    } else if (marks >= 45) {
+      return 'C';
+    } else if (marks >= 40) {
+      return 'C-';
+    } else if (marks >= 35) {
+      return 'D+';
+    } else if (marks >= 30) {
+      return 'D';
+    } else {
+      return 'E';
     }
   };
-  
-  const handleSubmit = async (e) => {
+
+  const validateMarks = (marks) => {
+    return !isNaN(marks) && marks >= 0 && marks <= 100;
+  };
+ const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const existingRecord = students.some(student => 
@@ -101,39 +69,37 @@ const handleMarksChange = (index, marks) => {
         });
         return;
       }
-      // Extract student names and marks from students state
+
+      // Include student data in the form data
       const studentData = students.map(student => ({
         name: student.name,
-        marks: student.marks ,// Include marks
+        marks: student.marks,
         grade: calculateGrade(student.marks)
       }));
-  
-      // Include student data in the form data
+
       const formDataWithStudents = {
         ...formData,
-        groupNumber: groupID, // Update groupNumber with groupID
+        groupNumber: groupID,
         students: studentData
       };
-  
-      console.log('Form submitted:', formDataWithStudents);
-      const response = await axiosInstance.post('/submitform/submit-form', formDataWithStudents);
-      console.log('Form submission response:', response.data);
+
+      // Send form data to the server
+      const response = await axiosInstance.post('/submitPresentation/submit-form', formDataWithStudents);
+
       // Reset form data after successful submission
       setFormData({
-        reportTitle: '',
+        presentationTitle: '',
         semester: '',
         groupNumber: '',
         students: []
       });
-      // Show success message using sweetalert2
+      setGroupID('');
+      setStudents([]);
+
       Swal.fire({
         icon: 'success',
         title: 'Success',
-        text: 'Form submitted successfully'
-      }).then(() => {
-        // Clear form data after closing the alert
-        setGroupID('');
-        setStudents([]);
+        text: 'Form submitted successfully.'
       });
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -154,8 +120,6 @@ const handleMarksChange = (index, marks) => {
       }
     }
   };
-  
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -164,21 +128,51 @@ const handleMarksChange = (index, marks) => {
     });
   };
 
+  const handleMarksChange = (index, marks) => {
+    if (!validateMarks(marks)) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Marks should be a number between 0 and 100'
+      });
+      return;
+    }
+    const updatedStudents = [...students];
+    updatedStudents[index].marks = marks;
+    setStudents(updatedStudents);
+  };
+
+  const handleSearch = async () => {
+    try {
+      const response = await axiosInstance.get(`/studentReportid/groupRegistrations/${groupID}`);
+      const studentsWithMarks = response.data.map(student => ({
+        ...student,
+      }));
+      setStudents(studentsWithMarks);
+    } catch (error) {
+      console.error('Error fetching student data:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Invalid Group Number'
+      });
+    }
+  };
+
   return (
     <div>
       <div id='savi_divform1'>
         <form id='savi_form1' onSubmit={handleSubmit}>
-        <h2>Enter Marks For Reports</h2>
+        <h2>Enter Marks For Presentation</h2>
         <br></br>
-          <div className="form-group col-md-7">
-            <label htmlFor="inputState">Report title</label>
-            <select name="reportTitle" className="form-control" value={formData.reportTitle} onChange={handleInputChange}>
+          <div className="form-group  col-md-7">
+            <label htmlFor="inputState">Presentation title</label>
+            <select name="presentationTitle" className="form-control" value={formData.presentationTitle} onChange={handleInputChange}>
               <option value="" disabled selected hidden>Choose...</option>
-              <option>Status document 1</option>
-              <option>Log book</option>
               <option>Proposal</option>
-              <option>Status document 2</option>
-              <option>Final thesis</option>
+              <option>Progress 1</option>
+              <option>Progress 2</option>
+              <option>Final presentations</option>
             </select>
           </div>
           <div className="form-group col-md-7">
@@ -189,16 +183,12 @@ const handleMarksChange = (index, marks) => {
               <option>Semester 2</option>
             </select>
           </div>
-
-
           <div className="form-group col-md-7">
             <label htmlFor="s1n">Group number</label>
             <input type="text" name="groupNumber" className="form-control" id="s1n" placeholder='Enter group ID' value={groupID} onChange={(e) => setGroupID(e.target.value)} />
           </div>
-
           <button type="button" className="btn btn-primary" id='savi_btn2' onClick={handleSearch}>Search</button>
           <div id='savi_div2'>
-            {/* Render student details if students array is not empty */}
             {students.length > 0 && (
               <div>
                 {students.map((student, index) => (
@@ -209,7 +199,7 @@ const handleMarksChange = (index, marks) => {
                     </div>
                     <div className="form-group col-md-2">
                       <label htmlFor={`s${index + 1}m`}>{`Marks`}</label>
-                      <input type="text" className="form-control" id={`s${index + 1}m`} value={student.marks} onChange={(e) =>handleMarksChange(index, e.target.value) } />
+                      <input type="text" className="form-control" id={`s${index + 1}m`} value={student.marks} onChange={(e) => handleMarksChange(index, e.target.value)} />
                     </div>
                     <div className="form-group col-md-2">
                       <label htmlFor={`s${index + 1}g`}>{`Grade`}</label>
@@ -217,14 +207,16 @@ const handleMarksChange = (index, marks) => {
                     </div>
                   </div>
                 ))}
-                {/* "Enter" button */}
                 <button type="submit" className="btn btn-primary" id='savi_btn1'>Submit</button>
               </div>
             )}
           </div>
-
         </form>
       </div>
     </div>
   );
 }
+
+
+
+
