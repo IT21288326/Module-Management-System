@@ -16,3 +16,13 @@
     margin-top: 8%;
     margin-bottom: 5%;
 }
+.card-title {
+    font-size: 24px; /* Adjust as needed */
+    font-weight: bold; /* Optionally adjust font weight */
+    margin-bottom: 10px; /* Adjust margin bottom as needed */
+  }
+  
+  .card-title.mb-smaller {
+    font-size: 18px; /* Smaller font size for the second heading */
+    margin-bottom: 6px; /* Smaller margin bottom */
+  }

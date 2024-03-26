@@ -17,11 +17,15 @@ import SidebarProjMember from './componant/project-member/SidebarProjMember';
 import Addpresentationpannel from './screens/project-member/add-presentation-pannel-page/PresentationPannelPage'
 import Updatepresentationshedule from './screens/project-member/update-presentation-pannel-page/UpdatePresentationPannelPage'
 import AssignProjectForm from './screens/coordinator/assignProjectMember';
+import AddAssesment from './screens/coordinator/addAssesment';
+
+
 import TableWithStudents from './screens/supervisor/SearchGroups'
 import DoughnutChart from './componant/Dashboard/DashboardCoordinator';
 import DonutChart from './componant/Dashboard/Dounut';
 import LineChart from './componant/Dashboard/Line';
 import InProgress from './componant/Dashboard/InProgress';
+
 
 function App() {
   return (
@@ -34,6 +38,8 @@ function App() {
             <Route path='/signUp-staff' element={<StaffSignUpForm />} />
             <Route path='/otp' element={<OTPver/> } />
             <Route path='/assignProjectMember' element={<AssignProjectForm/>} />
+            <Route path='/addAssesment' element={<AddAssesment/>} />
+   
 
           {/* savidya */}
             <Route path='/' element={<SidebarSup />} />
@@ -55,6 +61,7 @@ function App() {
             <Route path='/presentation-pannel/addpresentationpannel' element={<Addpresentationpannel />} />
             <Route path='/presentation-pannel/update/:id' element={<Updatepresentationshedule/>} />
             <Route path='/presentation-shedule/addrecord' element={<Addrecord />} />
+
 
           </Routes>
       </BrowserRouter>
