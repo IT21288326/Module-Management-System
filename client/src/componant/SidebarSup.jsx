@@ -1,25 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReportMarks from '../screens/supervisor/ReportMarks';
 import ReportsTable from '../screens/supervisor/DisplayRMarks';
 import TableWithStudents from '../screens/supervisor/SearchGroups';
+import SupervisorDashboard from './Dashboard/SupervisorDashboard'; 
 
 export default function SidebarSup() {
   const [showReportMarks, setShowReportMarks] = useState(false);
   const [showProjectDetails, setShowProjectDetails] = useState(false); // State for controlling project details visibility
+  const [showDashboard, setShowDashboard] = useState(true); // State for controlling dashboard visibility
 
   const handleAboutClick = () => {
     setShowReportMarks(true);
     setShowProjectDetails(false); // Ensure only one component is shown at a time
+    setShowDashboard(false); // Hide dashboard when other links are clicked
   };
 
   const handleOtherClick = () => {
     setShowReportMarks(false);
     setShowProjectDetails(false); // Ensure only one component is shown at a time
+    setShowDashboard(false); // Hide dashboard when other links are clicked
   };
 
   const handleProjectDetailsClick = () => {
     setShowProjectDetails(!showProjectDetails); // Toggle the visibility state
     setShowReportMarks(false); // Ensure only one component is shown at a time
+    setShowDashboard(false); // Hide dashboard when other links are clicked
+  };
+
+  const handleDashboardClick = () => {
+    setShowDashboard(true); // Always show dashboard when clicked
+    setShowReportMarks(false); // Ensure only one component is shown at a time
+    setShowProjectDetails(false); // Ensure only one component is shown at a time
   };
 
   return (
@@ -29,6 +40,9 @@ export default function SidebarSup() {
           <div className="p-4 pt-5">
             <a href="#" className="img logo rounded-circle mb-5" style={{backgroundImage: 'url(images/logo.jpg)'}} />
             <ul className="list-unstyled components mb-5">
+              <li>
+                <a href="#" onClick={handleDashboardClick}>Dashboard</a> {/* Click handler added */}
+              </li>
               <li className="active">
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Marks</a>
                 <ul className="collapse list-unstyled" id="homeSubmenu">
@@ -51,7 +65,8 @@ export default function SidebarSup() {
         <div id="content" className="p-4 p-md-5">
           {showReportMarks ? <ReportMarks /> : null}
           {showProjectDetails ? <TableWithStudents /> : null} {/* Conditionally render TableWithStudents */}
-          {!showReportMarks && !showProjectDetails && <ReportsTable />} {/* Conditionally render ReportsTable */}
+          {showDashboard ? <SupervisorDashboard /> : null} {/* Conditionally render SupervisorDashboard */}
+          {!showReportMarks && !showProjectDetails && !showDashboard && <ReportsTable />} {/* Conditionally render ReportsTable */}
         </div>
       </div>
     </div>
