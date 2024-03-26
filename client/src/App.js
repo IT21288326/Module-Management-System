@@ -15,7 +15,7 @@ import SidebarProjMember from './componant/project-member/SidebarProjMember';
 import Addpresentationpannel from './screens/project-member/add-presentation-pannel-page/PresentationPannelPage'
 import Updatepresentationshedule from './screens/project-member/update-presentation-pannel-page/UpdatePresentationPannelPage'
 import AssignProjectForm from './screens/coordinator/assignProjectMember';
-
+import AddAssesment from './screens/coordinator/addAssesment';
 function App() {
   return (
     <div className="App">
@@ -39,7 +39,7 @@ function App() {
             <Route path='/presentation-pannel/addpresentationpannel' element={<Addpresentationpannel />} />
             <Route path='/presentation-pannel/update/:id' element={<Updatepresentationshedule/>} />
             <Route path='/assignProjectMember' element={<AssignProjectForm/>} />
-
+            <Route path='/addAssesment' element={<AddAssesment/>} />
           </Routes>
       </BrowserRouter>
     </div>

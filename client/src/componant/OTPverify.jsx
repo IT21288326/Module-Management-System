@@ -25,6 +25,18 @@ const EmailVerification = () => {
   const handleSendOtp = async () => {
     if (isValidEmail) {
       try {
+        // Show loading message while waiting for OTP to be sent
+        Swal.fire({
+          icon: 'info',
+          title: 'Please wait...',
+          text: 'Sending OTP...',
+          showConfirmButton: false,
+          allowOutsideClick: false,
+        });
+  
+        // Simulate delay for demo purposes (remove in production)
+        await new Promise(resolve => setTimeout(resolve, 2000));
+  
         await axios.post('/otp/send-otp', { email });
         setIsOtpSent(true);
         Swal.fire({
@@ -42,6 +54,7 @@ const EmailVerification = () => {
       }
     }
   };
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -81,13 +94,14 @@ const EmailVerification = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6 ">
-          <div className="card " id='shashi_crd1'>
-            <div className="card-body">
-              <h2 className="card-title text-center mb-4">Email Verification</h2>
-              <form id='shashi-form1' onSubmit={handleSubmit}>
+<div className="container mt-5">
+  <div className="row justify-content-center">
+    <div className="col-md-6 ">
+      <div className="card" id='shashi_crd1'>
+        <div className="card-body">
+          <h2 className="card-title text-center mb-2">Welcome</h2>
+          <h3 className="card-title text-center mb-4">Verify your email to enroll the Module</h3> {/* Smaller heading */}
+          <form id='shashi-form1' onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label">Email:</label>
                   <input

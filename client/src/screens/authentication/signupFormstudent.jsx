@@ -17,7 +17,7 @@ const StudentSignUpForm = () => {
     AddressPer: '',
     Addresstemp: '',
     contactNo: '',
-    role:'staffMember',
+    role:'student',
     GuardianName: '',
     GuardianContactNo: '',
     ALstream: '',
