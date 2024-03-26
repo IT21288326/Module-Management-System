@@ -22,4 +22,3 @@ export const getGroupRegistrationById = async (req, res) => {
         }
 };
 
-
