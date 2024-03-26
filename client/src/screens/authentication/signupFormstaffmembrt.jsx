@@ -3,37 +3,45 @@ import axios from 'axios';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import './StudentSignUpForm.css'; // Import CSS file for custom styling
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 const StaffSignUpForm = () => {
   const [formData, setFormData] = useState({
     Email: '',
     Fullname: '',
     Nic: '',
+    
     personalEmailAddress: '',
     AddressPer: '',
     Addresstemp: '',
     contactNo: '',
+    role:'staffMember',
     designation: '',
     Password: '',
     ConfirmPassword: ''
   });
 
   const [formErrors, setFormErrors] = useState({});
-
+  const [passwordValid, setPasswordValid] = useState(false);
+  axios.defaults.baseURL = 'http://localhost:3001';
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    if (name === 'Password') {
+      validatePassword(value);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
+    if (validateForm() && passwordValid) {
       try {
-        await axios.post('/api/signup/staff', formData);
+        await axios.post('/api/users', formData);
         // Redirect or show success message
-        console.log('Staff member signed up successfully');
+        console.log('Student signed up successfully');
       } catch (error) {
-        console.error('Error signing up staff member:', error);
+        console.error('Error signing up student:', error);
         // Handle error
       }
     }
@@ -50,6 +58,35 @@ const StaffSignUpForm = () => {
     // Add validation rules for other fields
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
+  };
+
+  const validatePassword = (password) => {
+    // Regular expressions to check for lowercase, uppercase, special character, and number
+    const lowerCaseRegex = /[a-z]/;
+    const upperCaseRegex = /[A-Z]/;
+    const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+    const numberRegex = /[0-9]/;
+
+    // Check if the password contains at least one lowercase letter
+    const containsLowerCase = lowerCaseRegex.test(password);
+
+    // Check if the password contains at least one uppercase letter
+    const containsUpperCase = upperCaseRegex.test(password);
+
+    // Check if the password contains at least one special character
+    const containsSpecialChar = specialCharRegex.test(password);
+
+    // Check if the password contains at least one number
+    const containsNumber = numberRegex.test(password);
+
+    // Check if all conditions are met
+    const isValid =
+      containsLowerCase &&
+      containsUpperCase &&
+      containsSpecialChar &&
+      containsNumber;
+
+    setPasswordValid(isValid);
   };
 
   return (
@@ -83,6 +120,19 @@ const StaffSignUpForm = () => {
             required
           />
           {formErrors.Fullname && <div className="invalid-feedback">{formErrors.Fullname}</div>}
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label">First Name:</label>
+          <input
+            type="text"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            className={`form-control ${formErrors.firstName ? 'is-invalid' : ''}`}
+            required
+          />
+          {formErrors.firstName && <div className="invalid-feedback">{formErrors.firstName}</div>}
         </div>
 
         {/* NIC */}
@@ -177,24 +227,46 @@ const StaffSignUpForm = () => {
             required
           >
             <option value="">Select Designation</option>
-            {/* Add options for designation */}
+            <option >Instructor</option>
+            <option >Asst. Lec-temp</option>
+            <option >Asst. Lec</option>
+            <option >Lecturer -probation</option>
+            <option >Lecturer</option>
+            <option >Senior Lecturer</option>
+            <option >Senior Lecturer(Higher Grade)</option>
+            <option >Asst. Professor</option>     
+            <option >Professor</option>          
           </select>
           {formErrors.designation && <div className="invalid-feedback">{formErrors.designation}</div>}
         </div>
 
         {/* Password */}
         <div className="mb-3">
-          <label className="form-label">Password:</label>
-          <input
-            type="password"
-            name="Password"
-            value={formData.Password}
-            onChange={handleChange}
-            className={`form-control ${formErrors.Password ? 'is-invalid' : ''}`}
-            required
-          />
-          {formErrors.Password && <div className="invalid-feedback">{formErrors.Password}</div>}
-        </div>
+                <label className="form-label">Password:</label>
+                <input
+                  type="password"
+                  name="Password"
+                  value={formData.Password}
+                  onChange={handleChange}
+                  className={`form-control ${formErrors.Password ? 'is-invalid' : ''}`}
+                  required
+                />
+                {formData.Password && (
+                  <FontAwesomeIcon
+                    icon={formErrors.Password ? faTimesCircle : faCheckCircle}
+                    className={`password-icon ${formErrors.Password ? 'invalid' : 'valid'}`}
+                  />
+                )}
+                {formErrors.Password && <div className="invalid-feedback">{formErrors.Password}</div>}
+                {formData.Password && (
+                  <div className="password-validation">
+                    <span className={`password-icon ${passwordValid ? 'valid' : 'invalid'}`}>
+                      {passwordValid ? <FontAwesomeIcon icon={faCheckCircle} /> : <FontAwesomeIcon icon={faTimesCircle} />}
+                    </span>
+                    <span className="password-text">Password must contain at least 8 characters, one number, one special character, one lowercase letter, and one uppercase letter.</span>
+                  </div>
+                )}
+              </div>
 
         <div className="mb-3">
                 <label className="form-label">Confirm Password:</label>

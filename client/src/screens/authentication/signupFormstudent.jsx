@@ -3,6 +3,9 @@ import axios from 'axios';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import './StudentSignUpForm.css'; // Import CSS file for custom styling
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+
 
 const StudentSignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +17,7 @@ const StudentSignUpForm = () => {
     AddressPer: '',
     Addresstemp: '',
     contactNo: '',
+    role:'staffMember',
     GuardianName: '',
     GuardianContactNo: '',
     ALstream: '',
@@ -22,18 +26,23 @@ const StudentSignUpForm = () => {
   });
 
   const [formErrors, setFormErrors] = useState({});
-
+  const [passwordValid, setPasswordValid] = useState(false);
+  axios.defaults.baseURL = 'http://localhost:3001';
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    if (name === 'Password') {
+      validatePassword(value);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
+    if (validateForm() && passwordValid) {
       try {
-        await axios.post('/api/signup/student', formData);
-        // Redirect or show success  message
+        await axios.post('/api/users', formData);
+        // Redirect or show success message
         console.log('Student signed up successfully');
       } catch (error) {
         console.error('Error signing up student:', error);
@@ -53,6 +62,35 @@ const StudentSignUpForm = () => {
     // Add validation rules for other fields
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
+  };
+
+  const validatePassword = (password) => {
+    // Regular expressions to check for lowercase, uppercase, special character, and number
+    const lowerCaseRegex = /[a-z]/;
+    const upperCaseRegex = /[A-Z]/;
+    const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+    const numberRegex = /[0-9]/;
+
+    // Check if the password contains at least one lowercase letter
+    const containsLowerCase = lowerCaseRegex.test(password);
+
+    // Check if the password contains at least one uppercase letter
+    const containsUpperCase = upperCaseRegex.test(password);
+
+    // Check if the password contains at least one special character
+    const containsSpecialChar = specialCharRegex.test(password);
+
+    // Check if the password contains at least one number
+    const containsNumber = numberRegex.test(password);
+
+    // Check if all conditions are met
+    const isValid =
+      containsLowerCase &&
+      containsUpperCase &&
+      containsSpecialChar &&
+      containsNumber;
+
+    setPasswordValid(isValid);
   };
 
   return (
@@ -172,7 +210,7 @@ const StudentSignUpForm = () => {
           <div className="col-md-6">
             <div className="form-column">
               <div className="mb-3">
-                <label className="form-label">Guardian Name:</label>
+                               <label className="form-label">Guardian Name:</label>
                 <input
                   type="text"
                   name="GuardianName"
@@ -216,6 +254,7 @@ const StudentSignUpForm = () => {
                 {formErrors.ALstream && <div className="invalid-feedback">{formErrors.ALstream}</div>}
               </div> 
 
+              {/* Password */}
               <div className="mb-3">
                 <label className="form-label">Password:</label>
                 <input
@@ -226,9 +265,24 @@ const StudentSignUpForm = () => {
                   className={`form-control ${formErrors.Password ? 'is-invalid' : ''}`}
                   required
                 />
+                {formData.Password && (
+                  <FontAwesomeIcon
+                    icon={formErrors.Password || !passwordValid ? faTimesCircle : faCheckCircle}
+                    className={`password-icon ${formErrors.Password || !passwordValid ? 'invalid' : 'valid'}`}
+                  />
+                )}
                 {formErrors.Password && <div className="invalid-feedback">{formErrors.Password}</div>}
+                {formData.Password && (
+                  <div className="password-validation">
+                    <span className={`password-icon ${passwordValid ? 'valid' : 'invalid'}`}>
+                      {passwordValid ? <FontAwesomeIcon icon={faCheckCircle} /> : <FontAwesomeIcon icon={faTimesCircle} />}
+                    </span>
+                    <span className="password-text">Password must contain at least 8 characters, one number, one special character, one lowercase letter, and one uppercase letter.</span>
+                  </div>
+                )}
               </div>
-
+              
+              {/* Confirm Password */}
               <div className="mb-3">
                 <label className="form-label">Confirm Password:</label>
                 <input
@@ -257,3 +311,4 @@ const StudentSignUpForm = () => {
 };
 
 export default StudentSignUpForm;
+
