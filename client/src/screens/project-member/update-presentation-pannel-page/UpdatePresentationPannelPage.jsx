@@ -1,5 +1,5 @@
 import "./updatePresentationPannelPage.scss"
-import UpdatePresentationPannel from "../../../componant/project-member/update-presentation-pannel-comp/UpdatePresentationPannelComp"
+import UpdatePresentationPannel from "../../../componant/project-member/update-presentation-pannel-comp/UpdatePresentationPannel"
 
 const UpdatepresentationPannel = () =>{
     return(
