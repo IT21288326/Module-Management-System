@@ -18,6 +18,7 @@ import Addpresentationpannel from './screens/project-member/add-presentation-pan
 import Updatepresentationshedule from './screens/project-member/update-presentation-pannel-page/UpdatePresentationPannelPage'
 import AssignProjectForm from './screens/coordinator/assignProjectMember';
 import AddAssesment from './screens/coordinator/addAssesment';
+import LoginForm from './screens/authentication/login';
 
 
 import TableWithStudents from './screens/supervisor/SearchGroups'
@@ -39,6 +40,7 @@ function App() {
             <Route path='/otp' element={<OTPver/> } />
             <Route path='/assignProjectMember' element={<AssignProjectForm/>} />
             <Route path='/addAssesment' element={<AddAssesment/>} />
+            <Route path='/login' element={<LoginForm/>} />            
    
 
           {/* savidya */}
