@@ -70,7 +70,7 @@ const userSchema = new mongoose.Schema({
         required: function() {
             return this.role === 'staffMember';
         },
-        enum: ['projectMember', 'co-supervisor', 'supervisor', 'examiner']
+        enum: ['projectCoordinator','projectMember', 'co-supervisor', 'supervisor', 'examiner']
     },
     Password: {
         type: String,
