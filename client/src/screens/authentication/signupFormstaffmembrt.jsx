@@ -5,6 +5,7 @@ import 'react-phone-number-input/style.css';
 import './StudentSignUpForm.css'; // Import CSS file for custom styling
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2';
 const StaffSignUpForm = () => {
   const [formData, setFormData] = useState({
     Email: '',
@@ -39,7 +40,14 @@ const StaffSignUpForm = () => {
       try {
         await axios.post('/api/users', formData);
         // Redirect or show success message
-        console.log('Student signed up successfully');
+        console.log('Staff Member signed up successfully');
+  
+        // Display SweetAlert success message
+        Swal.fire({
+          icon: 'success',
+          title: 'Sign Up Successful!',
+          text: 'You have successfully signed up as a staff.',
+        });
       } catch (error) {
         console.error('Error signing up student:', error);
         // Handle error
