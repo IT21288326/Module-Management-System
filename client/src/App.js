@@ -18,10 +18,12 @@ import Addpresentationpannel from './screens/project-member/add-presentation-pan
 import Updatepresentationshedule from './screens/project-member/update-presentation-pannel-page/UpdatePresentationPannelPage'
 import AssignProjectForm from './screens/coordinator/assignProjectMember';
 import TableWithStudents from './screens/supervisor/SearchGroups'
-import DoughnutChart from './componant/Dashboard/DashboardCoordinator';
+import DashboardCoordinator from './componant/Dashboard/DashboardCoordinator';
 import DonutChart from './componant/Dashboard/Dounut';
 import LineChart from './componant/Dashboard/Line';
 import InProgress from './componant/Dashboard/InProgress';
+import SupervisorDashboard from './componant/Dashboard/SupervisorDashboard';
+import SideBarCoordinator from './componant/SideBarCoordinator';
 
 function App() {
   return (
@@ -43,10 +45,12 @@ function App() {
             <Route path='/displayPmarks' element={<PresentationsTable />} />
             <Route path='/reportmarks' element={<ReportMarks />} />
             <Route path='/TableWithStudents' element={<TableWithStudents/>}/>
-            <Route path='/dashboardC' element={<DoughnutChart/>}/>
+            <Route path='/dashboardC' element={<DashboardCoordinator/>}/>
             <Route path='/dounut' element={<DonutChart/>}/>
             <Route path='/line' element={<LineChart/>}/>
             <Route path='/inprogress' element={<InProgress/>}/>
+            <Route path='/dashboardS' element={<SupervisorDashboard/>}/>
+            <Route path='/coo' element={<SideBarCoordinator/>}/>
 
           {/* Rusith */}
             <Route path='/presentation-shedule' element={<PresentationSheduleTable />} />
