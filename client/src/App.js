@@ -19,7 +19,7 @@ import Updatepresentationshedule from './screens/project-member/update-presentat
 import AssignProjectForm from './screens/coordinator/assignProjectMember';
 import AddAssesment from './screens/coordinator/addAssesment';
 import LoginForm from './screens/authentication/login';
-
+import AddProjectCoordinator from './screens/coordinator/addNewCoordinator';
 
 import TableWithStudents from './screens/supervisor/SearchGroups'
 import DashboardCoordinator from './componant/Dashboard/DashboardCoordinator';
@@ -28,6 +28,8 @@ import LineChart from './componant/Dashboard/Line';
 import InProgress from './componant/Dashboard/InProgress';
 import SupervisorDashboard from './componant/Dashboard/SupervisorDashboard';
 import SideBarCoordinator from './componant/SideBarCoordinator';
+import MarksTable from './screens/coordinator/marksTable';
+
 
 
 function App() {
@@ -43,7 +45,8 @@ function App() {
             <Route path='/assignProjectMember' element={<AssignProjectForm/>} />
             <Route path='/addAssesment' element={<AddAssesment/>} />
             <Route path='/login' element={<LoginForm/>} />            
-   
+            <Route path='/markTable' element={<MarksTable/>} />
+            <Route path='/addnewPC' element={<AddProjectCoordinator/>} />
 
           {/* savidya */}
             <Route path='/' element={<SidebarSup />} />
