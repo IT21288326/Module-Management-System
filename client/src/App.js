@@ -12,6 +12,7 @@ import UpdatePresentationShedule from './screens/project-member/update-presetati
 import SidebarProjMember from './componant/project-member/SidebarProjMember';
 import Addpresentationpannel from './screens/project-member/add-presentation-pannel-page/PresentationPannelPage'
 import Updatepresentationshedule from './screens/project-member/update-presentation-pannel-page/UpdatePresentationPannelPage'
+import PresentationPannelTablep from './screens/project-member/presentation-pannel-tab-page/PresentationPanneltabPage'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path='/projMemberSideBar' element={<SidebarProjMember />} />
             <Route path='/presentation-pannel/addpresentationpannel' element={<Addpresentationpannel />} />
             <Route path='/presentation-pannel/update/:id' element={<Updatepresentationshedule/>} />
+            <Route path='/presentation-pannel' element={<PresentationPannelTablep/>} />
 
           </Routes>
       </BrowserRouter>
