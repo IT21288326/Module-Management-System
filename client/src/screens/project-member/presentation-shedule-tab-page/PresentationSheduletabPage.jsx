@@ -5,7 +5,7 @@ const presentationSheduleTable = () =>{
     return(
         <div className="R_presentationShedulePage">
             <div className="R_presentationShedulePageHomeContainer">
-                <h1>Presentation Shedule</h1>
+                {/* <h1>Presentation Shedule</h1> */}
                 <PresentationSheduleTable/>
             </div>
         </div>

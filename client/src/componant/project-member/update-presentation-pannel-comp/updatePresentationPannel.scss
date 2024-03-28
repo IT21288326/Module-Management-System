@@ -1,9 +1,4 @@
-.Russa_add_pr_shd_main-user-info select option[disabled] {
-    color: gray; /* Change the color to gray or any other color you prefer */
-  }
-
-.Russa_add_pr_shd {
-    
+.Russa_update_pr_pannel {
   .open-modal-button {
       background-color: #4a90e2; /* Button background color */
       color: #fff;
@@ -55,7 +50,7 @@
       color: #fff;
   }
 
-  .Russa_add_pr_shd_form-title {
+  .Russa_update_pr_pannel_form-title {
       font-size: 26px;
       font-weight: 600;
       text-align: center;
@@ -64,7 +59,7 @@
       border-bottom: solid 1px #fff;
   }
 
-  .Russa_add_pr_shd_main-user-info {
+  .Russa_update_pr_pannel_main-user-info {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -133,5 +128,3 @@
       }
   }
 }
-
-
