@@ -1,11 +1,11 @@
-import "./presentationSheduletabPage.scss"
+import "./presentationPanneltabPage.scss"
 import PresentationPannelTable from "../../../componant/project-member/presentation-pannel-tab-comp/PresentationPanneltabComp"
 
-const presentationPannelTable = () =>{
+const PresentationPannelTablep = () =>{
     return(
         <div className="R_presentationShedulePage">
             <div className="R_presentationShedulePageHomeContainer">
-                <h1>Presentation Shedule</h1>
+                {/* <h1>Presentation Pannel</h1> */}
                 <PresentationPannelTable/>
             </div>
         </div>
@@ -13,4 +13,4 @@ const presentationPannelTable = () =>{
 }
 
 
-export default presentationPannelTable
+export default PresentationPannelTablep

@@ -6,7 +6,6 @@ const Addrecord = () =>{
     return(
         <div className="addrecord_R">  
             <div className="homeContainer">
-                <h1>Add new Record</h1>
                 <AddRecord/>                
             </div>
         </div>

@@ -5,7 +5,6 @@ const Updatepresentationshedule = () =>{
     return(
         <div className="update_record_R">
             <div className="update_record_homeContainer">
-                <h1>Update Presentation Shedule</h1>
                 <div>
                     <UpdatePresentationShedule/>                   
                 </div>

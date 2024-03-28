@@ -5,7 +5,7 @@ const UpdatepresentationPannel = () =>{
     return(
         <div className="update_pannel_R">
             <div>
-                <h1>Update Presentation Pannel</h1>
+                {/* <h1>Update Presentation Pannel</h1> */}
                 <div>
                     <UpdatePresentationPannel/>                   
                 </div>
