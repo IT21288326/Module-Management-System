@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import ReportMarks from '../screens/supervisor/ReportMarks';
 import ReportsTable from '../screens/supervisor/DisplayRMarks';
 import TableWithStudents from '../screens/supervisor/SearchGroups';
-import SupervisorDashboard from './Dashboard/SupervisorDashboard'; 
+import DashboardCoordinator from './Dashboard/DashboardCoordinator';
 
-export default function SidebarSup() {
+export default function SideBarCoordinator() {
   const [showReportMarks, setShowReportMarks] = useState(false);
   const [showProjectDetails, setShowProjectDetails] = useState(false); // State for controlling project details visibility
   const [showDashboard, setShowDashboard] = useState(true); // State for controlling dashboard visibility
@@ -65,7 +65,7 @@ export default function SidebarSup() {
         <div id="content" className="p-4 p-md-5">
           {showReportMarks ? <ReportMarks /> : null}
           {showProjectDetails ? <TableWithStudents /> : null} {/* Conditionally render TableWithStudents */}
-          {showDashboard ? <SupervisorDashboard /> : null} {/* Conditionally render SupervisorDashboard */}
+          {showDashboard ? <DashboardCoordinator /> : null} {/* Conditionally render SupervisorDashboard */}
           {!showReportMarks && !showProjectDetails && !showDashboard && <ReportsTable />} {/* Conditionally render ReportsTable */}
         </div>
       </div>
