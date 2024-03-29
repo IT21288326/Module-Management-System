@@ -1,7 +1,7 @@
-// emailRoutes.js
-const express = require('express');
-const nodemailer = require('nodemailer');
-const crypto = require('crypto');
+import express from 'express';
+import nodemailer from 'nodemailer';
+import crypto from 'crypto';
+
 const router = express.Router();
 
 // Generate a unique token
@@ -58,4 +58,4 @@ router.get('/access', (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

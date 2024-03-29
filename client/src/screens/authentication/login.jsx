@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faQuestionCircle, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -30,15 +32,15 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
+    <div className="container " style={{ maxWidth: '600px' ,fontSize:"large",marginTop:'8%'}}>
+      <div className="row justify-content-center align-items-center" >
+        <div className="col-md-12">
           <div className="card">
             <div className="card-body">
-              <h2 className="card-title text-center mb-4">Sign in to your account</h2>
+              <h2 className=" text-center mb-4" style={{ fontSize: '40px' }}>Sign in to your account</h2>
               {error && <div className="alert alert-danger mb-3" role="alert">{error}</div>}
               <form onSubmit={handleSubmit}>
-                <div className="mb-3">
+                <div className="mb-4">
                   <label htmlFor="email" className="form-label">Email address:</label>
                   <input
                     type="email"
@@ -50,7 +52,7 @@ const LoginForm = () => {
                     required
                   />
                 </div>
-                <div className="mb-3">
+                <div className="mb-4">
                   <label htmlFor="password" className="form-label">Password:</label>
                   <input
                     type="password"
@@ -62,10 +64,21 @@ const LoginForm = () => {
                     required
                   />
                 </div>
-                <button type="submit" className="btn btn-primary w-100" disabled={loading}>
+                <button type="submit" className="btn btn-primary " disabled={loading} style={{width:"430px",marginTop:"30px", marginLeft:"50px",marginBottom:"5%"}} >
                   {loading ? 'Signing in...' : 'Sign in'}
                 </button>
               </form>
+              <div className="mt-3 text-center">
+                <a href="/forgot-password" style={{ color: 'black' }}>
+                  <FontAwesomeIcon icon={faQuestionCircle} className="me-3" style={{ fontSize: '20px', marginRight: '10px' }} />
+                  Forgot Password?
+                </a>
+                <span className="mx-2">|</span>
+                <a href="/contact-support" style={{ color: 'black' }}>
+                  <FontAwesomeIcon icon={faPhone} className="me-3" style={{ fontSize: '20px', marginRight: '10px' }} />
+                  Contact Support
+                </a>
+              </div>
             </div>
           </div>
         </div>
