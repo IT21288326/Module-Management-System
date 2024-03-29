@@ -1,15 +1,93 @@
 import React from 'react';
 import { BrowserRouter, Navigate, Routes, Route} from 'react-router-dom'
+
 import SidebarSup from './componant/SidebarSup';
+
 import Reg from '../src/screens/student/Registration'
 
+import OTPver from './componant/OTPverify'
+import ReportMarks from './screens/supervisor/ReportMarks';
+import Addrecord from './screens/project-member/add-record-page/AddRecordPage';
+import StudentSignUpForm from './screens/authentication/signupFormstudent';
+import StaffSignUpForm from './screens/authentication/signupFormstaffmembrt';
+import DisplayRMarks from './screens/supervisor/DisplayRMarks';
+import PresentationSheduleTable from './screens/project-member/presentation-shedule-tab-page/PresentationSheduletabPage';
+import UpdatePresentationShedule from './screens/project-member/update-presetation-shedule-page/UpdatepresetationShedulePage';
+import PrsentationMarks from './screens/examiner/prsentationMarks';
+import PresentationsTable from './screens/examiner/DisplayPMarks'
+import SidebarExaminer from './componant/SidebarExaminer';
+import SidebarProjMember from './componant/project-member/side-bar-proj-member/SidebarProjMember';
+import Addpresentationpannel from './screens/project-member/add-presentation-pannel-page/PresentationPannelPage'
+import Updatepresentationshedule from './screens/project-member/update-presentation-pannel-page/UpdatePresentationPannelPage'
+
+import PresentationPannelTablep from './screens/project-member/presentation-pannel-tab-page/PresentationPanneltabPage'
+import AssignProjectForm from './screens/coordinator/assignProjectMember';
+import AddAssesment from './screens/coordinator/addAssesment';
+import LoginForm from './screens/authentication/login';
+import AddProjectCoordinator from './screens/coordinator/addNewCoordinator';
+
+
+import TableWithStudents from './screens/supervisor/SearchGroups'
+import DashboardCoordinator from './componant/Dashboard/DashboardCoordinator';
+import DonutChart from './componant/Dashboard/Dounut';
+import LineChart from './componant/Dashboard/Line';
+import InProgress from './componant/Dashboard/InProgress';
+import SupervisorDashboard from './componant/Dashboard/SupervisorDashboard';
+import SideBarCoordinator from './componant/SideBarCoordinator';
+import MarksTable from './screens/coordinator/marksTable';
+import DisplayMarks from './screens/co-supervisor/DisplayMarks';
+import SidebarCoSup from './componant/SidebarCoSupervisor';
+import Edit from './screens/co-supervisor/edit';
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
           <Routes>
+
+          {/* shashi */}
+            <Route path='/signUp-student' element={<StudentSignUpForm />} />
+            <Route path='/signUp-staff' element={<StaffSignUpForm />} />
+            <Route path='/otp' element={<OTPver/> } />
+            <Route path='/assignProjectMember' element={<AssignProjectForm/>} />
+            <Route path='/addAssesment' element={<AddAssesment/>} />
+            <Route path='/login' element={<LoginForm/>} />            
+            <Route path='/markTable' element={<MarksTable/>} />
+            <Route path='/addnewPC' element={<AddProjectCoordinator/>} />
+
+          {/* savidya */}
             <Route path='/' element={<SidebarSup />} />
+
+            
+
+            <Route path='/ex' element={<SidebarExaminer />} />
+            <Route path='/displayrmarks' element={<DisplayRMarks />} />
+            <Route path='/PrsentationMarks' element={<PrsentationMarks />} />
+            <Route path='/displayPmarks' element={<PresentationsTable />} />
+            <Route path='/reportmarks' element={<ReportMarks />} />
+            <Route path='/TableWithStudents' element={<TableWithStudents/>}/>
+            <Route path='/dashboardC' element={<DashboardCoordinator/>}/>
+            <Route path='/dounut' element={<DonutChart/>}/>
+            <Route path='/line' element={<LineChart/>}/>
+            <Route path='/inprogress' element={<InProgress/>}/>
+            <Route path='/dashboardS' element={<SupervisorDashboard/>}/>
+            <Route path='/coo' element={<SideBarCoordinator/>}/>
+            <Route path='/update' element={<DisplayMarks/>}/>
+            <Route path='/co-sup' element={<SidebarCoSup/>}/>
+            <Route path='/edit' element={<Edit/>}/>
+
+          {/* Rusith */}
+            <Route path='/presentation-shedule' element={<PresentationSheduleTable />} />
+            <Route path='/presentation-shedule/update/:id' element={<UpdatePresentationShedule />} />
+            <Route path='/projMemberSideBar' element={<SidebarProjMember />} />
+            <Route path='/presentation-pannel/addpresentationpannel' element={<Addpresentationpannel />} />
+            <Route path='/presentation-pannel/update/:id' element={<Updatepresentationshedule/>} />
+            <Route path='/presentation-pannel' element={<PresentationPannelTablep/>} />
+            <Route path='/presentation-shedule/addrecord' element={<Addrecord />} />
+              
+          {/* Supun */}
             <Route path='/Registration' element={<Reg />} />
+              
+       
 
           </Routes>
       </BrowserRouter>

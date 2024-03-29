@@ -46,7 +46,7 @@ const StudentSchema = new mongoose.Schema({
 
 */
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const groupRegistrationSchema = new mongoose.Schema(
     {
@@ -162,6 +162,7 @@ const groupRegistrationSchema = new mongoose.Schema(
     }
 );
 
+
 // Pre-save middleware to generate GroupRegistrationNo
 groupRegistrationSchema.pre('save', async function (next) {
     // Check if GroupRegistrationNo is not provided or is empty
@@ -175,7 +176,6 @@ groupRegistrationSchema.pre('save', async function (next) {
 });
 
 
-module.exports = mongoose.model("GroupRegistration", groupRegistrationSchema)
+const GroupRegistration = mongoose.model("GroupRegistration", groupRegistrationSchema);
 
-
-
+export default GroupRegistration;

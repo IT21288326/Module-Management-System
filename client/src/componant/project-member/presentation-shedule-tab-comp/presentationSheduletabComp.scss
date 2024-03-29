@@ -1,0 +1,124 @@
+.Russa_PresentationShedeuleTable {
+    // padding: 20px;
+    
+  
+    h1 {
+      color: #003049;
+      font-size: 25px;
+      margin-left: 10px;
+      padding: 20px;
+      text-align: center;
+      text-shadow: #ffffff;
+      font-family: sans-serif;
+      font-weight: 700;
+    }
+  }
+  
+  
+  .Russa_PresentationShedeuleTable_searchContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .Russa_PresentationShedeuleTable_export,
+  .Russa_PresentationShedeuleTable_addNew {
+    background-color: #ffb703;
+    color: #003049;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .Russa_PresentationShedeuleTable_export:hover,
+  .Russa_PresentationShedeuleTable_addNew:hover {
+    background-color: #ffcb57;
+  }
+  
+  .Russa_PresentationShedeuleTable_input_search {
+    display: flex;
+    align-items: center;
+    width: auto; /* Adjust as needed */
+  }
+  
+  .Russa_PresentationShedeuleTable_searchIcon {
+    color: #ffb43c;
+    margin-right: 5px;
+  }
+  
+  .Russa_PresentationShedeuleTable_input_field_search {
+    border: none; /* Removed border */
+    border-bottom: solid 2px #ffb43c; /* Added bottom border */
+    border-radius: 0; /* Remove border radius */
+    padding: 5px;
+    width: 200px; /* Adjust width as needed */
+    background-color: transparent; /* Set background color to transparent */
+    outline: none; /* Remove outline */
+  }
+  
+  .Russa_PresentationShedeuleTable_presentationGridContainer {
+    border: 1px solid #003049;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+  }
+  
+  .Russa_PresentationShedeuleTable_cellAction {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .Russa_PresentationShedeuleTable_deleteButton,
+  .Russa_PresentationShedeuleTable_updateButton {
+    padding: 8px;
+    border: none !important;
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+  }
+  
+  .Russa_PresentationShedeuleTable_deleteButton svg,
+  .Russa_PresentationShedeuleTable_updateButton svg {
+    font-size: 18px;
+  }
+  
+  .Russa_PresentationShedeuleTable_deleteButton {
+    background-color: #dc3545;
+  }
+  
+  .Russa_PresentationShedeuleTable_updateButton {
+    background-color: #007bff;
+  }
+  
+  .Russa_PresentationShedeuleTable_deleteButton:hover {
+    background-color: #c82333;
+  }
+  
+  .Russa_PresentationShedeuleTable_updateButton:hover {
+    background-color: #0056b3;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .Russa_PresentationShedeuleTable_export,
+    .Russa_PresentationShedeuleTable_addNew {
+      padding: 6px 10px;
+      font-size: 14px;
+    }
+  
+    .Russa_PresentationShedeuleTable_input_search {
+      max-width: 200px;
+    }
+  }
+  
+
