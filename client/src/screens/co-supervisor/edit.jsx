@@ -3,26 +3,26 @@ import React from 'react'
 export default function Edit() {
   return (
     <div>
-      <div id='savi_divform1'>
-        <form id='savi_form1 col-md-6' >
+      <div  >
+        <form id='f1234' style={{marginLeft:'30%',marginTop:'3%'}}>
         <h2>Update Co-Supervisor Marks For Reports</h2>
         <br></br>
-          <div className="form-group col-md-6">
+          <div className="form-group col-md-7">
             <label type="text" htmlFor="inputState">Report title</label>
             <input type="text" name="groupNumber" className="form-control" id="s1n" placeholder='Enter group ID'  />
           </div>
-          <div className="form-group col-md-6">
+          <div className="form-group col-md-7">
             <label type="text" htmlFor="inputState" >Semester</label>
             <input type="text" name="groupNumber" className="form-control" id="s1n" placeholder='Enter group ID'  />
           </div>
 
 
-          <div className="form-group col-md-6">
+          <div className="form-group col-md-7 ">
             <label htmlFor="s1n">Group number</label>
             <input type="text" name="groupNumber" className="form-control" id="s1n" placeholder='Enter group ID'  />
-          </div>
+          </div><br></br>
                   <div className="form-row ">
-                    <div className="form-group col-md-2">
+                    <div className="form-group col-md-3">
                       <label >Student name</label>
                       <input type="text" className="form-control"  />
                     </div>
@@ -37,7 +37,7 @@ export default function Edit() {
                     </div>
 
                     <div className="form-row">
-                    <div className="form-group col-md-2">
+                    <div className="form-group col-md-3">
                       <label >Student name</label>
                       <input type="text" className="form-control"  />
                     </div>
@@ -52,7 +52,7 @@ export default function Edit() {
                     </div>
 
                     <div className="form-row">
-                    <div className="form-group col-md-2">
+                    <div className="form-group col-md-3">
                       <label >Student name</label>
                       <input type="text" className="form-control"  />
                     </div>
@@ -67,7 +67,7 @@ export default function Edit() {
                     </div>
 
                     <div className="form-row">
-                    <div className="form-group col-md-2">
+                    <div className="form-group col-md-3">
                       <label >Student name</label>
                       <input type="text" className="form-control"  />
                     </div>
