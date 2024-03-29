@@ -32,6 +32,7 @@ import SupervisorDashboard from './componant/Dashboard/SupervisorDashboard';
 import SideBarCoordinator from './componant/SideBarCoordinator';
 import MarksTable from './screens/coordinator/marksTable';
 import DisplayMarks from './screens/co-supervisor/DisplayMarks';
+import SidebarCoSup from './componant/SidebarCoSupervisor';
 
 function App() {
   return (
@@ -64,6 +65,7 @@ function App() {
             <Route path='/dashboardS' element={<SupervisorDashboard/>}/>
             <Route path='/coo' element={<SideBarCoordinator/>}/>
             <Route path='/update' element={<DisplayMarks/>}/>
+            <Route path='/co-sup' element={<SidebarCoSup/>}/>
 
           {/* Rusith */}
             <Route path='/presentation-shedule' element={<PresentationSheduleTable />} />

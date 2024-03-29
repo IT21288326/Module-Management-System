@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import PresentationsTable from '../screens/examiner/DisplayPMarks';
-import PrsentationMarks from '../screens/examiner/prsentationMarks';
 import SupervisorDashboard from './Dashboard/SupervisorDashboard';
-
-export default function SidebarSup() {
+import DisplayMarks from '../screens/co-supervisor/DisplayMarks';
+export default function SidebarCoSup() {
   const [activeLink, setActiveLink] = useState("Dashboard"); // State to keep track of active link
 
   const handleLinkClick = (linkName) => {
@@ -21,15 +19,7 @@ export default function SidebarSup() {
                 <a href="#" onClick={() => handleLinkClick("Dashboard")}>Dashboard</a>
               </li>
               <li className={activeLink === "Marks" ? "active" : ""}>
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Marks</a>
-                <ul className="collapse list-unstyled" id="homeSubmenu">
-                  <li>
-                    <a href="#" onClick={() => handleLinkClick("Enter Marks")}>Enter Marks for Reports</a>
-                  </li>
-                  <li>
-                    <a href="#" onClick={() => handleLinkClick("View Marks")}>View Marks</a>
-                  </li>
-                </ul>
+                <a href="#" onClick={() => handleLinkClick("Marks")}>Display Marks</a>
               </li>
             </ul>
           </div>
@@ -37,8 +27,7 @@ export default function SidebarSup() {
 
         {/* Page Content  */}
         <div id="content" className="p-4 p-md-5">
-          {activeLink === "Enter Marks" && <PrsentationMarks />}
-          {activeLink === "View Marks" && <PresentationsTable />}
+          {activeLink === "Marks" && <DisplayMarks />}
           {activeLink === "Dashboard" && <SupervisorDashboard />}
         </div>
       </div>
