@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilePdf, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
-import backgroundImage from './../../img/background.jpg'; // Path to your background image
 
 const AddAssessment = () => {
   const [formData, setFormData] = useState({
@@ -79,12 +78,11 @@ const AddAssessment = () => {
   ];
 
   return (
-    <div className="container" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', minHeight: '100vh' }}>
-      <h2 className="mt-4 mb-4">Add Assessment</h2>
+    <div className="container" >
+      <h2 className="mt-4 mb-7">Add Assessment</h2>
       <form onSubmit={handleSubmit}>
-        <div className="row">
           <div className="col-md-7">
-            <div className="mb-3">
+            <div className="mb-4">
               <label className="form-label">Assessment:</label>
               <textarea
                 name="assessment"
@@ -115,9 +113,10 @@ const AddAssessment = () => {
           <div className="col-md-2 d-flex justify-content-left align-items-end">
             <button type="submit" className="btn btn-primary">Submit</button>
           </div>
-        </div>
+       
       </form>
 
+    <br></br> <br></br>
       <h2 className="mt-4 mb-4">Added Assessments</h2>
       <div className="row">
         {/* Dummy data for initial assessments */}

@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import PresentationsTable from '../screens/examiner/DisplayPMarks';
 import PrsentationMarks from '../screens/examiner/prsentationMarks';
+import SupervisorDashboard from './Dashboard/SupervisorDashboard';
 
-export default function SidebarExaminer() {
-  const [showReportMarks, setShowReportMarks] = useState(false);
+export default function SidebarSup() {
+  const [activeLink, setActiveLink] = useState("Dashboard"); // State to keep track of active link
 
-  const handleAboutClick = () => {
-    setShowReportMarks(true);
-  };
-
-  const handleOtherClick = () => {
-    setShowReportMarks(false);
+  const handleLinkClick = (linkName) => {
+    setActiveLink(linkName); // Update the active link when clicked
   };
 
   return (
@@ -20,27 +17,29 @@ export default function SidebarExaminer() {
           <div className="p-4 pt-5">
             <a href="#" className="img logo rounded-circle mb-5" style={{backgroundImage: 'url(images/logo.jpg)'}} />
             <ul className="list-unstyled components mb-5">
-              <li className="active">
+              <li className={activeLink === "Dashboard" ? "active" : ""}>
+                <a href="#" onClick={() => handleLinkClick("Dashboard")}>Dashboard</a>
+              </li>
+              <li className={activeLink === "Marks" ? "active" : ""}>
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Marks</a>
                 <ul className="collapse list-unstyled" id="homeSubmenu">
                   <li>
-                    <a href="#" onClick={handleAboutClick}>Enter Marks for Reports</a>
-                  </li> 
+                    <a href="#" onClick={() => handleLinkClick("Enter Marks")}>Enter Marks for Reports</a>
+                  </li>
                   <li>
-                    <a href="#" onClick={handleOtherClick}>View Marks</a>
+                    <a href="#" onClick={() => handleLinkClick("View Marks")}>View Marks</a>
                   </li>
                 </ul>
-              </li>
-              <li>
-                <a href="#" onClick={handleOtherClick}>Portfolio</a>
               </li>
             </ul>
           </div>
         </nav>
-        
+
         {/* Page Content  */}
         <div id="content" className="p-4 p-md-5">
-          {showReportMarks ? <PrsentationMarks /> : <PresentationsTable />}
+          {activeLink === "Enter Marks" && <PrsentationMarks />}
+          {activeLink === "View Marks" && <PresentationsTable />}
+          {activeLink === "Dashboard" && <SupervisorDashboard />}
         </div>
       </div>
     </div>
