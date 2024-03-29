@@ -16,6 +16,8 @@ import presentationPannelRoute from './routes/project-member/presentationPannelR
 import { getAllPannelNames } from './controllers/project-member/presentationPannelController.js'
 import getGrpRegistrationNumberRoute from './routes/student/getGrpRegistrationNumbersRoute.js'
 import presentationSheduleRoute from './routes/project-member/presentationSheduleRoute.js';
+import grpRegReoute from "./routes/student/grpRegistrationRoute.js"
+
 
 
 const app = express();
@@ -36,6 +38,17 @@ dotenv.config();
 //middlewares
 const server = http.createServer(app);
 app.use('/api', userRoutes);
+
+
+app.use('/api/GrpRergistration',grpRegReoute );
+
+
+
+
+
+
+
+
 
 
 app.use('/studentReportid', studentReportRouter);
@@ -68,6 +81,7 @@ mongoose
     server.listen(PORT, () => {
 
       console.log(`Server running on port ${PORT}`);
+
     });
   })
   .catch((err) => {

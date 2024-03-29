@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter, Navigate, Routes, Route} from 'react-router-dom'
 
 import SidebarSup from './componant/SidebarSup';
+
+import Reg from '../src/screens/student/Registration'
+
 import OTPver from './componant/OTPverify'
 import ReportMarks from './screens/supervisor/ReportMarks';
 import Addrecord from './screens/project-member/add-record-page/AddRecordPage';
@@ -22,6 +25,7 @@ import AssignProjectForm from './screens/coordinator/assignProjectMember';
 import AddAssesment from './screens/coordinator/addAssesment';
 import LoginForm from './screens/authentication/login';
 import AddProjectCoordinator from './screens/coordinator/addNewCoordinator';
+
 
 import TableWithStudents from './screens/supervisor/SearchGroups'
 import DashboardCoordinator from './componant/Dashboard/DashboardCoordinator';
@@ -52,6 +56,9 @@ function App() {
 
           {/* savidya */}
             <Route path='/' element={<SidebarSup />} />
+
+            
+
             <Route path='/ex' element={<SidebarExaminer />} />
             <Route path='/displayrmarks' element={<DisplayRMarks />} />
             <Route path='/PrsentationMarks' element={<PrsentationMarks />} />
@@ -76,6 +83,11 @@ function App() {
             <Route path='/presentation-pannel/update/:id' element={<Updatepresentationshedule/>} />
             <Route path='/presentation-pannel' element={<PresentationPannelTablep/>} />
             <Route path='/presentation-shedule/addrecord' element={<Addrecord />} />
+              
+          {/* Supun */}
+            <Route path='/Registration' element={<Reg />} />
+              
+       
 
           </Routes>
       </BrowserRouter>
