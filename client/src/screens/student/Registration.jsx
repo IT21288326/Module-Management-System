@@ -1,7 +1,11 @@
-import React from 'react';
-import './registration.css';
+import React, { useState, useEffect } from "react";import './registration.css';
+import GroupRegistrationForm from "../../componant/Student/grpRegForm";
 
 function Registration() {
+  
+    const [showAddPannelModal, setShowAddPannelModal] = useState(false);
+  
+
   function toggleContent(event) {
     // Find the parent element of the button
     const parentElement = event.target.closest(".registration-section-head");
@@ -77,7 +81,9 @@ function Registration() {
 
 For groups listed under the "No Sub" sheet, it is mandatory to specify their assigned lab group in Column G next to each student before February 17, 2024.
 
-Kindly note that no teams have been allocated a team number for the ITPM module yet. <br></br>Register using form below </p>
+Kindly note that no teams have been allocated a team number for the ITPM module yet. <br></br>Register using form below <br></br> <button onClick={() => setShowAddPannelModal(true)} className="Russa_PresentationPannelTable_addNew">
+         
+          Register Here </button></p>
            
           </article>
           <br></br>
@@ -127,6 +133,7 @@ Kindly note that no teams have been allocated a team number for the ITPM module 
          
         
       </main>
+      {showAddPannelModal && <GroupRegistrationForm onClose={() => { setShowAddPannelModal(false) }} />}
     </div>
   );
 }
