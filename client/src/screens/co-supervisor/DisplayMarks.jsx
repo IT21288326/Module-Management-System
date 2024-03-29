@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Button } from 'react-bootstrap';
+import { Table, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { FaEdit } from 'react-icons/fa';
-function DisplayMarks() {
+function ReportsTable() {
   const [reports, setReports] = useState([]);
+  const [filterGroupId, setFilterGroupId] = useState('');
+  const [filterReportTitle, setFilterReportTitle] = useState('');
+  const [filterSemester, setFilterSemester] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+
   axios.defaults.baseURL = 'http://localhost:3001';
 
   useEffect(() => {
@@ -19,14 +24,68 @@ function DisplayMarks() {
     }
   };
 
-  const handleEdit = (reportIndex, studentIndex) => {
-    // Handle navigation or display another form for co-supervisor to enter marks
-    console.log('Edit marks for report:', reports[reportIndex], 'Student:', reports[reportIndex].students[studentIndex]);
-  };
+  const filteredReports = reports.filter(report => {
+    return (
+      (report.groupNumber?.toLowerCase().includes(filterGroupId.toLowerCase()) || filterGroupId === '') &&
+      (report.reportTitle?.toLowerCase().includes(filterReportTitle.toLowerCase()) || filterReportTitle === '') &&
+      (report.semester?.toLowerCase().includes(filterSemester.toLowerCase()) || filterSemester === '') &&
+      (report.students.some(student => student.name.toLowerCase().includes(searchTerm.toLowerCase())) || searchTerm === '')
+    );
+  });
+  
+  
+  
+  
 
   return (
     <div style={{ maxWidth: '70%', margin: '0 auto' }}>
-        <h2>Submitted Marks For Reports</h2>
+      <h2>Submitted Marks For Reports</h2>
+      <Form id='savi_filterForm' style={{ marginTop:'5%',marginBottom:'5%'}}>
+  <div className="row">
+    <div className="col">
+      <Form.Group controlId="formGroupId">
+        <Form.Label>Filter by Group ID</Form.Label>
+        <Form.Control
+          type="text"
+          value={filterGroupId}
+          onChange={e => setFilterGroupId(e.target.value)}
+        />
+      </Form.Group>
+    </div>
+    <div className="col">
+      <Form.Group controlId="formReportTitle">
+        <Form.Label>Filter by Report Title</Form.Label>
+        <Form.Control
+          type="text"
+          value={filterReportTitle}
+          onChange={e => setFilterReportTitle(e.target.value)}
+        />
+      </Form.Group>
+    </div>
+    <div className="col">
+      <Form.Group controlId="formSemester">
+        <Form.Label>Filter by Semester</Form.Label>
+        <Form.Control
+          type="text"
+          value={filterSemester}
+          onChange={e => setFilterSemester(e.target.value)}
+        />
+      </Form.Group>
+    </div>
+    <div className="col">
+      <Form.Group controlId="formSearch">
+        <Form.Label>Filter by Name</Form.Label>
+        <Form.Control
+          type="text"
+          value={searchTerm}
+          onChange={e => setSearchTerm(e.target.value)}
+        />
+      </Form.Group>
+    </div>
+  </div>
+</Form>
+
+
       <Table striped bordered hover style={{ width: '100%' }}>
         <thead>
           <tr>
@@ -34,12 +93,12 @@ function DisplayMarks() {
             <th style={{ width: '15%' }}>Semester</th>
             <th style={{ width: '15%' }}>Group Number</th>
             <th style={{ width: '25%' }}>Student Name</th>
-            <th style={{ width: '15%' }}>Student Mark</th>
-            <th style={{ width: '15%' }}>Co-supervisor Mark</th>
+            <th style={{ width: '15%' }}>Student Mark provided by supervisor</th>
+            <th style={{ width: '15%' }}>Student Mark provided by co-supervisor </th>
           </tr>
         </thead>
         <tbody>
-          {reports.map((report, reportIndex) => (
+          {filteredReports.map((report, reportIndex) => (
             <React.Fragment key={reportIndex}>
               {report.students.map((student, studentIndex) => (
                 <tr key={`${reportIndex}-${studentIndex}`}>
@@ -48,11 +107,13 @@ function DisplayMarks() {
                   <td>{studentIndex === 0 ? report.groupNumber : null}</td>
                   <td>{student.name}</td>
                   <td>{student.marks}</td>
-                  <td>
-                    {studentIndex === 0 ? (
-                      <FaEdit/>
-                    ) : null}
-                  </td>
+<td>
+  {studentIndex === 0 ? (
+      <FaEdit />
+    
+  ) : null}
+</td>
+
                 </tr>
               ))}
             </React.Fragment>
@@ -63,4 +124,4 @@ function DisplayMarks() {
   );
 }
 
-export default DisplayMarks;
+export default ReportsTable;
