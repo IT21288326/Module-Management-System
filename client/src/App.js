@@ -31,8 +31,9 @@ import InProgress from './componant/Dashboard/InProgress';
 import SupervisorDashboard from './componant/Dashboard/SupervisorDashboard';
 import SideBarCoordinator from './componant/SideBarCoordinator';
 import MarksTable from './screens/coordinator/marksTable';
-
-
+import DisplayMarks from './screens/co-supervisor/DisplayMarks';
+import SidebarCoSup from './componant/SidebarCoSupervisor';
+import Edit from './screens/co-supervisor/edit';
 function App() {
   return (
     <div className="App">
@@ -63,6 +64,9 @@ function App() {
             <Route path='/inprogress' element={<InProgress/>}/>
             <Route path='/dashboardS' element={<SupervisorDashboard/>}/>
             <Route path='/coo' element={<SideBarCoordinator/>}/>
+            <Route path='/update' element={<DisplayMarks/>}/>
+            <Route path='/co-sup' element={<SidebarCoSup/>}/>
+            <Route path='/edit' element={<Edit/>}/>
 
           {/* Rusith */}
             <Route path='/presentation-shedule' element={<PresentationSheduleTable />} />
