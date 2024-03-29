@@ -32,8 +32,8 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="container mt-3" style={{ maxWidth: '600px', height: '1000px' ,fontSize:"large", paddingTop: '00px'}}>
-      <div className="row justify-content-center align-items-center" style={{ height: '100%' }}>
+    <div className="container " style={{ maxWidth: '600px' ,fontSize:"large",marginTop:'8%'}}>
+      <div className="row justify-content-center align-items-center" >
         <div className="col-md-12">
           <div className="card">
             <div className="card-body">
@@ -64,18 +64,18 @@ const LoginForm = () => {
                     required
                   />
                 </div>
-                <button type="submit" className="btn btn-primary w-100" disabled={loading} style={{ fontSize: '30px', marginBottom: '20px' , marginTop: '100px'}} >
+                <button type="submit" className="btn btn-primary " disabled={loading} style={{width:"430px",marginTop:"30px", marginLeft:"50px",marginBottom:"5%"}} >
                   {loading ? 'Signing in...' : 'Sign in'}
                 </button>
               </form>
               <div className="mt-3 text-center">
                 <a href="/forgot-password" style={{ color: 'black' }}>
-                  <FontAwesomeIcon icon={faQuestionCircle} className="me-3" style={{ fontSize: '25px', marginRight: '10px' }} />
+                  <FontAwesomeIcon icon={faQuestionCircle} className="me-3" style={{ fontSize: '20px', marginRight: '10px' }} />
                   Forgot Password?
                 </a>
                 <span className="mx-2">|</span>
                 <a href="/contact-support" style={{ color: 'black' }}>
-                  <FontAwesomeIcon icon={faPhone} className="me-3" style={{ fontSize: '25px', marginRight: '10px' }} />
+                  <FontAwesomeIcon icon={faPhone} className="me-3" style={{ fontSize: '20px', marginRight: '10px' }} />
                   Contact Support
                 </a>
               </div>
