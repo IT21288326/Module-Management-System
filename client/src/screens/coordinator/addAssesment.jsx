@@ -656,7 +656,7 @@ const AddAssessment = () => {
           <Card.Title>{assessment.title}</Card.Title>
           <Card.Text>{assessment.description}</Card.Text>
           <div className="d-flex justify-content-between" style={{marginTop:"20px"}}>
-            <Button variant="info">
+            <Button variant="success">
               <FontAwesomeIcon icon={faEdit} /> Edit
             </Button>
             <Button variant="danger" onClick={() => handleDelete(assessment.id)}>
