@@ -1,7 +1,7 @@
 import express from "express";
 import GrpRegistrationModel from "../../models/student/GrpRegistration.js";
 //newly added
-import GrpRegistrationcontr from "../..";
+//import GrpRegistrationcontr from "../..";
 
 
 const router = express.Router();
