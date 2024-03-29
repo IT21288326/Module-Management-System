@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Table, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { FaEdit } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 function ReportsTable() {
   const [reports, setReports] = useState([]);
   const [filterGroupId, setFilterGroupId] = useState('');
@@ -107,12 +108,13 @@ function ReportsTable() {
                   <td>{studentIndex === 0 ? report.groupNumber : null}</td>
                   <td>{student.name}</td>
                   <td>{student.marks}</td>
-<td>
-  {studentIndex === 0 ? (
-      <FaEdit />
-    
-  ) : null}
-</td>
+                  <td>
+      {studentIndex === 0 ? (
+        <Link to="/edit"> {/* Use Link to navigate to the edit page */}
+          <FaEdit />
+        </Link>
+      ) : null}
+    </td>
 
                 </tr>
               ))}
