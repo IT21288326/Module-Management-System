@@ -30,7 +30,16 @@ const reportSchema = new Schema({
       grade: { 
         type: String,
         default: '' 
-    }
+    },
+    
+    csmarks: {
+      type: String,
+      default: 0
+    },
+    csgrade: { 
+      type: String,
+      default: '' 
+  },
     }
   ]
 });
