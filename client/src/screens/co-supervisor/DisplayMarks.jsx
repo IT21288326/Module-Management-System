@@ -26,6 +26,7 @@ function DisplayMarks() {
 
   return (
     <div style={{ maxWidth: '70%', margin: '0 auto' }}>
+        <h2>Submitted Marks For Reports</h2>
       <Table striped bordered hover style={{ width: '100%' }}>
         <thead>
           <tr>
