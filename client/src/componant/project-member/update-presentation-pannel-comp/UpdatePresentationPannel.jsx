@@ -1,9 +1,11 @@
+
+// UpdatePresentationPannel.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import "./updatePresentationPannel.scss";
 
-const UpdatePresentationPannel = ({ id, onClose }) => {
+const UpdatePresentationPannel = ({ id, onClose, onPanelUpdate }) => {
   const [values, setValues] = useState({
     pannelID: "",
     examiner_1: "",
@@ -11,7 +13,7 @@ const UpdatePresentationPannel = ({ id, onClose }) => {
     examiner_3: "",
   });
   const [staffMemberOptions, setStaffMemberOptions] = useState([]);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -56,6 +58,7 @@ const UpdatePresentationPannel = ({ id, onClose }) => {
         Swal.fire("Done!", "Presentation Panel Updated Successfully!", "success").then((result) => {
           if (result.isConfirmed) {
             onClose();
+            onPanelUpdate(); // Trigger reload of the panel table
           }
         });
       } else {
@@ -168,3 +171,5 @@ const UpdatePresentationPannel = ({ id, onClose }) => {
 };
 
 export default UpdatePresentationPannel;
+
+

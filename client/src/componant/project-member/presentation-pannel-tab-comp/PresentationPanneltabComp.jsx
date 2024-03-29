@@ -1,3 +1,5 @@
+
+// PresentationPannelTable.jsx
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { DataGrid } from "@mui/x-data-grid";
@@ -19,6 +21,7 @@ const PresentationPannelTable = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showAddPannelModal, setShowAddPannelModal] = useState(false);
   const [updatePanelId, setUpdatePanelId] = useState(null);
+  const [reload, setReload] = useState(false); // State to trigger reload
 
   useEffect(() => {
     const fetchPresentationPannel = async () => {
@@ -32,7 +35,7 @@ const PresentationPannelTable = () => {
     };
 
     fetchPresentationPannel();
-  }, []);
+  }, [reload]); // Reload when 'reload' state changes
 
   useEffect(() => {
     const filtered = list.filter((item) =>
@@ -106,6 +109,10 @@ const PresentationPannelTable = () => {
     },
   ];
 
+  const handlePanelUpdate = () => {
+    setReload(!reload); // Trigger reload
+  };
+
   return (
     <div className="Russa_PresentationPannelTable">
       <h1>Presentation Pannels</h1>
@@ -131,18 +138,18 @@ const PresentationPannelTable = () => {
         </button>
       </div>
       <div className="Russa_PresentationPannelTable_presentationGridContainer">
-      <DataGrid
-        rows={filteredData}
-        columns={[...PresentationPannelColumns, ...actionColumn]}
-        pageSize={8}
-        rowsPerPageOptions={[8]}
-        checkboxSelection
-        getRowId={(row) => row._id}
-        columnWidth={200} // Adjust the column width as needed
-/>
+        <DataGrid
+          rows={filteredData}
+          columns={[...PresentationPannelColumns, ...actionColumn]}
+          pageSize={8}
+          rowsPerPageOptions={[8]}
+          checkboxSelection
+          getRowId={(row) => row._id}
+          columnWidth={200} // Adjust the column width as needed
+        />
       </div>
-      {updatePanelId && <UpdatePresentationPannel id={updatePanelId} onClose={() => setUpdatePanelId(null)} />}
-      {showAddPannelModal && <AddPresentationPannel onClose={() => setShowAddPannelModal(false)} />}
+      {updatePanelId && <UpdatePresentationPannel id={updatePanelId} onClose={() => setUpdatePanelId(null)} onPanelUpdate={handlePanelUpdate} />}
+      {showAddPannelModal && <AddPresentationPannel onClose={() => { setShowAddPannelModal(false); setReload(!reload); }} />}
     </div>
   );
 };
