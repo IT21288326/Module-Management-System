@@ -13,7 +13,7 @@ import UpdatePresentationShedule from './screens/project-member/update-presetati
 import PrsentationMarks from './screens/examiner/prsentationMarks';
 import PresentationsTable from './screens/examiner/DisplayPMarks'
 import SidebarExaminer from './componant/SidebarExaminer';
-import SidebarProjMember from './componant/project-member/SidebarProjMember';
+import SidebarProjMember from './componant/project-member/side-bar-proj-member/SidebarProjMember';
 import Addpresentationpannel from './screens/project-member/add-presentation-pannel-page/PresentationPannelPage'
 import Updatepresentationshedule from './screens/project-member/update-presentation-pannel-page/UpdatePresentationPannelPage'
 
