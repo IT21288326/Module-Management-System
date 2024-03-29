@@ -30,7 +30,7 @@ export default function AddProjectCoordinator() {
         <div className="col-md-6 offset-md-3">
           <div className="card mt-5">
             <div className="card-body">
-              <h2 className="card-title text-center mb-4">Add New Project Coordinator</h2>
+              <h2 className="text-center mb-4">Add New Project Coordinator</h2>
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label htmlFor="email">Email address</label>
@@ -48,7 +48,7 @@ export default function AddProjectCoordinator() {
                 {error && <p className="text-center text-danger">{error}</p>}
                 {successMessage && <p className="text-center text-success">{successMessage}</p>}
                 <div className="d-grid">
-                  <button type="submit" className="btn btn-primary">
+                  <button type="submit" className="btn btn-primary" style={{width:"380px",marginTop:"30px", marginLeft:"50px",marginBottom:"5%"}}>
                     Send Invitation Email
                   </button>
                 </div>
