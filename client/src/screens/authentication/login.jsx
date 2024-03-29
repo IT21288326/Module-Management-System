@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faQuestionCircle, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -66,6 +68,17 @@ const LoginForm = () => {
                   {loading ? 'Signing in...' : 'Sign in'}
                 </button>
               </form>
+              <div className="mt-3 text-center">
+                <a href="/forgot-password">
+                  <FontAwesomeIcon icon={faQuestionCircle} className="me-2" />
+                  Forgot Password?
+                </a>
+                <span className="mx-2">|</span>
+                <a href="/contact-support">
+                  <FontAwesomeIcon icon={faPhone} className="me-2" />
+                  Contact Support
+                </a>
+              </div>
             </div>
           </div>
         </div>
