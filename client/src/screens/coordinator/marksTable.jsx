@@ -169,7 +169,7 @@ function MarksTable() {
   return (
     <div style={{ maxWidth: '70%', margin: '0 auto' }}>
       <h2>Submitted Marks For Reports and Presentations</h2>
-      <Form style={{ maxWidth: '40%', marginTop: '5%', marginBottom: '5%' }}>
+      <Form style={{ maxWidth: '40%', marginTop: '5%', marginBottom: '5%',marginLeft:"30%" }}>
         <div className="row">
           <div className="col">
             <Form.Group controlId="formGroupId">
