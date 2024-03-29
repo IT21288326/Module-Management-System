@@ -42,18 +42,6 @@ app.use('/studentReportid', studentReportRouter);
 app.use('/submitform', formRoutes);
 app.use('/submitPresentation', PresentationRoutes);
 
-app.put('/submitform/reports/:reportIndex/:studentIndex', (req, res) => {
-  const { reportIndex, studentIndex } = req.params;
-  const { coSupervisorMarks } = req.body;
-
-  if (!reports[reportIndex] || !reports[reportIndex].students[studentIndex]) {
-    return res.status(404).json({ error: 'Report or student not found' });
-  }
-
-  reports[reportIndex].students[studentIndex].coSupervisorMarks = coSupervisorMarks;
-  res.json(reports[reportIndex]);
-});
-
 
 
 //Rusith routes
