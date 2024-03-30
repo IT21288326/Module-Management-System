@@ -81,12 +81,12 @@ const UpdatePresentationPannel = ({ id, onClose, onPanelUpdate }) => {
           <form onSubmit={handleUpdate}>
             <div className="Russa_update_pr_pannel_main-user-info">
               <div className="user-input-box">
-                <label htmlFor="pannelID">Panel Name</label>
+                <label htmlFor="pannelID">Pannel Name</label>
                 <input
                   type="text"
                   className="form-control"
                   id="pannelID"
-                  placeholder="Enter a Panel Name"
+                  placeholder="Enter a Pannel Name"
                   value={values.pannelID}
                   onChange={(e) => setValues({ ...values, pannelID: e.target.value })}
                   disabled

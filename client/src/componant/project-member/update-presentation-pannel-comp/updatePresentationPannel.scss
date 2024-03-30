@@ -28,15 +28,16 @@
   }
 
   .modal-content {
-      background: linear-gradient(135deg, #4aafd1, #8b75e6); /* Adjust gradient colors as needed */
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 600px; /* Adjust the max-width as needed */
-      width: 100%; /* Ensure the modal is responsive */
-      max-height: 80%;
-      overflow: auto;
-      position: relative;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #02023f, #7c7c99); /* Adjust gradient colors as needed */
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 600px; /* Adjust the max-width as needed */
+    width: 100%; /* Ensure the modal is responsive */
+    max-height: 80%;
+    overflow: auto;
+    position: relative;
+    border: 2px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
   }
 
   .close-modal-button {

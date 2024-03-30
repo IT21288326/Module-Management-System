@@ -338,7 +338,7 @@ const UpdatePresentationShedule = ({ id, onClose, updatePresentationScheduleList
                     onChange={(e) => setValues({...values, venue: e.target.value})}
                     
                   >
-                    <option value="">Select a venue</option>
+                    <option value="">Choose a venue</option>
                     <option value="Venue 1">Venue 1</option>
                     <option value="Venue 2">Venue 2</option>
                     <option value="Venue 3">Venue 3</option>
@@ -363,14 +363,14 @@ const UpdatePresentationShedule = ({ id, onClose, updatePresentationScheduleList
               </div>
 
               <div className="user-input-box">
-              <label htmlFor="pannelID">Panel ID</label>
+              <label htmlFor="pannelID">Pannel Name</label>
                 <select
                   className="form-control"
                   id="pannelID"
                   value={values.pannelID}
                   onChange={(e) => setValues({...values, pannelID: e.target.value})}
                 >
-                  <option value="">Select a Panel ID</option>
+                  <option value="">Choose a Pannel name</option>
                   {pannelIDOptions.map((option, index) => (
                     <option key={index} value={option}>{option}</option>
                   ))}
