@@ -30,7 +30,7 @@ export const PresentationSheduleColumns = [
 
   { 
     field: "pannelID", 
-    headerName: "Pannel ID", 
+    headerName: "Pannel Name", 
     width: 140, 
   },
 ];

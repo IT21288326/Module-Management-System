@@ -150,12 +150,12 @@ const AddPresentationPannel = ({ onClose }) => {
           <form onSubmit={handleSubmit}>
             <div className="Russa_add_pr_pannel_main-user-info">
               <div className="user-input-box">
-                <label htmlFor="pannelID">Panel Name</label>
+                <label htmlFor="pannelID">Pannel Name</label>
                 <input
                   type="text"
                   className="form-control"
                   id="pannelID"
-                  placeholder="Enter a Panel Name"
+                  placeholder="Enter a Pannel Name"
                   value={pannelID}
                   onChange={(e) => setPannelID(e.target.value)}
                 />

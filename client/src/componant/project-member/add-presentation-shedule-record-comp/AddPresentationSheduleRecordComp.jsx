@@ -533,7 +533,7 @@ const AddRecord = ({ onClose, updatePresentationScheduleList }) => {
               </div>
 
               <div className="user-input-box">
-                <label htmlFor="pannelID">Panel Name</label>
+                <label htmlFor="pannelID">Pannel Name</label>
                 <select
                   id="pannelID"
                   value={pannelID}
@@ -541,7 +541,7 @@ const AddRecord = ({ onClose, updatePresentationScheduleList }) => {
                  
                 >
                   <option style={{ color: "#ccc" }} value="">
-                    Choose a Panel Name
+                    Choose a Pannel Name
                   </option>
                   {pannelIDOptions.map((option, index) => (
                     <option key={index} value={option}>
