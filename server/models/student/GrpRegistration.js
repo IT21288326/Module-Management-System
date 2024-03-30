@@ -162,7 +162,6 @@ const groupRegistrationSchema = new mongoose.Schema(
     }
 );
 
-
 // Pre-save middleware to generate GroupRegistrationNo
 groupRegistrationSchema.pre('save', async function (next) {
     // Check if GroupRegistrationNo is not provided or is empty

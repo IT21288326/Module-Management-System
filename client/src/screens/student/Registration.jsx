@@ -81,7 +81,9 @@ function Registration() {
 
 For groups listed under the "No Sub" sheet, it is mandatory to specify their assigned lab group in Column G next to each student before February 17, 2024.
 
-Kindly note that no teams have been allocated a team number for the ITPM module yet. <br></br>Register using form below <br></br> <button onClick={() => setShowAddPannelModal(true)} className="Russa_PresentationPannelTable_addNew">
+Kindly note that no teams have been allocated a team number for the ITPM module yet. <br></br>Register using form below <br></br> 
+<br></br>
+<button onClick={() => setShowAddPannelModal(true)} className="Russa_PresentationPannelTable_addNew">
          
           Register Here </button></p>
            
