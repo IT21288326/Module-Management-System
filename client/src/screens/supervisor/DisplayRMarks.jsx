@@ -86,7 +86,7 @@ function ReportsTable() {
 </Form>
 
 
-      <Table striped bordered hover style={{ width: '100%' }}>
+      <Table striped bordered hover style={{ width: '100%' ,backgroundColor:'white',opacity:'0.8'}}>
         <thead>
           <tr>
             <th style={{ width: '15%' }}>Report Title</th>

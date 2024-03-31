@@ -4,8 +4,8 @@ export default function Edit() {
   return (
     <div>
       <div  >
-        <form id='f1234' style={{marginLeft:'30%',marginTop:'3%'}}>
-        <h2>Update Co-Supervisor Marks For Reports</h2>
+        <form id='f1234' style={{marginLeft:'30%',paddingTop:'30px'}}>
+        <h2 >Update Co-Supervisor Marks For Reports</h2>
         <br></br>
           <div className="form-group col-md-7">
             <label type="text" htmlFor="inputState">Report title</label>

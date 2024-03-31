@@ -11,6 +11,8 @@ import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 import Swal from 'sweetalert2';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 
+import backgroundImage from '../../img/back1.jpg'; // Import your background image
+
 const StudentSignUpForm = () => {
   const [formData, setFormData] = useState({
     Email: '',
@@ -106,12 +108,21 @@ const StudentSignUpForm = () => {
   };
 
   return (
-    <div className="container-fluid bg-white py-4">
+    <div className="container-fluid bg-white py-4"
+    style={{
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      minHeight: '100vh',
+      padding: '50px' // Adjust padding instead of margin
+      
+    }}
+    >
       <div className="row justify-content-center">
         <div className="col-md-8">
-          <div className="card">
+          <div className="card"  style={{opacity:'0.8'}}>
             <div className="card-body">
-              <h2 className="card-title text-center mb-4">Student Sign Up</h2>
+              <h2 >Student Sign Up</h2>
               <form onSubmit={handleSubmit}>
                 {/* Rest of the form code */}
 {/* Left Side Column */}
