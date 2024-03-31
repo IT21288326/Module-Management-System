@@ -27,11 +27,11 @@ export default function Edit() {
                       <input type="text" className="form-control"  />
                     </div>
                     <div className="form-group col-md-2">
-                      <label >Marks provided by Supervisor</label>
+                      <label >Marks by Supervisor</label>
                       <input type="text" className="form-control"  />
                     </div>
                     <div className="form-group col-md-2">
-                      <label >Marks ptovided by Co-Supervisor</label>
+                      <label >Marks by Co-Supervisor</label>
                       <input type="text" className="form-control"  />
                     </div>
                     </div>
@@ -42,11 +42,11 @@ export default function Edit() {
                       <input type="text" className="form-control"  />
                     </div>
                     <div className="form-group col-md-2">
-                      <label >Marks provided by Supervisor</label>
+                      <label >Marks by Supervisor</label>
                       <input type="text" className="form-control"  />
                     </div>
                     <div className="form-group col-md-2">
-                      <label >Marks ptovided by Co-Supervisor</label>
+                      <label >Marks by Co-Supervisor</label>
                       <input type="text" className="form-control"  />
                     </div>
                     </div>
@@ -57,11 +57,11 @@ export default function Edit() {
                       <input type="text" className="form-control"  />
                     </div>
                     <div className="form-group col-md-2">
-                      <label >Marks provided by Supervisor</label>
+                      <label >Marks by Supervisor</label>
                       <input type="text" className="form-control"  />
                     </div>
                     <div className="form-group col-md-2">
-                      <label >Marks ptovided by Co-Supervisor</label>
+                      <label >Marks by Co-Supervisor</label>
                       <input type="text" className="form-control"  />
                     </div>
                     </div>
@@ -72,11 +72,11 @@ export default function Edit() {
                       <input type="text" className="form-control"  />
                     </div>
                     <div className="form-group col-md-2">
-                      <label >Marks provided by Supervisor</label>
+                      <label >Marks by Supervisor</label>
                       <input type="text" className="form-control"  />
                     </div>
                     <div className="form-group col-md-2">
-                      <label >Marks ptovided by Co-Supervisor</label>
+                      <label >Marks by Co-Supervisor</label>
                       <input type="text" className="form-control"  />
                     </div>
                     </div>
