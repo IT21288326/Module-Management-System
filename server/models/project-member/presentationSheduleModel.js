@@ -24,6 +24,10 @@ const sheduleSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    presentationType:{
+        type: String,
+        required: true,
+    },
     pannelID: {
         type: String
     }

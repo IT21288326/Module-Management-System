@@ -8,6 +8,7 @@ import "./updatePresentationPannel.scss";
 const UpdatePresentationPannel = ({ id, onClose, onPanelUpdate }) => {
   const [values, setValues] = useState({
     pannelID: "",
+    presentationType:"",
     examiner_1: "",
     examiner_2: "",
     examiner_3: "",
@@ -25,6 +26,7 @@ const UpdatePresentationPannel = ({ id, onClose, onPanelUpdate }) => {
         const staffData = staffResponse.data;
         setValues({
           pannelID: panelData.pannelID,
+          presentationType: panelData.presentationType,
           examiner_2: panelData.examiner_2,
           examiner_3: panelData.examiner_3,
         });
@@ -47,7 +49,7 @@ const UpdatePresentationPannel = ({ id, onClose, onPanelUpdate }) => {
     e.preventDefault();
 
     // Check if any examiner dropdown has not been selected
-    if (!values.examiner_1 || !values.examiner_2 || !values.examiner_3) {
+    if (!values.examiner_1 || !values.examiner_2 || !values.examiner_3||!values.presentationType) {
       Swal.fire("Error", "Please select an examiner for all fields!", "error");
       return;
     }
@@ -91,6 +93,25 @@ const UpdatePresentationPannel = ({ id, onClose, onPanelUpdate }) => {
                   onChange={(e) => setValues({ ...values, pannelID: e.target.value })}
                   disabled
                 />
+              </div>
+
+              <div className="user-input-box">
+                <label htmlFor="presentationType">Presentation Type</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="presentationType"
+                  value={values.presentationType}
+                  onChange={(e) => setValues({ ...values, presentationType: e.target.value })}
+                  disabled
+                />
+                  {/* <option value="">Choose a Presentation Type</option>
+                  <option value="Proposal Presentation">Proposal Presentation</option>
+                  <option value="Progress 1 Presentation">Progress 1 Presentation</option>
+                  <option value="Progress 2 Presentation">Progress 2 Presentation</option>
+                  <option value="Final Presentation">Final Presentation</option>
+                  Add more options as needed
+                </select> */}
               </div>
 
               <div className="user-input-box">

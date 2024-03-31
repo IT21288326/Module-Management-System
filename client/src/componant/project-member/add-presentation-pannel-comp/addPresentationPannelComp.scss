@@ -13,8 +13,9 @@
   }
 
   .modal-content {
-      background: linear-gradient(135deg, #02023f, #7c7c99); /* Adjust gradient colors as needed */
-      padding: 40px;
+    //   background: linear-gradient(135deg, #000000, #c1c1c2); /* Adjust gradient colors as needed */
+      background-color: #1b1b1b;
+      padding: 40px; 
       border-radius: 10px;
       max-width: 600px; /* Adjust the max-width as needed */
       width: 100%; /* Ensure the modal is responsive */
