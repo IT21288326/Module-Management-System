@@ -212,6 +212,7 @@ const UpdatePresentationShedule = ({ id, onClose, updatePresentationScheduleList
     startTime: "",
     endTime: "",
     venue: "",
+    presentationType: "",
     pannelID: "",
   });
   const [pannelIDOptions, setPannelIDOptions] = useState([]);
@@ -226,6 +227,7 @@ const UpdatePresentationShedule = ({ id, onClose, updatePresentationScheduleList
           startTime: res.data.startTime,
           endTime: res.data.endTime,
           venue: res.data.venue,
+          presentationType: res.data.presentationType,
           pannelID: res.data.pannelID,
         });
       })
@@ -360,6 +362,23 @@ const UpdatePresentationShedule = ({ id, onClose, updatePresentationScheduleList
                     <option value="Venue 19">Venue 19</option>
                     <option value="Venue 20">Venue 20</option>
                   </select>
+              </div>
+
+              <div className="user-input-box">
+                <label htmlFor="presentationType">Presentation Type</label>
+                <select
+                  className="form-control"
+                  id="presentationType"
+                  value={values.presentationType}
+                  onChange={(e) => setValues({ ...values, presentationType: e.target.value })}
+                >
+                  <option value="">Choose a Presentation Type</option>
+                  <option value="Proposal Presentation">Proposal Presentation</option>
+                  <option value="Progress 1 Presentation">Progress 1 Presentation</option>
+                  <option value="Progress 2 Presentation">Progress 2 Presentation</option>
+                  <option value="Final Presentation">Final Presentation</option>
+                  {/* Add more options as needed */}
+                </select>
               </div>
 
               <div className="user-input-box">

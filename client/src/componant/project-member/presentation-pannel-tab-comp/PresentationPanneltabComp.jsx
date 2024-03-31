@@ -39,7 +39,7 @@ const PresentationPannelTable = () => {
 
   useEffect(() => {
     const filtered = list.filter((item) =>
-      item.examiner_1.toLowerCase().includes(searchQuery.toLowerCase())
+      item.presentationType.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredData(filtered);
   }, [list, searchQuery]);
@@ -85,8 +85,8 @@ const PresentationPannelTable = () => {
       alternateRowStyles: { fillColor: [231, 215, 252] },
       tableLineColor: [92, 30, 154],
       tableLineWidth: 0.1,
-      head: [["Pannel Name", "Examiner 01", "Examiner 02", "Examiner 03"]],
-      body: list.map((item) => [item.pannelID, item.examiner_1, item.examiner_2, item.examiner_3]),
+      head: [["Pannel Name","Presentation Type" ,"Examiner 01", "Examiner 02", "Examiner 03"]],
+      body: list.map((item) => [item.pannelID,item.presentationType, item.examiner_1, item.examiner_2, item.examiner_3]),
     });
     doc.save("Presentation Panel Details.pdf");
   };
@@ -114,43 +114,44 @@ const PresentationPannelTable = () => {
   };
 
   return (
-    <div className="Russa_PresentationPannelTable">
-      <h1>Presentation Pannels</h1>
-      <div className="Russa_PresentationPannelTable_searchContainer">
-        <button onClick={downloadPdf} className="Russa_PresentationPannelTable_export">
-          Export as PDF
-        </button>
-        <div className="Russa_PresentationPannelTable_input_search">
-          <div className="Russa_PresentationPannelTable_searchIcon">
-            <SearchIcon />
+      <div className="Russa_PresentationPannelTable">
+        <h1>Presentation Pannels</h1>
+        <div className="Russa_PresentationPannelTable_searchContainer">
+          <button onClick={downloadPdf} className="Russa_PresentationPannelTable_export">
+            Export as PDF
+          </button>
+          <div className="Russa_PresentationPannelTable_input_search">
+            <div className="Russa_PresentationPannelTable_searchIcon">
+              <SearchIcon />
+            </div>
+            <input
+              className="Russa_PresentationPannelTable_input_field_search"
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search by Presentation Type"
+            />
+            
           </div>
-          <input
-            className="Russa_PresentationPannelTable_input_field_search"
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search by Examiner Name"
+          <button onClick={() => setShowAddPannelModal(true)} className="Russa_PresentationPannelTable_addNew">
+            <AddIcon />
+            Add New Pannel
+          </button>
+        </div>
+        <div className="Russa_PresentationPannelTable_presentationGridContainer">
+          <DataGrid
+            rows={filteredData}
+            columns={[...PresentationPannelColumns, ...actionColumn]}
+            pageSize={8}
+            rowsPerPageOptions={[8]}
+            checkboxSelection
+            getRowId={(row) => row._id}
+            columnWidth={200} // Adjust the column width as needed
           />
         </div>
-        <button onClick={() => setShowAddPannelModal(true)} className="Russa_PresentationPannelTable_addNew">
-          <AddIcon />
-          Add New Pannel
-        </button>
+        {updatePanelId && <UpdatePresentationPannel id={updatePanelId} onClose={() => setUpdatePanelId(null)} onPanelUpdate={handlePanelUpdate} />}
+        {showAddPannelModal && <AddPresentationPannel onClose={() => { setShowAddPannelModal(false); setReload(!reload); }} />}
       </div>
-      <div className="Russa_PresentationPannelTable_presentationGridContainer">
-        <DataGrid
-          rows={filteredData}
-          columns={[...PresentationPannelColumns, ...actionColumn]}
-          pageSize={8}
-          rowsPerPageOptions={[8]}
-          checkboxSelection
-          getRowId={(row) => row._id}
-          columnWidth={200} // Adjust the column width as needed
-        />
-      </div>
-      {updatePanelId && <UpdatePresentationPannel id={updatePanelId} onClose={() => setUpdatePanelId(null)} onPanelUpdate={handlePanelUpdate} />}
-      {showAddPannelModal && <AddPresentationPannel onClose={() => { setShowAddPannelModal(false); setReload(!reload); }} />}
-    </div>
   );
 };
 

@@ -6,6 +6,7 @@ import "./addPresentationPannelComp.scss";
 
 const AddPresentationPannel = ({ onClose }) => {
   const [pannelID, setPannelID] = useState("");
+  const [presentationType, setPresentationType] = useState("");
   const [examiner_1, setExaminer_1] = useState("");
   const [examiner_2, setExaminer_2] = useState("");
   const [examiner_3, setExaminer_3] = useState("");
@@ -83,6 +84,9 @@ const AddPresentationPannel = ({ onClose }) => {
     if (!examiner_3.trim()) {
       emptyFields.push("Examiner 3");
     }
+    if (!presentationType.trim()) {
+      emptyFields.push("Presentation Type");
+    }
 
     if (emptyFields.length > 0) {
       emptyFields.forEach(field => {
@@ -100,9 +104,10 @@ const AddPresentationPannel = ({ onClose }) => {
 
       const presentation_Pannel = {
         pannelID,
+        presentationType,
         examiner_1,
         examiner_2,
-        examiner_3,
+        examiner_3,       
       };
 
       const response = await fetch("http://localhost:3001/presentation-pannel", {
@@ -122,6 +127,7 @@ const AddPresentationPannel = ({ onClose }) => {
         setExaminer_1("");
         setExaminer_2("");
         setExaminer_3("");
+        setPresentationType("");
         onClose();
         Swal.fire("Done", "Panel added successfully!", "success");
       }
@@ -159,6 +165,23 @@ const AddPresentationPannel = ({ onClose }) => {
                   value={pannelID}
                   onChange={(e) => setPannelID(e.target.value)}
                 />
+              </div>
+
+              <div className="user-input-box">
+                <label htmlFor="presentationType">Presentation Type</label>
+                <select
+                  className="form-control"
+                  id="presentationType"
+                  value={presentationType}
+                  onChange={(e) => setPresentationType(e.target.value)}
+                >
+                  <option value="">Choose a Presentation Type</option>
+                  <option value="Proposal Presentation">Proposal Presentation</option>
+                  <option value="Progress 1 Presentation">Progress 1 Presentation</option>
+                  <option value="Progress 2 Presentation">Progress 2 Presentation</option>
+                  <option value="Final Presentation">Final Presentation</option>
+                  {/* Add more options as needed */}
+                </select>
               </div>
 
               <div className="user-input-box">

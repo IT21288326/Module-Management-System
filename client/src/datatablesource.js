@@ -28,6 +28,12 @@ export const PresentationSheduleColumns = [
     width: 130,
   },
 
+  {
+    field: "presentationType", 
+    headerName: "Presentation Type",  
+    width: 220,
+  },
+
   { 
     field: "pannelID", 
     headerName: "Pannel Name", 
@@ -40,22 +46,27 @@ export const PresentationPannelColumns = [
   {
     field: "pannelID", 
     headerName: "Pannel Name", 
-    width: 170,
+    width: 180,
+  },
+  {
+    field: "presentationType", 
+    headerName: "Presentation Type",  
+    width: 220,
   },
   {
     field: "examiner_1",
     headerName: "Examiner 01",
-    width: 170,
+    width: 190,
   },
 
   {
     field: "examiner_2",
     headerName: "Examiner 02",
-    width: 170,
+    width: 190,
   },
   {
     field: "examiner_3",
     headerName: "Examiner 03",
-    width: 200,
+    width: 230,
   },
 ];

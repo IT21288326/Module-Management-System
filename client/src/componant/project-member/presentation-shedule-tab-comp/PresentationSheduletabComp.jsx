@@ -451,6 +451,7 @@ const PresentationSheduleTable = () => {
           "Starting Time",
           "Ending Time",
           "Venue",
+          "Presentation Type",
           "Panel Name",
         ],
       ],
@@ -460,6 +461,7 @@ const PresentationSheduleTable = () => {
         item.startTime,
         item.endTime,
         item.venue,
+        item.presentationType,
         item.pannelID,
       ]),
     });

@@ -297,6 +297,7 @@ const AddRecord = ({ onClose, updatePresentationScheduleList }) => {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [venue, setVenue] = useState("");
+  const [presentationType, setPresentationType] = useState("");
   const [pannelID, setPannelID] = useState("");
   const [pannelIDOptions, setPannelIDOptions] = useState([]);
   const [groupNoOptions, setGroupNoOptions] = useState([]);
@@ -379,6 +380,9 @@ const AddRecord = ({ onClose, updatePresentationScheduleList }) => {
     if (!venue.trim()) {
       emptyFields.push("Venue");
     }
+    if (!venue.trim()) {
+      emptyFields.push("Presentation Type");
+    }
     if (!pannelID.trim()) {
       emptyFields.push("Panel Name");
     }
@@ -402,6 +406,7 @@ const AddRecord = ({ onClose, updatePresentationScheduleList }) => {
       startTime,
       endTime,
       venue,
+      presentationType,
       pannelID,
     };
 
@@ -528,6 +533,23 @@ const AddRecord = ({ onClose, updatePresentationScheduleList }) => {
                   <option value="Venue 18">Venue 18</option>
                   <option value="Venue 19">Venue 19</option>
                   <option value="Venue 20">Venue 20</option>
+                  {/* Add more options as needed */}
+                </select>
+              </div>
+
+              <div className="user-input-box">
+                <label htmlFor="presentationType">Presentation Type</label>
+                <select
+                  className="form-control"
+                  id="presentationType"
+                  value={presentationType}
+                  onChange={(e) => setPresentationType(e.target.value)}
+                >
+                  <option value="">Choose a Presentation Type</option>
+                  <option value="Proposal Presentation">Proposal Presentation</option>
+                  <option value="Progress 1 Presentation">Progress 1 Presentation</option>
+                  <option value="Progress 2 Presentation">Progress 2 Presentation</option>
+                  <option value="Final Presentation">Final Presentation</option>
                   {/* Add more options as needed */}
                 </select>
               </div>

@@ -5,6 +5,10 @@ const pannelSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    presentationType:{
+        type: String,
+        required: true,
+    },
     examiner_1: {
         type: String,
         required: true,
