@@ -1,3 +1,6 @@
+
+
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import PhoneInput from 'react-phone-number-input';
@@ -6,6 +9,7 @@ import './StudentSignUpForm.css'; // Import CSS file for custom styling
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 
 const StudentSignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -102,16 +106,20 @@ const StudentSignUpForm = () => {
   };
 
   return (
-    <div className="container">
-      <h2 className="mt-4 mb-4">Student Sign Up</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="container-fluid bg-white py-4">
+      <div className="row justify-content-center">
+        <div className="col-md-8">
+          <div className="card">
+            <div className="card-body">
+              <h2 className="card-title text-center mb-4">Student Sign Up</h2>
+              <form onSubmit={handleSubmit}>
+                {/* Rest of the form code */}
+{/* Left Side Column */}
 
-        {/* Left Side Column */}
-        <div className="row">
-          <div className="col-md-6">
-            <div className="form-column">
+        
+          
               <div className="mb-3">
-                <label className="form-label">Email:</label>
+                <label className="form-group col-md-7">Email:</label>
                 <input
                   type="email"
                   name="Email"
@@ -122,8 +130,8 @@ const StudentSignUpForm = () => {
                 />
                 {formErrors.Email && <div className="invalid-feedback">{formErrors.Email}</div>}
               </div>
-
-              <div className="mb-3">
+              <div  className="form-row ">
+              <div className="form-group col-md-6">
                 <label className="form-label">Full Name:</label>
                 <input
                   type="text"
@@ -136,7 +144,7 @@ const StudentSignUpForm = () => {
                 {formErrors.Fullname && <div className="invalid-feedback">{formErrors.Fullname}</div>}
               </div>
 
-              <div className="mb-3">
+              <div className="form-group col-md-6">
                 <label className="form-label">First Name:</label>
                 <input
                   type="text"
@@ -147,21 +155,21 @@ const StudentSignUpForm = () => {
                   required
                 />
               </div>
+            </div>
+            <div  className="form-row ">
 
-              <div className="mb-3">
-                <label className="form-label">NIC:</label>
-                <input
-                  type="text"
-                  name="Nic"
-                  value={formData.Nic}
-                  onChange={handleChange}
-                  className={`form-control ${formErrors.Nic ? 'is-invalid' : ''}`}
+              <div className="form-group col-md-6">
+                <label className="form-label">Contact No:</label>
+                <PhoneInput
+                  placeholder="Enter phone number"
+                  value={formData.contactNo}
+                  onChange={(value) => setFormData({ ...formData, contactNo: value })}
+                  className={`form-control ${formErrors.contactNo ? 'is-invalid' : ''}`}
                   required
                 />
-                {formErrors.Nic && <div className="invalid-feedback">{formErrors.Nic}</div>}
+                {formErrors.contactNo && <div className="invalid-feedback">{formErrors.contactNo}</div>}
               </div>
-
-              <div className="mb-3">
+              <div className="form-group col-md-6">
                 <label className="form-label">Personal Email Address:</label>
                 <input
                   type="email"
@@ -173,8 +181,9 @@ const StudentSignUpForm = () => {
                 />
                 {formErrors.personalEmailAddress && <div className="invalid-feedback">{formErrors.personalEmailAddress}</div>}
               </div>
-
-              <div className="mb-3">
+              </div>
+              <div  className="form-row ">
+              <div className="form-group col-md-6">
                 <label className="form-label">Permanent Address:</label>
                 <input
                   type="text"
@@ -187,7 +196,7 @@ const StudentSignUpForm = () => {
                 {formErrors.AddressPer && <div className="invalid-feedback">{formErrors.AddressPer}</div>}
               </div>
 
-              <div className="mb-3">
+              <div className="form-group col-md-6">
                 <label className="form-label">Temporary Address:</label>
                 <input
                   type="text"
@@ -199,51 +208,24 @@ const StudentSignUpForm = () => {
                 />
                 {formErrors.Addresstemp && <div className="invalid-feedback">{formErrors.Addresstemp}</div>}
               </div>
-
-              <div className="mb-3">
-                <label className="form-label">Contact No:</label>
-                <PhoneInput
-                  placeholder="Enter phone number"
-                  value={formData.contactNo}
-                  onChange={(value) => setFormData({ ...formData, contactNo: value })}
-                  className={`form-control ${formErrors.contactNo ? 'is-invalid' : ''}`}
-                  required
-                />
-                {formErrors.contactNo && <div className="invalid-feedback">{formErrors.contactNo}</div>}
               </div>
-            </div>
-          </div>
-
-          {/* Right Side Column */}
-          <div className="col-md-6">
-            <div className="form-column">
+              
               <div className="mb-3">
-                               <label className="form-label">Guardian Name:</label>
+                <label className="form-group col-md-7">NIC:</label>
                 <input
                   type="text"
-                  name="GuardianName"
-                  value={formData.GuardianName}
+                  name="Nic"
+                  value={formData.Nic}
                   onChange={handleChange}
-                  className={`form-control ${formErrors.GuardianName ? 'is-invalid': ''}`}
+                  className={`form-control ${formErrors.Nic ? 'is-invalid' : ''}`}
                   required
                 />
-                {formErrors.GuardianName && <div className="invalid-feedback">{formErrors.GuardianName}</div>}
+                {formErrors.Nic && <div className="invalid-feedback">{formErrors.Nic}</div>}
               </div>
+         
 
               <div className="mb-3">
-                <label className="form-label">Guardian Contact No:</label>
-                <PhoneInput
-                  placeholder="Enter phone number"
-                  value={formData.GuardianContactNo}
-                  onChange={(value) => setFormData({ ...formData, GuardianContactNo: value })}
-                  className={`form-control ${formErrors.GuardianContactNo ? 'is-invalid' : ''}`}
-                  required
-                />
-                {formErrors.GuardianContactNo && <div className="invalid-feedback">{formErrors.GuardianContactNo}</div>}
-              </div>
-
-              <div className="mb-3">
-                <label className="form-label">AL Stream:</label>
+                <label className="form-group col-md-7">AL Stream:</label>
                 <select
                   name="ALstream"
                   value={formData.ALstream}
@@ -261,6 +243,36 @@ const StudentSignUpForm = () => {
                 </select>
                 {formErrors.ALstream && <div className="invalid-feedback">{formErrors.ALstream}</div>}
               </div> 
+
+          {/* Right Side Column */}
+          
+          <div  className="form-row ">
+              <div className="form-group col-md-6">
+                               <label className="form-label">Guardian Name:</label>
+                <input
+                  type="text"
+                  name="GuardianName"
+                  value={formData.GuardianName}
+                  onChange={handleChange}
+                  className={`form-control ${formErrors.GuardianName ? 'is-invalid': ''}`}
+                  required
+                />
+                {formErrors.GuardianName && <div className="invalid-feedback">{formErrors.GuardianName}</div>}
+              </div>
+
+              <div className="form-group col-md-6">
+                <label className="form-label">Guardian Contact No:</label>
+                <PhoneInput
+                  placeholder="Enter phone number"
+                  value={formData.GuardianContactNo}
+                  onChange={(value) => setFormData({ ...formData, GuardianContactNo: value })}
+                  className={`form-control ${formErrors.GuardianContactNo ? 'is-invalid' : ''}`}
+                  required
+                />
+                {formErrors.GuardianContactNo && <div className="invalid-feedback">{formErrors.GuardianContactNo}</div>}
+              </div>
+</div>
+              
 
               {/* Password */}
               <div className="mb-3">
@@ -303,20 +315,20 @@ const StudentSignUpForm = () => {
                 />
                 {formErrors.ConfirmPassword && <div className="invalid-feedback">{formErrors.ConfirmPassword}</div>}
               </div>
+            
+         
+      
+
+        {/* Sign Up Button */}
+        <Button type="submit" className="btn-primary" style={{width:"430px",marginTop:"30px",marginLeft:'300px'}}>Submit</Button>
+         
+      </form>
             </div>
           </div>
         </div>
-
-        {/* Sign Up Button */}
-        <div className="row justify-content-end mt-3">
-          <div className="col-md-6 d-flex justify-content-end align-items-start">
-            <button type="submit" className="btn btn-primary btn-lg mt-2">Sign Up</button>
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
   );
 };
 
 export default StudentSignUpForm;
-
