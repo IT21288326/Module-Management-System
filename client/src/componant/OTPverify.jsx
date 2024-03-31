@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import './OTPverify.css';
-
+import backgroundImage from '../img/back1.jpg'; // Import your background image
 const EmailVerification = () => {
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
@@ -94,9 +94,18 @@ const EmailVerification = () => {
   };
 
   return (
-<div className="container mt-5">
+<div 
+style={{
+  // backgroundImage: `url(${backgroundImage})`,
+  // backgroundSize: 'cover',
+  // backgroundPosition: 'center',
+  // minHeight: '100vh',
+  // padding: '50px' // Adjust padding instead of margin
+  height:'900px'
+}}
+>
   <div className="row justify-content-center">
-    <div className="col-md-6 ">
+    <div >
       <div className="card" id='shashi_crd1'>
         <div className="card-body">
           <h2 className="card-title text-center mb-2">Welcome</h2>

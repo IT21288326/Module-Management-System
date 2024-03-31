@@ -38,9 +38,10 @@ import MarksTable from './screens/coordinator/marksTable';
 import DisplayMarks from './screens/co-supervisor/DisplayMarks';
 import SidebarCoSup from './componant/SidebarCoSupervisor';
 import Edit from './screens/co-supervisor/edit';
+import backgroundImage from './img/back1.jpg';
 function App() {
   return (
-    <div className="App">
+    <div className="app" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }}>
       <BrowserRouter>
           <Routes>
 
