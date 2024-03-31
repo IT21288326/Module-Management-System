@@ -12,15 +12,14 @@ export default function CardsGroup() {
     <div>
       <p class="card-text">
         Data Science : 60% <br/>
-        Software Engineering : 72% <br/>
-        Information Technology : 66% <br/>
+        Software Engineering : 72% 
+        
       </p>
     </div>
     <div style={{marginLeft:"50px"}}>
       <p class="card-text">
         Network Engineering : 55%<br/>
-        Cyber Security : 88%<br></br>
-        Computer System Engineering : 80%
+        Information Technology : 66% 
       </p>
     </div>
   </div>
@@ -36,15 +35,14 @@ export default function CardsGroup() {
     <div>
       <p class="card-text">
         Data Science : 30% <br/>
-        Software Engineering : 42% <br/>
-        Information Technology : 30% <br/>
+        Software Engineering : 42% 
+        
       </p>
     </div>
     <div style={{marginLeft:"50px"}}>
       <p class="card-text">
         Network Engineering : 67%<br/>
-        Cyber Security : 21%<br></br>
-        Computer System Engineering : 10%
+        Information Technology : 30% 
       </p>
     </div>
   </div>

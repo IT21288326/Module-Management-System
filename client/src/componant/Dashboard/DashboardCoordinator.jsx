@@ -13,7 +13,7 @@ export default function DashboardCoordinator() {
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
       <div class="card" style={{ width: '60%' }}>
         <div class="card-body">
-        <h5>Student enrollment with speacilization in 2024 acadamic year</h5><br></br><br></br>
+        <h5>Student pass fail presentages comparing with 2023</h5><br></br><br></br>
           <BarChart/>
           
         </div>
@@ -44,7 +44,7 @@ export default function DashboardCoordinator() {
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
       <div class="card" style={{ width: '65%' }}>
         <div class="card-body">
-        <h5>Progress comparing to 2023</h5>
+        <h5>Overoll Progress comparing to 2023</h5>
           <br></br>
         <LineChart/>
           
