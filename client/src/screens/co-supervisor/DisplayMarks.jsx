@@ -96,6 +96,7 @@ function ReportsTable() {
             <th style={{ width: '25%' }}>Student Name</th>
             <th style={{ width: '15%' }}>Student Mark provided by supervisor</th>
             <th style={{ width: '15%' }}>Student Mark provided by co-supervisor </th>
+            <th style={{ width: '15%' }}>Student Mark provided by co-supervisor </th>
           </tr>
         </thead>
         <tbody>
@@ -108,6 +109,8 @@ function ReportsTable() {
                   <td>{studentIndex === 0 ? report.groupNumber : null}</td>
                   <td>{student.name}</td>
                   <td>{student.marks}</td>
+                  <td>{student.csmarks}</td>
+
                   <td>
       {studentIndex === 0 ? (
         <Link to="/edit"> {/* Use Link to navigate to the edit page */}
