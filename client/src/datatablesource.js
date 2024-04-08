@@ -1,72 +1,53 @@
 export const PresentationSheduleColumns = [
   {
     field: "groupNo", 
-    headerName: "Group Number", 
-    width: 140,
+    headerName: "Group ID", 
+    width: 100,
   },
   {
     field: "date",
     headerName: "Date",
-    width: 130,
+    width: 100,
   },
 
   {
     field: "startTime",
     headerName: "Start Time", // Change from "Time" to "Start Time"
-    width: 130,
+    width: 95,
   },
 
   {
     field: "endTime",
     headerName: "End Time", // New field "End Time"
-    width: 130,
+    width: 95,
   },
 
   {
     field: "venue",
     headerName: "Venue",
-    width: 130,
+    width: 90,
   },
 
   {
     field: "presentationType", 
-    headerName: "Presentation Type",  
-    width: 220,
+    headerName: "Presentation",  
+    width: 115,
   },
 
-  { 
-    field: "pannelID", 
-    headerName: "Pannel Name", 
-    width: 140, 
-  },
-];
-
-
-export const PresentationPannelColumns = [
-  {
-    field: "pannelID", 
-    headerName: "Pannel Name", 
-    width: 180,
-  },
-  {
-    field: "presentationType", 
-    headerName: "Presentation Type",  
-    width: 220,
-  },
   {
     field: "examiner_1",
     headerName: "Examiner 01",
-    width: 190,
+    width: 115,
   },
 
   {
     field: "examiner_2",
     headerName: "Examiner 02",
-    width: 190,
+    width: 115,
   },
   {
     field: "examiner_3",
     headerName: "Examiner 03",
-    width: 230,
+    width: 160,
   },
 ];

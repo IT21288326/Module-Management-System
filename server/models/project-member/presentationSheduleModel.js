@@ -28,8 +28,17 @@ const sheduleSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    pannelID: {
-        type: String
+    examiner_1: {
+        type: String,
+        required: true,
+    },
+    examiner_2: {
+        type: String,
+        required: true,
+    },
+    examiner_3: {
+        type: String,
+        required: true
     }
 });
 
