@@ -1,24 +1,8 @@
 .Russa_add_pr_shd_main-user-info select option[disabled] {
-    color: gray; /* Change the color to gray or any other color you prefer */
+    color: #bdbdbd; /* Change the color to gray or any other color you prefer */
   }
 
 .Russa_add_pr_shd {
-    
-  .open-modal-button {
-      background-color: #4a90e2; /* Button background color */
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      border-radius: 3px; /* Adding border-radius for a rounded button */
-      
-      &:hover {
-          background-color: #357db8; /* Button hover background color */
-      }
-  }
-//
   .modal-overlay {
       position: fixed;
       top: 0;
@@ -33,7 +17,7 @@
   }
 
   .modal-content {
-    background-color: #1b1b1b; /* Adjust gradient colors as needed */
+    background-color: #bdbdbd; /* Adjust gradient colors as needed */
     padding-top: 13px;
     padding-left: 30px;
     padding-right: 30px;
@@ -41,11 +25,11 @@
     border-radius: 10px;
     max-width: 600px; /* Adjust the max-width as needed */
     width: 100%; /* Ensure the modal is responsive */
-    max-height: 80%;
+    max-height: 100%;
     overflow: auto;
     position: relative;
     border: 2px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px #bdbdbd;
   }
 
   .close-modal-button {
@@ -56,16 +40,16 @@
       border: none;
       font-size: 24px;
       cursor: pointer;
-      color: #fff;
+      color: #ff0000;
   }
 
   .Russa_add_pr_shd_form-title {
       font-size: 26px;
       font-weight: 600;
       text-align: center;
-      padding-bottom: 6px;
-      color: #fff;
-      border-bottom: solid 1px #fff;
+      padding-bottom: 15px;
+      color: #252525;
+      border-bottom: solid 1px #7c7a7a;
   }
 
   .Russa_add_pr_shd_main-user-info {
@@ -76,14 +60,14 @@
   }
 
   .user-input-box {
-      flex-basis: calc(50% - 10px); /* Adjust the width of each input box */
+      flex-basis: calc(50% - 20px); /* Adjust the width of each input box */
       padding-bottom: 15px;
 
       label {
           display: block;
-          color: #fff;
+          color: #252525;
           font-size: 20px;
-          font-weight: 400;
+          font-weight: 500;
           margin-bottom: 5px;
       }
 
@@ -93,25 +77,26 @@
           height: 40px;
           border-radius: 7px;
           outline: none;
-          border: 1px solid #fff;
+          border: 1px solid #252525;
           padding: 0 10px;
           background-color: transparent;
-          color: #fff;
+          color: #252525;
 
           &::placeholder {
-              color: #fff; /* Change placeholder text color to white */
+              color: #252525; /* Change placeholder text color to white */
           }
       }
 
       select {
           option {
-              color: #000; /* Change the text color of dropdown options to black */
+              color: #252525; /* Change the text color of dropdown options to black */
           }
       }
   }
 
   .form-submit-btn {
-      margin-top: 40px;
+      margin-top: 30px;
+      margin-bottom: 25px;
 
       input[type="submit"] {
           display: block;
@@ -120,13 +105,13 @@
           padding: 10px;
           border: none;
           border-radius: 3px;
-          color: #fff;
-          background: linear-gradient(135deg, #00abe4, #8b75e6); /* Button gradient colors */
+          color: #252525;
+          background: #ffb703; /* Button gradient colors */
           cursor: pointer;
           transition: background-color 0.3s;
 
           &:hover {
-              background: linear-gradient(135deg, #4097b1, #4724bb); /* Button hover gradient colors */
+              background: #ffcb57; /* Button hover gradient colors */
           }
       }
   }
@@ -137,5 +122,3 @@
       }
   }
 }
-
-
