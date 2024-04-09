@@ -10,6 +10,7 @@ import SearchIcon from '@mui/icons-material/Search';
 // import UpdateIcon from "@mui/icons-material/Update";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
+import DownloadIcon from '@mui/icons-material/Download';
 import AddRecord from '../add-presentation-shedule-record-comp/AddPresentationSheduleRecordComp.jsx';
 import UpdatePresentationShedule from '../update-presetation-shedule-comp/UpdatepresetationSheduleComp.jsx';
 
@@ -17,6 +18,10 @@ const PresentationSheduleTable = () => {
   const [list, setList] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [typeSearchQuery, setTypeSearchQuery] = useState("");
+  const [examiner1SearchQuery, setexaminer1SearchQuery] = useState("");
+  const [examiner2SearchQuery, setexaminer2SearchQuery] = useState("");
+  const [examiner3SearchQuery, setexaminer3SearchQuery] = useState("");
   const [showAddPannelModal, setShowAddPannelModal] = useState(false);
   const [updatePanelId, setUpdatePanelId] = useState(null); 
 
@@ -34,13 +39,26 @@ const PresentationSheduleTable = () => {
     fetchPresentationSchedule();
   }, []);
 
+  // useEffect(() => {
+  //   // Filter data based on searchQuery
+  //   const filtered = list.filter(item =>
+  //     item.groupNo.toLowerCase().includes(searchQuery.toLowerCase())
+  //   );
+  //   setFilteredData(filtered);
+  // }, [list, searchQuery]);
+
   useEffect(() => {
-    // Filter data based on searchQuery
-    const filtered = list.filter(item =>
-      item.groupNo.toLowerCase().includes(searchQuery.toLowerCase())
+    const filtered = list.filter(
+      item =>
+        item.groupNo.toLowerCase().includes(searchQuery.toLowerCase()) &&
+        item.presentationType.toLowerCase().includes(typeSearchQuery.toLowerCase())&&
+        item.examiner_1.toLowerCase().includes(examiner1SearchQuery.toLowerCase())&&
+        item.examiner_2.toLowerCase().includes(examiner2SearchQuery.toLowerCase())&&
+        item.examiner_3.toLowerCase().includes(examiner3SearchQuery.toLowerCase())
     );
     setFilteredData(filtered);
-  }, [list, searchQuery]);
+  }, [list, searchQuery, typeSearchQuery,examiner1SearchQuery, examiner2SearchQuery, examiner3SearchQuery]);
+  
 
   const handleDelete = async (id) => {
     try {
@@ -61,6 +79,29 @@ const PresentationSheduleTable = () => {
       }
     } catch (error) {
       console.error("Error deleting presentation schedule:", error);
+    }
+  };
+  const handleDeleteAll = async () => {
+    try {
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "This will delete all records. You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "rgb(141, 67, 252)",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete all records!",
+      });
+
+      if (result.isConfirmed) {
+        await axios.delete("http://localhost:3001/presentation-shedule");
+        setList([]);
+        setFilteredData([]);
+        Swal.fire("Deleted!", "All records have been deleted.", "success");
+      }
+    } catch (error) {
+      console.error("Error deleting all presentation schedules:", error);
+      Swal.fire("Error", "Failed to delete all records.", "error");
     }
   };
 
@@ -121,7 +162,7 @@ const PresentationSheduleTable = () => {
           <UpdateIcon />
           </button> */}
           <button className="Russa_PresentationShedeuleTable_deleteButton" onClick={() => handleDelete(params.row._id)}>
-          <DeleteIcon />
+            <DeleteIcon />
           </button>
         </div>
       ),
@@ -142,9 +183,7 @@ const PresentationSheduleTable = () => {
     <div className="Russa_PresentationShedeuleTable">
       <h1>Presentation Shedule</h1>
       <div className="Russa_PresentationShedeuleTable_searchContainer">
-        <button onClick={downloadPdf} className="Russa_PresentationShedeuleTable_export">
-          Export as PDF
-        </button>
+        
         <div className="Russa_PresentationShedeuleTable_input_search">
           <div className="Russa_PresentationShedeuleTable_searchIcon">
             <SearchIcon />
@@ -157,12 +196,78 @@ const PresentationSheduleTable = () => {
             placeholder="Search by Group Number"
           />
         </div>
+
+        <div className="Russa_PresentationShedeuleTable_input_search">
+          <div className="Russa_PresentationShedeuleTable_searchIcon">
+            <SearchIcon />
+          </div>
+          <input
+            className="Russa_PresentationShedeuleTable_input_field_search"
+            type="text"
+            value={typeSearchQuery}
+            onChange={(e) => setTypeSearchQuery(e.target.value)}
+            placeholder="Search by Presentation Type"
+          />
+        </div>
+
+        <div className="Russa_PresentationShedeuleTable_input_search">
+          <div className="Russa_PresentationShedeuleTable_searchIcon">
+            <SearchIcon />
+          </div>
+          <input
+            className="Russa_PresentationShedeuleTable_input_field_search"
+            type="text"
+            value={examiner1SearchQuery}
+            onChange={(e) => setexaminer1SearchQuery(e.target.value)}
+            placeholder="Search by Examiner 01"
+          />
+        </div>
+
+        <div className="Russa_PresentationShedeuleTable_input_search">
+          <div className="Russa_PresentationShedeuleTable_searchIcon">
+            <SearchIcon />
+          </div>
+          <input
+            className="Russa_PresentationShedeuleTable_input_field_search"
+            type="text"
+            value={examiner2SearchQuery}
+            onChange={(e) => setexaminer2SearchQuery(e.target.value)}
+            placeholder="Search by Examiner 02"
+          />
+        </div>
+
+        <div className="Russa_PresentationShedeuleTable_input_search">
+          <div className="Russa_PresentationShedeuleTable_searchIcon">
+            <SearchIcon />
+          </div>
+          <input
+            className="Russa_PresentationShedeuleTable_input_field_search"
+            type="text"
+            value={examiner3SearchQuery}
+            onChange={(e) => setexaminer3SearchQuery(e.target.value)}
+            placeholder="Search by Examiner 03"
+          />
+        </div>
+        
+        
+      </div>
+      <div className="Russa_PresentationSheduleTable_presentationGridContainer">
+
+        <button onClick={downloadPdf} className="Russa_PresentationShedeuleTable_exportpdf">
+          <DownloadIcon className="DownloadIcon"/>
+          Export as PDF
+        </button>
+
         <button onClick={() => setShowAddPannelModal(true)} className="Russa_PresentationShedeuleTable_addNew">
           <AddIcon />
           Add New Record
         </button>
-      </div>
-      <div className="Russa_PresentationSheduleTable_presentationGridContainer">
+
+        <button className="Russa_PresentationShedeuleTable_deleteRecords" onClick={handleDeleteAll}>
+          <DeleteIcon className="DeleteIcon" />
+          Delete all Records
+        </button>
+
         <DataGrid
           rows={filteredData}
           columns={[...PresentationSheduleColumns, ...actionColumn]}
@@ -174,6 +279,7 @@ const PresentationSheduleTable = () => {
         />
       </div>
       
+      
       {updatePanelId && <UpdatePresentationShedule id={updatePanelId} onClose={() => setUpdatePanelId(null)} updatePresentationScheduleList={updatePresentationScheduleList} />}
       {showAddPannelModal && <AddRecord onClose={() => setShowAddPannelModal(false)} updatePresentationScheduleList={updatePresentationScheduleList} />}
     </div>
@@ -181,3 +287,7 @@ const PresentationSheduleTable = () => {
 };
 
 export default PresentationSheduleTable;
+
+
+
+

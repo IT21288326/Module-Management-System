@@ -58,6 +58,18 @@ export const deletePresentationShedule = async (req, res, next) => {
 };
 
 
+// Controller function to delete all documents
+const deleteAllPresentations = async (req, res) => {
+  try {
+      await PresentationShedule.deleteMany({}); // Delete all documents in the PresentationSchedule collection
+      res.status(200).json({ message: 'All presentations deleted successfully.' });
+  } catch (error) {
+      res.status(500).json({ message: 'Failed to delete presentations.', error: error.message });
+  }
+};
+
+export { deleteAllPresentations };
+
 
 
 
@@ -97,4 +109,12 @@ export const checkGroupNoExists = async (req, res) => {
       res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+
+
+
+
+
+
+
 

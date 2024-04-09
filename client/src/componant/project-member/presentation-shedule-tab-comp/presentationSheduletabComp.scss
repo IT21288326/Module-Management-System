@@ -22,7 +22,7 @@
     margin-bottom: 20px;
   }
   
-  .Russa_PresentationShedeuleTable_export,
+
   .Russa_PresentationShedeuleTable_addNew {
     background-color: #ffb703;
     color: #003049;
@@ -33,11 +33,52 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s;
+    margin-left: 20px;
+
+    .DownloadIcon{
+      margin: 0px 5px 5px auto;
+    }
+  }
+
+  .Russa_PresentationShedeuleTable_deleteRecords{
+    background-color: #ff0303;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-left: 670px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    .DeleteIcon{
+      margin: 0px 5px 5px auto;
+    }
+  }
+
+  .Russa_PresentationShedeuleTable_exportpdf{
+      background-color: #ffb703;
+      color: #003049;
+      font-size: 16px;
+      font-weight: 500;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      // margin-left: 1000px;
+      cursor: pointer;
+      transition: background-color 0.2s;
   }
   
-  .Russa_PresentationShedeuleTable_export:hover,
+  .Russa_PresentationShedeuleTable_exportpdf:hover,
   .Russa_PresentationShedeuleTable_addNew:hover {
     background-color: #ffcb57;
+  }
+
+  .Russa_PresentationShedeuleTable_deleteRecords:hover{
+    background-color: #b92929;
   }
   
   .Russa_PresentationShedeuleTable_input_search {
@@ -95,7 +136,7 @@
   }
   
   .Russa_PresentationShedeuleTable_deleteButton {
-    background-color: #dc3545;
+    background-color: #ff0303;
   }
   
   .Russa_PresentationShedeuleTable_updateButton {
@@ -103,7 +144,7 @@
   }
   
   .Russa_PresentationShedeuleTable_deleteButton:hover {
-    background-color: #c82333;
+    background-color: #ff0303;
   }
   
   .Russa_PresentationShedeuleTable_updateButton:hover {

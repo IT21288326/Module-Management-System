@@ -5,7 +5,8 @@ import {
     deletePresentationShedule,
     getPresentationShedule,
     getPresentationShedules,
-    checkGroupNoExists
+    checkGroupNoExists,
+    deleteAllPresentations
 } from '../../controllers/project-member/presentationSheduleController.js';
 // import PresentationShedule from '../../models/project-member/presentationSheduleModel.js';
 
@@ -26,8 +27,11 @@ router.put("/update/:id", updatePresentationShedule);
 //DELETE
 router.delete("/:id", deletePresentationShedule);
 
+//DELETE ALL
+router.delete("/", deleteAllPresentations);
+
 //Check group no already have the record
-router.get("/groupNoexist/:groupNo", checkGroupNoExists);
+router.delete("/groupNoexist/:groupNo", checkGroupNoExists);
 
 
 

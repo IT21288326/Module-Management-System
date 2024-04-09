@@ -34,7 +34,7 @@ import Edit from './screens/co-supervisor/edit';
 import backgroundImage from './img/back1.jpg';
 function App() {
   return (
-    <div className="app" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }}>
+    <div className="app" style={{ background: '-webkit-linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%)'}}>
       <BrowserRouter>
           <Routes>
 
