@@ -7,7 +7,7 @@ import "jspdf-autotable";
 import "./presentationSheduletabComp.scss";
 import { PresentationSheduleColumns } from "../../../datatablesource.js";
 import SearchIcon from '@mui/icons-material/Search';
-import UpdateIcon from "@mui/icons-material/Update";
+// import UpdateIcon from "@mui/icons-material/Update";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddRecord from '../add-presentation-shedule-record-comp/AddPresentationSheduleRecordComp.jsx';
@@ -117,9 +117,9 @@ const PresentationSheduleTable = () => {
       width: 150,
       renderCell: (params) => (
         <div className="Russa_PresentationShedeuleTable_cellAction">
-          <button className="Russa_PresentationShedeuleTable_updateButton" onClick={() => setUpdatePanelId(params.row._id)}>
+          {/* <button className="Russa_PresentationShedeuleTable_updateButton" onClick={() => setUpdatePanelId(params.row._id)}>
           <UpdateIcon />
-          </button>
+          </button> */}
           <button className="Russa_PresentationShedeuleTable_deleteButton" onClick={() => handleDelete(params.row._id)}>
           <DeleteIcon />
           </button>

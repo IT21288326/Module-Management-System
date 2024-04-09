@@ -15,9 +15,10 @@ const AddRecord = ({ onClose, updatePresentationScheduleList }) => {
   const [examiner_3, setExaminer_3] = useState("");
   const [examinerOptions, setExaminerOptions] = useState([]);
   const [groupNoOptions, setGroupNoOptions] = useState([]);
-  const [presentationShedules, setPresentationShedules] = useState([]);
+  const [presentationSchedules, setPresentationSchedules] = useState([]);
+  const [duration, setDuration] = useState(10); // Default duration value
 
-useEffect(() => {
+  useEffect(() => {
     const fetchExaminers = async () => {
       try {
         const response = await fetch("http://localhost:3001/api/projectMembers");
@@ -35,26 +36,32 @@ useEffect(() => {
     fetchExaminers();
   }, []);
 
-  const handleExaminerChange = (e, setter, otherExaminers) => {
-    const selectedExaminer = e.target.value;
-    if (!otherExaminers.includes(selectedExaminer)) {
-      setter(selectedExaminer);
+
+  const handleStartTimeChange = (e) => {
+    const selectedTime = e.target.value;
+    const selectedHour = parseInt(selectedTime.split(':')[0]);
+    const selectedMinute = parseInt(selectedTime.split(':')[1]);
+  
+    // Convert selected time to total minutes since midnight for comparison
+    const selectedTimeInMinutes = selectedHour * 60 + selectedMinute;
+    const minTimeInMinutes = 7 * 60; // 07:00 AM in minutes (7 * 60)
+    const maxTimeInMinutes = 20 * 60; // 08:00 PM in minutes (20 * 60)
+  
+    if (selectedTimeInMinutes < minTimeInMinutes || selectedTimeInMinutes > maxTimeInMinutes) {
+      // Reset startTime to the nearest valid time within the allowed range
+      const nearestValidTimeInMinutes = Math.max(minTimeInMinutes, Math.min(selectedTimeInMinutes, maxTimeInMinutes));
+      const nearestValidHour = Math.floor(nearestValidTimeInMinutes / 60);
+      const nearestValidMinute = nearestValidTimeInMinutes % 60;
+      const formattedNearestValidTime = `${nearestValidHour.toString().padStart(2, '0')}:${nearestValidMinute.toString().padStart(2, '0')}`;
+      
+      setStartTime(formattedNearestValidTime); // Update startTime state with the nearest valid time
     } else {
-      Swal.fire("Error", "This examiner has already been selected.", "error");
+      // Set the selected time if it's within the allowed range
+      setStartTime(selectedTime);
     }
   };
+  
 
-  const renderOptions = (selectedExaminer, otherExaminers) => {
-    return examinerOptions.map((option, index) => {
-      const disabled = otherExaminers.includes(option) && option !== selectedExaminer;
-      const style = disabled ? { color: "gray" } : {};
-      return (
-        <option key={index} value={option} disabled={disabled} style={style}>
-          {option}
-        </option>
-      );
-    });
-  };
 
   useEffect(() => {
     const fetchGroupNumbers = async () => {
@@ -80,7 +87,7 @@ useEffect(() => {
         const response = await fetch("http://localhost:3001/presentation-shedule");
         if (response.ok) {
           const data = await response.json();
-          setPresentationShedules(data);
+          setPresentationSchedules(data);
         } else {
           throw new Error("Failed to fetch presentation schedules");
         }
@@ -92,13 +99,87 @@ useEffect(() => {
     fetchPresentationSchedules();
   }, []);
 
-  const isGroupNoUsed = (groupNoToCheck) => {
-    return presentationShedules.some((schedule) => schedule.groupNo === groupNoToCheck);
+  const handleExaminerChange = (e, setter, otherExaminers) => {
+    const selectedExaminer = e.target.value;
+    if (!otherExaminers.includes(selectedExaminer)) {
+      setter(selectedExaminer);
+    } else {
+      Swal.fire("Error", "This examiner has already been selected.", "error");
+    }
   };
+
+  const renderOptions = (selectedExaminer, otherExaminers) => {
+    return examinerOptions.map((option, index) => {
+      const disabled = otherExaminers.includes(option) && option !== selectedExaminer;
+      const style = disabled ? { color: "gray" } : {};
+      return (
+        <option key={index} value={option} disabled={disabled} style={style}>
+          {option}
+        </option>
+      );
+    });
+  };
+
+  const isGroupNoUsed = (groupNoToCheck) => {
+    return presentationSchedules.some((schedule) => schedule.groupNo === groupNoToCheck);
+  };
+
+  const isExaminerAvailable = (examiner, date, startTime, endTime) => {
+    return presentationSchedules.some(schedule => {
+      if (
+        schedule.examiner_1 === examiner ||
+        schedule.examiner_2 === examiner ||
+        schedule.examiner_3 === examiner
+      ) {
+        const scheduleStartTime = new Date(`${schedule.date}T${schedule.startTime}`);
+        const scheduleEndTime = new Date(`${schedule.date}T${schedule.endTime}`);
+        const checkStartTime = new Date(`${date}T${startTime}`);
+        const checkEndTime = new Date(`${date}T${endTime}`);
+
+        if (
+          (checkStartTime >= scheduleStartTime && checkStartTime < scheduleEndTime) ||
+          (checkEndTime > scheduleStartTime && checkEndTime <= scheduleEndTime) ||
+          (checkStartTime <= scheduleStartTime && checkEndTime >= scheduleEndTime)
+        ) {
+          return true; // Examiner is not available during this time
+        }
+      }
+      return false;
+    });
+  };
+
+  const handleDurationChange = (e) => {
+    setDuration(parseInt(e.target.value));
+  };
+
+  const calculateEndTime = () => {
+    if (startTime) {
+      const [hours, minutes] = startTime.split(':').map(Number);
+      const startTimeInMinutes = hours * 60 + minutes;
+      const endTimeInMinutes = startTimeInMinutes + duration;
+      
+      const newHours = Math.floor(endTimeInMinutes / 60);
+      const newMinutes = endTimeInMinutes % 60;
+      
+      const formattedEndTime = `${newHours.toString().padStart(2, '0')}:${newMinutes.toString().padStart(2, '0')}`;
+      setEndTime(formattedEndTime);
+    }
+  };
+
+  useEffect(() => {
+    calculateEndTime();
+  }, [startTime, duration]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Check if endTime is after startTime
+    if (startTime >= endTime) {
+      Swal.fire("Error", "End Time must be after Start Time", "error");
+      return;
+    }
+
+    // Check for empty fields
     const emptyFields = [];
     if (!groupNo.trim()) {
       emptyFields.push("Group Number");
@@ -115,7 +196,7 @@ useEffect(() => {
     if (!venue.trim()) {
       emptyFields.push("Venue");
     }
-    if (!venue.trim()) {
+    if (!presentationType.trim()) {
       emptyFields.push("Presentation Type");
     }
     if (!examiner_1.trim()) {
@@ -127,6 +208,7 @@ useEffect(() => {
     if (!examiner_3.trim()) {
       emptyFields.push("Examiner 3");
     }
+
     if (emptyFields.length > 0) {
       emptyFields.forEach((field) => {
         Swal.fire("Error", `${field} is required`, "error");
@@ -134,9 +216,24 @@ useEffect(() => {
       return;
     }
 
-    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
-    if (!timeRegex.test(startTime) || !timeRegex.test(endTime)) {
-      Swal.fire("Error", "Please enter a valid time (format: HH:MM)", "error");
+    // Check examiner availability
+    const busyExaminers = [];
+    if (isExaminerAvailable(examiner_1, date, startTime, endTime)) {
+      busyExaminers.push(examiner_1);
+    }
+    if (isExaminerAvailable(examiner_2, date, startTime, endTime)) {
+      busyExaminers.push(examiner_2);
+    }
+    if (isExaminerAvailable(examiner_3, date, startTime, endTime)) {
+      busyExaminers.push(examiner_3);
+    }
+
+    if (busyExaminers.length > 0) {
+      Swal.fire(
+        "Time Clashed",
+        `${busyExaminers.join(", ")} is/are already assigned to different presentation during this specified time on entered date.`,
+        "error"
+      );
       return;
     }
 
@@ -169,8 +266,8 @@ useEffect(() => {
           Swal.fire("Error", json.error || "Something went wrong!", "error");
         }
       } else {
-        updatePresentationScheduleList(); // Update presentation schedule list in parent component
-        onClose(); // Call the onClose function to close the modal
+        updatePresentationScheduleList();
+        onClose();
         Swal.fire("Done", "Record added successfully!", "success");
       }
     } catch (error) {
@@ -186,7 +283,7 @@ useEffect(() => {
           <button className="close-modal-button" onClick={onClose}>
             <CancelIcon />
           </button>
-          <h1 className="Russa_add_pr_shd_form-title">Add New Shedule Record</h1>
+          <h1 className="Russa_add_pr_shd_form-title">Add New Schedule Record</h1>
           <form onSubmit={handleSubmit}>
             <div className="Russa_add_pr_shd_main-user-info">
               <div className="user-input-box">
@@ -225,22 +322,41 @@ useEffect(() => {
               <div className="user-input-box">
                 <label htmlFor="startTime">Starting Time</label>
                 <input
-                  type="text"
+                  type="time"
                   id="startTime"
                   placeholder="Enter starting time (Hours:Minutes)"
                   value={startTime}
-                  onChange={(e) => setStartTime(e.target.value)}
+                  onChange={handleStartTimeChange}
+                  min="07:00"
+                  max="20:00"
                 />
+              </div>
+
+
+              <div className="user-input-box">
+                <label htmlFor="duration">Duration (minutes)</label>
+                <select
+                  id="duration"
+                  value={duration}
+                  onChange={handleDurationChange}
+                >
+                  <option value={10}>10 minutes</option>
+                  <option value={15}>15 minutes</option>
+                  <option value={20}>20 minutes</option>
+                  <option value={30}>30 minutes</option>
+                  <option value={40}>40 minutes</option>
+                  <option value={50}>50 minutes</option>
+                  <option value={60}>60 minutes</option>
+                </select>
               </div>
 
               <div className="user-input-box">
                 <label htmlFor="endTime">End Time</label>
                 <input
-                  type="text"
+                  type="time"
                   id="endTime"
-                  placeholder="Enter ending time (Hours:Minutes)"
                   value={endTime}
-                  onChange={(e) => setEndTime(e.target.value)}
+                  disabled // Disable end time field
                 />
               </div>
 
@@ -251,9 +367,6 @@ useEffect(() => {
                   value={venue}
                   onChange={(e) => setVenue(e.target.value)}
                 >
-                  <option style={{ color: "white" }} value="">
-                    Choose a Venue
-                  </option>
                   <option value="">Select a venue</option>
                   <option value="Venue 1">Venue 1</option>
                   <option value="Venue 2">Venue 2</option>
@@ -275,14 +388,13 @@ useEffect(() => {
                   <option value="Venue 18">Venue 18</option>
                   <option value="Venue 19">Venue 19</option>
                   <option value="Venue 20">Venue 20</option>
-                  {/* Add more options as needed */}
+                  {/* Add more venue options as needed */}
                 </select>
               </div>
 
               <div className="user-input-box">
                 <label htmlFor="presentationType">Presentation Type</label>
                 <select
-                  className="form-control"
                   id="presentationType"
                   value={presentationType}
                   onChange={(e) => setPresentationType(e.target.value)}
@@ -292,14 +404,13 @@ useEffect(() => {
                   <option value="Progress 1">Progress 1 Presentation</option>
                   <option value="Progress 2">Progress 2 Presentation</option>
                   <option value="Final">Final Presentation</option>
-                  {/* Add more options as needed */}
+                  {/* Add more presentation type options as needed */}
                 </select>
               </div>
-                
+
               <div className="user-input-box">
                 <label htmlFor="examiner_1">Examiner 1</label>
                 <select
-                  className="form-control"
                   id="examiner_1"
                   value={examiner_1}
                   onChange={(e) => handleExaminerChange(e, setExaminer_1, [examiner_2, examiner_3])}
@@ -312,7 +423,6 @@ useEffect(() => {
               <div className="user-input-box">
                 <label htmlFor="examiner_2">Examiner 2</label>
                 <select
-                  className="form-control"
                   id="examiner_2"
                   value={examiner_2}
                   onChange={(e) => handleExaminerChange(e, setExaminer_2, [examiner_1, examiner_3])}
@@ -325,7 +435,6 @@ useEffect(() => {
               <div className="user-input-box">
                 <label htmlFor="examiner_3">Examiner 3</label>
                 <select
-                  className="form-control"
                   id="examiner_3"
                   value={examiner_3}
                   onChange={(e) => handleExaminerChange(e, setExaminer_3, [examiner_1, examiner_2])}
