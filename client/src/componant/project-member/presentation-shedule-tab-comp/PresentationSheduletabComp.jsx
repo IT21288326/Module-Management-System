@@ -39,14 +39,7 @@ const PresentationSheduleTable = () => {
     fetchPresentationSchedule();
   }, []);
 
-  // useEffect(() => {
-  //   // Filter data based on searchQuery
-  //   const filtered = list.filter(item =>
-  //     item.groupNo.toLowerCase().includes(searchQuery.toLowerCase())
-  //   );
-  //   setFilteredData(filtered);
-  // }, [list, searchQuery]);
-
+  
   useEffect(() => {
     const filtered = list.filter(
       item =>
