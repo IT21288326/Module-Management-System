@@ -3,7 +3,7 @@
   }
 
 .Russa_add_pr_shd {
-  .modal-overlay {
+  .Russa_modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
@@ -16,7 +16,7 @@
       z-index: 100;
   }
 
-  .modal-content {
+  .Russa_modal-content {
     background-color: #bdbdbd; /* Adjust gradient colors as needed */
     padding-top: 13px;
     padding-left: 30px;
@@ -32,7 +32,7 @@
     box-shadow: 0 0 10px #bdbdbd;
   }
 
-  .close-modal-button {
+  .Russa_close-modal-button {
       position: absolute;
       top: 10px;
       right: 10px;
