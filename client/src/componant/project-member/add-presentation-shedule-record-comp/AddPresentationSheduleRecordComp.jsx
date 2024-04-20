@@ -278,9 +278,9 @@ const AddRecord = ({ onClose, updatePresentationScheduleList }) => {
 
   return (
     <div className="Russa_add_pr_shd">
-      <div className="modal-overlay">
-        <div className="modal-content">
-          <button className="close-modal-button" onClick={onClose}>
+      <div className="Russa_modal-overlay">
+        <div className="Russa_modal-content">
+          <button className="Russa_close-modal-button" onClick={onClose}>
             <CancelIcon />
           </button>
           <h1 className="Russa_add_pr_shd_form-title">Add New Schedule Record</h1>
