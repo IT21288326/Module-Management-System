@@ -17,6 +17,7 @@ import { getAllPannelNames } from './controllers/project-member/presentationPann
 import getGrpRegistrationNumberRoute from './routes/student/getGrpRegistrationNumbersRoute.js'
 import presentationSheduleRoute from './routes/project-member/presentationSheduleRoute.js';
 import grpRegReoute from "./routes/student/grpRegistrationRoute.js"
+import markingRubricsRoute from './routes/project-member/markingRubricsRoute.js'
 
 
 
@@ -63,6 +64,7 @@ app.use('/presentation-shedule', presentationSheduleRoute);
 app.use('/presentation-pannel', presentationPannelRoute);
 app.use('/groupNumbers', getGrpRegistrationNumberRoute);
 app.get('/pannel-Ids', getAllPannelNames);//getPannelNames Route
+app.use('/markingRubrics', markingRubricsRoute);
 
 
 app.use('/otp', otp);
