@@ -31,7 +31,7 @@ router.delete("/:id", deletePresentationShedule);
 router.delete("/", deleteAllPresentations);
 
 //Check group no already have the record
-router.delete("/groupNoexist/:groupNo", checkGroupNoExists);
+router.get("/groupNoexist/:groupNo", checkGroupNoExists);
 
 
 
