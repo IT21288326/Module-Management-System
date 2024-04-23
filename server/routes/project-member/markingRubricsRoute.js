@@ -5,7 +5,10 @@ import {
     deleteMarkingRubric,
     getMarkingRubricById,
     getAllMarkingRubrics,
-    getMarkingRubricByIdmarking
+    getMarkingRubricByIdmarking,
+    deleteAllMarkingRubrics,
+    checkType,
+
 } from '../../controllers/project-member/markingRubricsController.js';
 // import PresentationShedule from '../../models/project-member/presentationSheduleModel.js';
 
@@ -29,6 +32,11 @@ router.put("/update/:id", updateMarkingRubric);
 //DELETE
 router.delete("/:id", deleteMarkingRubric);
 
+//DELETE all
+router.delete("/", deleteAllMarkingRubrics);
+
+//Check if the Type already Exist
+router.get("/checkType/:type", checkType);
 
 
 
