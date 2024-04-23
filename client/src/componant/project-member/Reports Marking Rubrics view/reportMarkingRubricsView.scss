@@ -1,0 +1,157 @@
+// .Russa_ReportMarkingRubrics_Container{
+//     border: 1px solid #003049;
+//     border-radius: 10px;
+//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+//     margin-top: 10px;
+//     background-color: #d1d1d1;
+
+//   h2{
+//     text-align: center;
+//   }
+  
+//   /* Style table header (thead) */
+//   .table thead {
+//     background-color: #ffffff; /* Outer background color for table header */
+//     color: #9e9d9d; /* Text color for table header */
+//   }
+  
+//   /* Style table header cells (th) */
+//   .table thead th {
+//     background-color: #343a40; /* Inner background color for table header cells */
+//     color: #ffffff; /* Text color for table header cells */
+//   }
+  
+//   /* Style table rows (tbody) */
+//   .table tbody td {
+//     background-color: #b1b1b1; /* Light background color for table rows */
+//   }
+  
+//   /* Style buttons inside table cells */
+//   .table td button {
+//     margin-right: 5px; /* Add margin to the right of buttons */
+//   }
+  
+//   /* Customize column borders */
+//   .table tbody td {
+//     border: 1px solid #919090; /* Set border color for table cells */
+//   }
+  
+//   .Russa_markingRubrics_updateButton {
+//     padding: 8px;
+//     border: none !important;
+//     border-radius: 50%;
+//     color: #9900ff;
+//     cursor: pointer;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     transition: background-color 0.3s;
+//   }
+//   .Russa_markingRubrics_deleteButton{
+//     padding: 8px;
+//     border: none !important;
+//     border-radius: 50%;
+//     color: #ff0000;
+//     cursor: pointer;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     transition: background-color 0.3s;
+//   }
+  
+//   .Russa_PresentationMarkingRubrics_addNew {
+//     background-color: #ffb703;
+//     color: #003049;
+//     font-size: 16px;
+//     font-weight: 500;
+//     border: none;
+//     padding: 8px 12px;
+//     border-radius: 5px;
+//     cursor: pointer;
+//     transition: background-color 0.2s;
+//     margin-left: 20px;
+//     margin-bottom: 25px;
+//   }
+// }
+
+
+
+
+
+
+.Russa_ReportMarkingRubrics_Container {
+  border: 1px solid #003049;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  background-color: #d6d6d6;
+
+  h2 {
+    text-align: center;
+  }
+
+  /* Style table header (thead) */
+  .table thead {
+    background-color: #ffffff; /* Outer background color for table header */
+    color: #9e9d9d; /* Text color for table header */
+  }
+
+  /* Style table header cells (th) */
+  .table thead th {
+    background-color: #343a40; /* Inner background color for table header cells */
+    color: #ffffff; /* Text color for table header cells */
+    padding: 10px; /* Add padding to header cells */
+  }
+
+  /* Style table rows (tbody) */
+  .table tbody td {
+    background-color: #b1b1b1; /* Light background color for table rows */
+    border: 1px solid #2c2c2c; /* Set border color for table cells */
+    padding: 10px; /* Add padding to table cells */
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  /* Style buttons inside table cells */
+  .table td button {
+    margin-right: 5px; /* Add margin to the right of buttons */
+  }
+
+  .Russa_markingRubrics_updateButton {
+    padding: 8px;
+    border: none !important;
+    border-radius: 50%;
+    color: #9900ff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+  }
+
+  .Russa_markingRubrics_deleteButton {
+    padding: 8px;
+    border: none !important;
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    background-color: #ff0303;
+  }
+
+  .Russa_PresentationMarkingRubrics_addNew {
+    background-color: #ffb703;
+    color: #003049;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-left: 20px;
+    margin-bottom: 25px;
+  }
+}

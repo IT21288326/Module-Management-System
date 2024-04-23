@@ -39,14 +39,26 @@ export const getMarkingRubricByIdmarking = async (req, res) => {
 
 
 //Controller for get all Marking Rubrics
+// export const getAllMarkingRubrics = async (req, res) => {
+//     try {
+//       const markingRubrics = await MarkingRubrics.find()
+//       res.status(200).json(markingRubrics);
+//     } catch (error) {
+//       res.status(500).json({ message: error.message });
+//     }
+//   };
+
+// Controller for get all Marking Rubrics
 export const getAllMarkingRubrics = async (req, res) => {
     try {
-      const markingRubrics = await MarkingRubrics.find();
+      const markingRubrics = await MarkingRubrics.find().select('type marking.markingArea marking.marks');
       res.status(200).json(markingRubrics);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
   };
+
+
 
 //Controller for update Marking Rubrics
 export const updateMarkingRubric = async (req, res) => {
@@ -71,3 +83,49 @@ export const deleteMarkingRubric = async (req, res) => {
       res.status(500).json({ message: error.message });
     }
   };
+
+// Controller function to delete all records
+export const deleteAllMarkingRubrics = async (req, res) => {
+  try {
+    // Use Mongoose's deleteMany method to remove all records
+    const result = await MarkingRubrics.deleteMany({});
+    
+    // Check the result and send appropriate response
+    if (result.deletedCount > 0) {
+      res.status(200).json({ message: 'All marking rubrics deleted successfully.' });
+    } else {
+      res.status(404).json({ message: 'No marking rubrics found to delete.' });
+    }
+  } catch (error) {
+    console.error('Error deleting marking rubrics:', error);
+    res.status(500).json({ message: 'Failed to delete marking rubrics.' });
+  }
+};
+
+
+
+// Controller function to check if a presentation type exists
+export const checkType = async (req, res) => {
+  const { type } = req.params; // Assuming panelID is passed as a parameter
+
+  try {
+      // Query the database to find if the panel ID already exists
+      const existingPresentationType = await MarkingRubrics.findOne({ type: type });
+
+      if (existingPresentationType) {
+          res.status(200).json({ exists: true, message: 'type already exists.' });
+      } else {
+        
+          res.status(200).json({ exists: false, message: 'type does not exist.' });
+      }
+  } catch (error) {
+      // Error handling
+      console.error('Error checking type existence:', error);
+      res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+
+
+
+

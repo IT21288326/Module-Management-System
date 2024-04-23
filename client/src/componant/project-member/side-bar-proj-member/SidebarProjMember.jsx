@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import PresentationSheduleTable from '../presentation-shedule-tab-comp/PresentationSheduletabComp';
 import SupervisorDashboard from '../../Dashboard/SupervisorDashboard';
 import AddAssessment from '../../../screens/coordinator/addAssesment';
-
+import PresentationMarkingRubricsView from '../Presentations Marking Rubrics  view/PresentationMarkingRubricsView';
+import ReportMarkingRubricsView from '../Reports Marking Rubrics view/ReportMarkingRubricsView'
 
 export default function SidebarProjMember() {
   const [activeLink, setActiveLink] = useState("Dashboard"); // State to keep track of active link
@@ -27,19 +28,22 @@ export default function SidebarProjMember() {
               <li className={activeLink === "PresentationSheduleTable" ? "active" : ""}>
                 <a href="#" onClick={() => handleLinkClick("PresentationSheduleTable")}>Presentation Schedule</a>
               </li>
+              {/* <li className={activeLink === "MarkingRubrics" ? "active" : ""}>
+                <a href="#" onClick={() => handleLinkClick("MarkingRubrics")}>Marking Rubrics</a>
+              </li> */}
 
 
-              {/* <li className={activeLink === "PresentationManagement" ? "active" : ""}>
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Presentation Management</a>
+              <li className={activeLink === "MarkingRubrics" ? "active" : ""}>
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Marking Rubrics</a>
                 <ul className="collapse list-unstyled" id="homeSubmenu">
                   <li>
-                    <a href="#" onClick={() => handleLinkClick("PresentationPannelTable")}>Presentation Pannel</a>
+                    <a href="#" onClick={() => handleLinkClick("Presentations Marking Rubrics")}>Presentations Marking Rubrics</a>
                   </li>
                   <li>
-                    <a href="#" onClick={() => handleLinkClick("PresentationSheduleTable")}>Presentation Schedule</a>
+                    <a href="#" onClick={() => handleLinkClick("Reports Marking Rubrics")}>Report Marking Rubrics</a>
                   </li>
                 </ul>
-              </li> */}
+              </li>
 
 
             </ul>
@@ -51,6 +55,8 @@ export default function SidebarProjMember() {
           {activeLink === "PresentationSheduleTable" && <PresentationSheduleTable />}
           {activeLink === "Dashboard" && <SupervisorDashboard />}
           {activeLink === "Assessment" && <AddAssessment/>}
+          {activeLink === "Presentations Marking Rubrics" && <PresentationMarkingRubricsView/>}
+          {activeLink === "Reports Marking Rubrics" && <ReportMarkingRubricsView/>}
         </div>
       </div>
     </div>

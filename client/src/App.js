@@ -32,6 +32,8 @@ import DisplayMarks from './screens/co-supervisor/DisplayMarks';
 import SidebarCoSup from './componant/SidebarCoSupervisor';
 import Edit from './screens/co-supervisor/edit';
 import backgroundImage from './img/back1.jpg';
+
+
 function App() {
   return (
     <div className="app" style={{ background: '-webkit-linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%)'}}>
@@ -71,6 +73,7 @@ function App() {
 
           {/* Rusith */}
             <Route path='/projMemberSideBar' element={<SidebarProjMember />} />
+            
               
           {/* Supun */}
             <Route path='/Registration' element={<Reg />} />
