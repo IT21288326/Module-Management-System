@@ -18,7 +18,7 @@ import getGrpRegistrationNumberRoute from './routes/student/getGrpRegistrationNu
 import presentationSheduleRoute from './routes/project-member/presentationSheduleRoute.js';
 import grpRegReoute from "./routes/student/grpRegistrationRoute.js"
 import markingRubricsRoute from './routes/project-member/markingRubricsRoute.js'
-
+import emailRoutes from './routes/emailRoutes.js'
 
 
 const app = express();
@@ -69,7 +69,7 @@ app.use('/markingRubrics', markingRubricsRoute);
 
 app.use('/otp', otp);
 app.use('/login', authentication);
-
+app.use('/api/emails', emailRoutes);
 
 
 

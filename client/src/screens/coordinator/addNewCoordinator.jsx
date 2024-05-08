@@ -15,7 +15,7 @@ export default function AddProjectCoordinator() {
     axios.defaults.baseURL = 'http://localhost:3001';
     try {
       // Send a POST request to your backend endpoint to send the email
-      const response = await axios.post('/send-email', { email });
+      const response = await axios.post('/api/emails/send-email', { email });
       setSuccessMessage(response.data);
     } catch (error) {
       setError(error.response.data);
