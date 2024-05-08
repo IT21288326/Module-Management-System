@@ -18,12 +18,8 @@ import getGrpRegistrationNumberRoute from './routes/student/getGrpRegistrationNu
 import presentationSheduleRoute from './routes/project-member/presentationSheduleRoute.js';
 import grpRegReoute from "./routes/student/grpRegistrationRoute.js"
 import markingRubricsRoute from './routes/project-member/markingRubricsRoute.js'
-<<<<<<< Updated upstream
 import emailRoutes from './routes/emailRoutes.js'
-=======
-import acessGiven from "./controllers/accessgiveMail.js"
 
->>>>>>> Stashed changes
 
 
 const app = express();
@@ -74,12 +70,8 @@ app.use('/markingRubrics', markingRubricsRoute);
 
 app.use('/otp', otp);
 app.use('/login', authentication);
-<<<<<<< Updated upstream
 app.use('/api/emails', emailRoutes);
-=======
-app.use('/accessgive', acessGiven)
 
->>>>>>> Stashed changes
 
 
 
