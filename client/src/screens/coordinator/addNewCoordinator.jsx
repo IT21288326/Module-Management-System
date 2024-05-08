@@ -15,14 +15,21 @@ export default function AddProjectCoordinator() {
     axios.defaults.baseURL = 'http://localhost:3001';
     try {
       // Send a POST request to your backend endpoint to send the email
-      const response = await axios.post('/send-email', { email });
-      setSuccessMessage(response.data);
-    } catch (error) {
-      setError(error.response.data);
+      const response = await axios.post('/api/emails/send-email', { email });
+        setSuccessMessage(response.data.message || 'Success'); // Accessing response.data.message
+    } catch (err) {
+        // Extracting the error message
+        let errorMessage = 'An error occurred. Please try again.';
+        if (err.response && err.response.data && err.response.data.message) {
+            errorMessage = err.response.data.message;
+        }
+        setError(errorMessage);
     } finally {
       setLoading(false);
     }
   };
+
+
 
   return (
     <div className="container">
