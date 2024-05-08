@@ -22,6 +22,7 @@ import emailRoutes from './routes/emailRoutes.js'
 
 
 
+
 const app = express();
 const forms = multer();
 
@@ -66,6 +67,7 @@ app.use('/presentation-pannel', presentationPannelRoute);
 app.use('/groupNumbers', getGrpRegistrationNumberRoute);
 app.get('/pannel-Ids', getAllPannelNames);//getPannelNames Route
 app.use('/markingRubrics', markingRubricsRoute);
+app.use('/assesment',assesmentRoute);
 
 
 app.use('/otp', otp);
