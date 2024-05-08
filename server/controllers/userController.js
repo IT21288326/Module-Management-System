@@ -2,17 +2,43 @@
 import { User } from '../models/usermodel.js';
 
 
+// // Controller for creating a new user
+// export const createUser = async (req, res) => {
+//   try {
+//     const newUser = new User(req.body);
+//     await newUser.save();
+//     res.status(200).json({ message: 'Successfully added member' });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'Internal server error' });
+//   }
+// };
+import bcrypt from 'bcrypt';
+
 // Controller for creating a new user
 export const createUser = async (req, res) => {
-  try {
-    const newUser = new User(req.body);
-    await newUser.save();
-    res.status(200).json({ message: 'Successfully added member' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Internal server error' });
-  }
+    try {
+        const { Password, ...rest } = req.body; // Extract password and other fields from the request body
+
+        // Generate a salt and hash the password
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(Password, salt);
+
+        // Create a new user instance with the hashed password and other fields
+        const newUser = new User({
+            ...rest,
+            Password: hashedPassword
+        });
+
+        // Save the new user to the database
+        await newUser.save();
+        res.status(200).json({ message: 'Successfully added member' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
 };
+
 
 // Controller for retrieving all users
 export const getAllUsers = async (req, res) => {
