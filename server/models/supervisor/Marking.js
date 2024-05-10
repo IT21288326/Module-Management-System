@@ -153,7 +153,12 @@ const StudentMarkSchema = new Schema({
         type: Number,
         required: true,
         min: 0,
-    }
+    },
+    coSupervisorMark: {
+        type: Number,
+        min: 0,
+        required: false,
+    },
 });
 
 const MarkingAreaSchema = new Schema({
