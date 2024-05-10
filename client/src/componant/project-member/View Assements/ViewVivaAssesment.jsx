@@ -79,6 +79,10 @@ const ViewVivaAssessments = () => {
             <p className="card-text description-box">
               <h6>Asesment Type</h6>{assessment.assement_type}
               <hr />
+              <h6>Weightage</h6>{assessment.weightage}
+              <hr />
+              <h6>Time-period</h6>{assessment.timePeriod}
+              <hr />
               <h6>Description</h6>{assessment.description}
             </p>
             <div className="card-buttons">

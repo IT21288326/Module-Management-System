@@ -4,15 +4,23 @@ import './finalMarking.scss';
 function ReportMarkingRubricsCard() {
   const [data, setData] = useState([]);
 
+  
   useEffect(() => {
-    fetch('http://localhost:3001/markingRubrics')
+    fetch('http://localhost:3001/assesment/assessments/type-weightage')
       .then(response => response.json())
       .then(data => {
-        const finalMarkingData = data.filter(item => 
-          item.type === 'Final Marking' && 
-          item.marking.some(mark => mark.markingArea.endsWith('Report'))
-        );
-        setData(finalMarkingData);
+        if (Array.isArray(data)) {
+          // Filter data to include only items with assement_Name ending in "Presentation"
+          const filteredData = data.filter(item => item.assement_Name.endsWith('Report'));
+          setData(filteredData);
+        } else {
+          console.error('Data fetched is not an array:', data);
+          setData([]); // Set data to an empty array or handle accordingly
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        setData([]); // Set data to an empty array or handle accordingly in case of error
       });
   }, []);
 
@@ -22,20 +30,16 @@ function ReportMarkingRubricsCard() {
         <table className="rubric-table">
             <thead>
             <tr className="rubric-header-row">
-                <th className="border-right rubric-header-cell">Report Type</th>
+                <th className="border-right rubric-header-cell">Assessment Name</th>
                 <th className="rubric-header-cell">Weightage (Out of 100)</th>
             </tr>
             </thead>
             <tbody>
             {data.map((item, index) => (
-                item.marking
-                  .filter(mark => mark.markingArea.endsWith('Report'))
-                  .map((mark, i) => (
-                    <tr key={`${index}-${i}`} className="rubric-row">
-                        <td className="border-right rubric-cell">{mark.markingArea}</td>
-                        <td className="rubric-cell">{mark.marks}%</td>
-                    </tr>
-                  ))
+              <tr key={index} className="rubric-row">
+                  <td className="border-right rubric-cell">{item.assement_Name}</td>
+                  <td className="rubric-cell">{item.weightage}</td>
+              </tr>
             ))}
             </tbody>
         </table>
@@ -43,5 +47,4 @@ function ReportMarkingRubricsCard() {
     </div>
   );
 }
-
 export default ReportMarkingRubricsCard;

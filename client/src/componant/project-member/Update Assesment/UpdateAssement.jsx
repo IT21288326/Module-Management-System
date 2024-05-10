@@ -6,9 +6,11 @@ import "./updateAssement.scss";
 
 const UpdateAssesment = ({ onClose, AssesmentId, onSuccess }) => {
   const [values, setValues] = useState({
-    assement_Name:"",
+    assement_Name: "",
     description: "",
     assement_type: "",
+    weightage: "", // Initialize weightage state
+    timePeriod: "", // Initialize timePeriod state
     dateAdded: "", // Initialize dateAdded state
   });
 
@@ -16,11 +18,13 @@ const UpdateAssesment = ({ onClose, AssesmentId, onSuccess }) => {
     axios
       .get(`http://localhost:3001/assesment/${AssesmentId}`)
       .then((res) => {
-        const { assement_Name, description, assement_type, dateAdded} = res.data;
+        const { assement_Name, description, assement_type, weightage, timePeriod, dateAdded } = res.data;
         setValues({
           assement_Name,
           description,
           assement_type,
+          weightage,
+          timePeriod,
           dateAdded: dateAdded ? new Date(dateAdded).toISOString().split('T')[0] : '', 
         });
       })
@@ -69,7 +73,7 @@ const UpdateAssesment = ({ onClose, AssesmentId, onSuccess }) => {
           <button className="Russa_close-modal-button" onClick={onClose}>
             <CancelIcon />
           </button>
-          <h1 className="Russa_add_pr_shd_form-title">Add New Schedule Record</h1>
+          <h1 className="Russa_add_pr_shd_form-title">Update Assessment Record</h1>
           <form onSubmit={handleUpdate}>
               <div className="user-input-box">
                 <label htmlFor="assessmentName">Assessment Name</label>
@@ -95,7 +99,32 @@ const UpdateAssesment = ({ onClose, AssesmentId, onSuccess }) => {
                     setValues({ ...values, assement_type: e.target.value })
                   } 
                   required 
-                  readOnly
+                />
+              </div>
+
+              <div className="user-input-box">
+                <label>Weightage:</label>
+                <input 
+                  type="text" 
+                  className="form-control" 
+                  value={values.weightage} 
+                  onChange={(e) =>
+                    setValues({ ...values, weightage: e.target.value })
+                  } 
+                  required 
+                />
+              </div>
+
+              <div className="user-input-box">
+                <label>Time Period:</label>
+                <input 
+                  type="text" 
+                  className="form-control" 
+                  value={values.timePeriod} 
+                  onChange={(e) =>
+                    setValues({ ...values, timePeriod: e.target.value })
+                  } 
+                  required 
                 />
               </div>
 
@@ -108,7 +137,6 @@ const UpdateAssesment = ({ onClose, AssesmentId, onSuccess }) => {
                   onChange={(e) =>
                     setValues({ ...values, dateAdded: e.target.value })
                   } 
-                  readOnly // Set the input field to read-only
                   required 
                 />
               </div>
@@ -127,7 +155,7 @@ const UpdateAssesment = ({ onClose, AssesmentId, onSuccess }) => {
               </div>
 
             <div className="form-submit-btn">
-              <input type="submit" value="Save Record" />
+              <input type="submit" value="Update Record" />
             </div>
           </form>
         </div>
