@@ -32,7 +32,8 @@ import DisplayMarks from './screens/co-supervisor/DisplayMarks';
 import SidebarCoSup from './componant/SidebarCoSupervisor';
 import Edit from './screens/co-supervisor/edit';
 import backgroundImage from './img/back1.jpg';
-
+import MarkSheet from './screens/supervisor/AssesmentMarks';
+import MarkingForm from './screens/supervisor/MarkingForm'
 
 function App() {
   return (
@@ -52,7 +53,7 @@ function App() {
 
           {/* savidya */}
             <Route path='/' element={<SidebarSup />} />
-
+            <Route path='/marksheet' element={<MarkSheet />} />
             
 
             <Route path='/ex' element={<SidebarExaminer />} />
@@ -70,7 +71,8 @@ function App() {
             <Route path='/update' element={<DisplayMarks/>}/>
             <Route path='/co-sup' element={<SidebarCoSup/>}/>
             <Route path='/edit' element={<Edit/>}/>
-
+            <Route path='/last' element={<MarkingForm/>}/>
+            
           {/* Rusith */}
             <Route path='/projMemberSideBar' element={<SidebarProjMember />} />
             
