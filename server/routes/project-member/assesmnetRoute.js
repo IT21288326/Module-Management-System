@@ -6,7 +6,8 @@ import {
     updateAssessment, 
     deleteAssessment,
     getReportAssessmentTitles,
-    getPresentationAssessmentTitles
+    getPresentationAssessmentTitles,
+    getAssessmentTypeAndWeightage
 } from '../../controllers/project-member/assementController.js';
 
 const router = express.Router();
@@ -25,6 +26,8 @@ router.get('/titles/report', getReportAssessmentTitles);
 
 // get titles of assessments of type 'presentation'
 router.get('/titles/presentation', getPresentationAssessmentTitles);
+
+router.get('/assessments/type-weightage', getAssessmentTypeAndWeightage);
 
 // Update
 router.put('/:id', updateAssessment);

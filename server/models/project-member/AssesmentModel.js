@@ -13,6 +13,13 @@ const AssessmentSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  weightage: {
+    type: String,
+    required: true
+  },
+  timePeriod: {
+    type: String,
+  },
   dateAdded: {
     type: Date,
     required: true

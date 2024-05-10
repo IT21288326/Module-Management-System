@@ -76,3 +76,12 @@ export const getPresentationAssessmentTitles = async (req, res) => {
     }
   };
   
+  // Controller to retrieve assessment_type and weightage only
+export const getAssessmentTypeAndWeightage = async (req, res) => {
+    try {
+      const assessments = await Assessment.find({}, 'assement_Name weightage'); // Select only assement_type and weightage fields
+      res.json(assessments);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  };
