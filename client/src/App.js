@@ -35,12 +35,13 @@ import backgroundImage from './img/back1.jpg';
 
 import GroupRegistrationForm from './componant/Student/grpRegForm'
 import GroupRegistrationTable from './componant/Student/RegFetchdata';
-
+import MarksheetStatistics from './screens/supervisor/MarksheetStatistics'
 
 import MarkSheet from './screens/supervisor/AssesmentMarks';
 import MarkingForm from './screens/supervisor/MarkingForm';
 import MarkingTableNew from './screens/supervisor/MarkingTableNew';
 import Update from './screens/supervisor/Update';
+import Marksheet from './screens/supervisor/final_marksheet';
 
 function App() {
   return (
@@ -61,7 +62,7 @@ function App() {
           {/* savidya */}
             <Route path='/' element={<SidebarSup />} />
             <Route path='/marksheet' element={<MarkSheet />} />
-            
+            <Route path='/marksheetstat' element={<MarksheetStatistics />} />
 
             <Route path='/ex' element={<SidebarExaminer />} />
             <Route path='/displayrmarks' element={<DisplayRMarks />} />
@@ -81,6 +82,7 @@ function App() {
             <Route path='/last' element={<MarkingForm/>}/>
             <Route path='/lastta' element={<MarkingTableNew/>}/>
             <Route path='/lastup' element={<Update/>}/>
+            <Route path='/finalgrade' element={<Marksheet/>}/>
 
           {/* Rusith */}
             <Route path='/projMemberSideBar' element={<SidebarProjMember />} />
@@ -90,6 +92,7 @@ function App() {
             <Route path='/Registration' element={<Reg />} />
             <Route path='/Regform' element={<GroupRegistrationForm />} />
             <Route path='FetchReg' element={<GroupRegistrationTable/>} />
+
             
             
        
