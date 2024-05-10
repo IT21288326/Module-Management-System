@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import CancelIcon from '@mui/icons-material/Cancel';
 import './addPresentationMarkingRubrics.scss'; // Import custom CSS for styling
@@ -7,6 +7,22 @@ const AddMarkingRubrics = ({ onClose, reloadMarkingRubrics }) => {
   const [type, setType] = useState('');
   const [markingRows, setMarkingRows] = useState([{ markingArea: '', marks: '' }]);
   const [modalVisible, setModalVisible] = useState(true); // State to control modal visibility
+  const [presentationTypes, setPresentationTypes] = useState([]); // State to hold presentation types
+
+  useEffect(() => {
+    // Fetch presentation types from the server when component mounts
+    const fetchPresentationTypes = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/assesment/titles/presentation');
+        const data = await response.json();
+        setPresentationTypes(data);
+      } catch (error) {
+        console.error('Failed to fetch presentation types:', error);
+      }
+    };
+
+    fetchPresentationTypes();
+  }, []);
 
   const handleAddMarkingRow = () => {
     setMarkingRows([...markingRows, { markingArea: '', marks: '' }]);
@@ -100,6 +116,7 @@ const AddMarkingRubrics = ({ onClose, reloadMarkingRubrics }) => {
       });
     }
   };
+
   return (
     <div className={`Russa_Marking_Rubrics ${modalVisible ? 'visible' : 'hidden'}`}>
       <div className="Russa_modal-overlay">
@@ -117,13 +134,14 @@ const AddMarkingRubrics = ({ onClose, reloadMarkingRubrics }) => {
                 onChange={(e) => setType(e.target.value)}
               >
                 <option value="">Choose a Presentation Type</option>
-                <option value="Proposal Presentation">Proposal Presentation</option>
-                <option value="Progress 1 Presentation">Progress 1 Presentation</option>
-                <option value="Progress 2 Presentation">Progress 2 Presentation</option>
-                <option value="Final Presentation">Final Presentation</option>
-                {/* Add more presentation type options as needed */}
+                {presentationTypes.map((presentationType, index) => (
+                  <option key={index} value={presentationType}>
+                    {presentationType}
+                  </option>
+                ))}
               </select>
             </div>
+
             {markingRows.map((row, index) => (
               <div key={index} className="marking-row">
                 <div className="input-row">
@@ -146,6 +164,7 @@ const AddMarkingRubrics = ({ onClose, reloadMarkingRubrics }) => {
                     onChange={(e) => handleMarkingChange(index, 'marks', e.target.value)}
                   />
                 </div>
+                
               </div>
             ))}
             <button type="button" onClick={handleAddMarkingRow} className='Presentation_Add_Field_Button'>
@@ -165,8 +184,3 @@ const AddMarkingRubrics = ({ onClose, reloadMarkingRubrics }) => {
 };
 
 export default AddMarkingRubrics;
-
-
-
-
-
