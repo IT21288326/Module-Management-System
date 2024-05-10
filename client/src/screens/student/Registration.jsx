@@ -1,10 +1,34 @@
 import React, { useState, useEffect } from "react";import './registration.css';
-import GroupRegistrationForm from "../../componant/Student/grpRegForm";
+//import GroupRegistrationForm from "../../componant/Student/grpRegForm";
+import GroupRegistrationForm from "../../componant/Student/tempo";
+import RegData from '../../componant/Student/RegFetchdata'
+import './registration.css';
+import axios from 'axios'; 
+import { Link } from 'react-router-dom';
+
 
 function Registration() {
   
     const [showAddPannelModal, setShowAddPannelModal] = useState(false);
-  
+    const [showRegFetchdata, setShowRegFetchdata] = useState(false);
+
+    const [registrationData, setRegistrationData] = useState(null);
+
+
+    const fetchRegistrationData = async () => {
+      try {
+          const response = await axios.get('/api/registrationdata'); // Adjust the endpoint as per your backend
+          setRegistrationData(response.data);
+      } catch (error) {
+          console.error('Error fetching registration data:', error);
+      }
+  };
+
+  useEffect(() => {
+      // Fetch registration data when component mounts
+      fetchRegistrationData();
+  }, [])
+
 
   function toggleContent(event) {
     // Find the parent element of the button
@@ -83,10 +107,43 @@ For groups listed under the "No Sub" sheet, it is mandatory to specify their ass
 
 Kindly note that no teams have been allocated a team number for the ITPM module yet. <br></br>Register using form below <br></br> 
 <br></br>
-<button onClick={() => setShowAddPannelModal(true)} className="Russa_PresentationPannelTable_addNew">
-         
-          Register Here </button></p>
-           
+{registrationData && (
+                            <div>
+                                {/* Display retrieved data  */}
+                                <p>{registrationData.batch}</p>
+                            </div>
+                        )}
+                        <br />
+                        {/* Registration form button */}
+<button onClick={() => setShowAddPannelModal(true)} className="Russa_PresentationPannelTable_addNew"  
+        style={{
+          display: 'inline-block',
+          padding: '8px 16px', // Smaller button size
+          border: '2px solid black', // Black frame
+          backgroundColor: '#333', // Ash background color
+          textDecoration: 'none',
+          color: 'white', // White text
+          fontSize: '14px', // Smaller font size
+          fontWeight: 'bold',
+          marginRight: '10px', // Add space between buttons
+
+        }}>Register Here </button>
+<Link
+        to="/FetchReg"
+        className="Supun_FetchData view-group-button"
+        style={{
+          display: 'inline-block',
+          padding: '8px 16px', // Smaller button size
+          border: '2px solid black', // Black frame
+          backgroundColor: '#333', // Ash background color
+          textDecoration: 'none',
+          color: 'white', // White text
+          fontSize: '14px', // Smaller font size
+          fontWeight: 'bold',
+        }}
+      >
+        View Group
+      </Link></p>
           </article>
           <br></br>
           <article className="registration-section2">
@@ -136,9 +193,21 @@ Kindly note that no teams have been allocated a team number for the ITPM module 
         
       </main>
       {showAddPannelModal && <GroupRegistrationForm onClose={() => { setShowAddPannelModal(false) }} />}
+      {showRegFetchdata && <RegData onClose={() => { setShowRegFetchdata(false) }} />}
+
     </div>
   );
 }
 
 export default Registration;
+
+
+
+
+
+
+
+
+
+
 

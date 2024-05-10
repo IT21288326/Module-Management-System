@@ -32,10 +32,16 @@ import DisplayMarks from './screens/co-supervisor/DisplayMarks';
 import SidebarCoSup from './componant/SidebarCoSupervisor';
 import Edit from './screens/co-supervisor/edit';
 import backgroundImage from './img/back1.jpg';
+
+import GroupRegistrationForm from './componant/Student/grpRegForm'
+import GroupRegistrationTable from './componant/Student/RegFetchdata';
+
+
 import MarkSheet from './screens/supervisor/AssesmentMarks';
 import MarkingForm from './screens/supervisor/MarkingForm';
 import MarkingTableNew from './screens/supervisor/MarkingTableNew';
 import Update from './screens/supervisor/Update';
+
 function App() {
   return (
     <div className="app" style={{ background: '-webkit-linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%)'}}>
@@ -82,7 +88,10 @@ function App() {
               
           {/* Supun */}
             <Route path='/Registration' element={<Reg />} />
-              
+            <Route path='/Regform' element={<GroupRegistrationForm />} />
+            <Route path='FetchReg' element={<GroupRegistrationTable/>} />
+            
+            
        
 
           </Routes>

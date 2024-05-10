@@ -27,7 +27,6 @@ import markingRoutes from './routes/supervisor/SaveMarking.js';
 
 
 
-
 const app = express();
 const forms = multer();
 
@@ -48,7 +47,8 @@ const server = http.createServer(app);
 app.use('/api', userRoutes);
 
 
-app.use('/api/GrpRergistration',grpRegReoute );
+app.use('/api/GrpRegistration',grpRegReoute );
+
 
 
 
