@@ -20,7 +20,6 @@ import grpRegReoute from "./routes/student/grpRegistrationRoute.js"
 import markingRubricsRoute from './routes/project-member/markingRubricsRoute.js'
 
 
-
 const app = express();
 const forms = multer();
 
@@ -41,7 +40,8 @@ const server = http.createServer(app);
 app.use('/api', userRoutes);
 
 
-app.use('/api/GrpRergistration',grpRegReoute );
+app.use('/api/GrpRegistration',grpRegReoute );
+
 
 
 

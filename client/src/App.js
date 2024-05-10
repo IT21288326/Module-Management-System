@@ -32,7 +32,8 @@ import DisplayMarks from './screens/co-supervisor/DisplayMarks';
 import SidebarCoSup from './componant/SidebarCoSupervisor';
 import Edit from './screens/co-supervisor/edit';
 import backgroundImage from './img/back1.jpg';
-
+import GroupRegistrationForm from './componant/Student/grpRegForm'
+import GroupRegistrationTable from './componant/Student/RegFetchdata';
 
 function App() {
   return (
@@ -77,7 +78,10 @@ function App() {
               
           {/* Supun */}
             <Route path='/Registration' element={<Reg />} />
-              
+            <Route path='/Regform' element={<GroupRegistrationForm />} />
+            <Route path='FetchReg' element={<GroupRegistrationTable/>} />
+            
+            
        
 
           </Routes>

@@ -79,22 +79,6 @@ const groupRegistrationSchema = new mongoose.Schema(
             type : String,
             required : true,
         },
-        Member1RegistrationNO:{
-            type : String,
-            required : true,
-        },
-        Member1Name:{
-            type : String,
-            required : true,
-        },
-        Member1ContactNo:{
-            type : String,
-            required : true,
-        },
-        Member1EmailAddress:{
-            type : String,
-            required : true,
-        },
         Member2RegistrationNO:{
             type : String,
             required : true,
