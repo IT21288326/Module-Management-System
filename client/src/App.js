@@ -15,7 +15,7 @@ import PresentationsTable from './screens/examiner/DisplayPMarks'
 import SidebarExaminer from './componant/SidebarExaminer';
 import SidebarProjMember from './componant/project-member/side-bar-proj-member/SidebarProjMember';
 import AssignProjectForm from './screens/coordinator/assignProjectMember';
-import AddAssesment from './screens/coordinator/addAssesment';
+// import AddAssessmentForm from './componant/project-member/Add Assesment/AddAssesment';
 import LoginForm from './screens/authentication/login';
 import AddProjectCoordinator from './screens/coordinator/addNewCoordinator';
 
@@ -34,9 +34,15 @@ import Edit from './screens/co-supervisor/edit';
 import backgroundImage from './img/back1.jpg';
 
 
+
 function App() {
   return (
-    <div className="app" style={{ background: '-webkit-linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%)'}}>
+    <div className="app" style={{
+      background:
+        '-webkit-linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%)',
+          width: '100%',
+          height: '100%'
+    }}>
       <BrowserRouter>
           <Routes>
 
@@ -45,7 +51,6 @@ function App() {
             <Route path='/signUp-staff' element={<StaffSignUpForm />} />
             <Route path='/otp' element={<OTPver/> } />
             <Route path='/assignProjectMember' element={<AssignProjectForm/>} />
-            <Route path='/addAssesment' element={<AddAssesment/>} />
             <Route path='/login' element={<LoginForm/>} />            
             <Route path='/markTable' element={<MarksTable/>} />
             <Route path='/addnewPC' element={<AddProjectCoordinator/>} />
@@ -73,6 +78,7 @@ function App() {
 
           {/* Rusith */}
             <Route path='/projMemberSideBar' element={<SidebarProjMember />} />
+            
             
               
           {/* Supun */}
