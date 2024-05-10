@@ -18,6 +18,13 @@ import getGrpRegistrationNumberRoute from './routes/student/getGrpRegistrationNu
 import presentationSheduleRoute from './routes/project-member/presentationSheduleRoute.js';
 import grpRegReoute from "./routes/student/grpRegistrationRoute.js"
 import markingRubricsRoute from './routes/project-member/markingRubricsRoute.js'
+import emailRoutes from './routes/emailRoutes.js'
+//import MarkingRouter from './routes/supervisor/marksRoutes.js'
+import markingRubricRoutes from './routes/supervisor/MarkingRubrics.js'
+import groupRegistrationRoutes from './routes/supervisor/GroupRegistration.js'
+import markingRoutes from './routes/supervisor/SaveMarking.js';
+
+
 
 
 const app = express();
@@ -65,13 +72,18 @@ app.use('/presentation-pannel', presentationPannelRoute);
 app.use('/groupNumbers', getGrpRegistrationNumberRoute);
 app.get('/pannel-Ids', getAllPannelNames);//getPannelNames Route
 app.use('/markingRubrics', markingRubricsRoute);
+//app.use('/assesment', assesmentRoute);
 
 
 app.use('/otp', otp);
 app.use('/login', authentication);
+app.use('/api/emails', emailRoutes);
+//app.use('/marksheet', MarkingRouter)
 
 
-
+app.use('/api/marking-rubrics', markingRubricRoutes);
+app.use('/api/group', groupRegistrationRoutes);
+app.use('/api/marking', markingRoutes);
 
 
 // MongoDB setup
