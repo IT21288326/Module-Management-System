@@ -23,7 +23,7 @@ import emailRoutes from './routes/emailRoutes.js'
 import markingRubricRoutes from './routes/supervisor/MarkingRubrics.js'
 import groupRegistrationRoutes from './routes/supervisor/GroupRegistration.js'
 import markingRoutes from './routes/supervisor/SaveMarking.js';
-
+import publicationRoutes  from './routes/student/publishRoutes.js'
 
 
 
@@ -48,6 +48,7 @@ app.use('/api', userRoutes);
 
 
 app.use('/api/GrpRegistration',grpRegReoute );
+app.use('/publications', publicationRoutes);
 
 
 
