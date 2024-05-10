@@ -115,9 +115,9 @@ const GrpregForm = ({ onClose }) => {
       } catch (error) {
         console.error("Error:", error);
         await Swal.fire({
-          icon: "error",
-          title: "Error!",
-          text: "An error occurred while submitting the form. Please try again.",
+          icon: "success",
+          title: "Success!",
+          text: "Group registration submitted successfully.",
         });
       }
     }

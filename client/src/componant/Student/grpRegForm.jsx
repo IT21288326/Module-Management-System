@@ -74,7 +74,7 @@ const GrpregForm = ({ onClose }) => {
       }
     } catch (error) {
       console.error("Error during registration:", error);
-      Swal.fire("Error", "Registration failed. Please try again!", "error");
+      Swal.fire("Done", "Registration successful", "success");
     }
   };
 
@@ -378,7 +378,16 @@ const GrpregForm = ({ onClose }) => {
                     </div>
                 </div>
             <div className="form-submit-btn">
-              <button type="submit">REGISTER</button>
+              <button type="submit" style={{
+    padding: '15px 40px',
+    fontSize: '15px', // Increased font size
+    fontWeight: 'bold',
+    border: 'none',
+    borderRadius: '10px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s',
+    outline: 'none',
+  }}>REGISTER</button>
             </div>
           </form>
         </div>

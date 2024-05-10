@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";import './registration.css';
 //import GroupRegistrationForm from "../../componant/Student/grpRegForm";
 import GroupRegistrationForm from "../../componant/Student/tempo";
 import RegData from '../../componant/Student/RegFetchdata'
+// import rPublish from '../../componant/Student/Reserch'
 import './registration.css';
 import axios from 'axios'; 
 import { Link } from 'react-router-dom';
@@ -11,6 +12,7 @@ function Registration() {
   
     const [showAddPannelModal, setShowAddPannelModal] = useState(false);
     const [showRegFetchdata, setShowRegFetchdata] = useState(false);
+    const [showResearchPublicationForm, setShowResearchPublicationForm] = useState(false); // State to manage the visibility of the ResearchPublicationForm
 
     const [registrationData, setRegistrationData] = useState(null);
 
@@ -31,13 +33,10 @@ function Registration() {
 
 
   function toggleContent(event) {
-    // Find the parent element of the button
     const parentElement = event.target.closest(".registration-section-head");
     
-    // Find the content associated with the parent element
     const content = parentElement.nextElementSibling;
     
-    // Toggle the display of the content
     if (content.style.display === "none" || content.style.display === "") {
       content.style.display = "block";
       event.target.innerHTML = "-";
@@ -47,13 +46,10 @@ function Registration() {
     }
   }
   function toggleContent2(event2) {
-    // Find the parent element of the button
     const parentElement2 = event2.target.closest(".research-publicaton-head");
     
-    // Find the content associated with the parent element
     const research = parentElement2.nextElementSibling;
     
-    // Toggle the display of the content
     if (research.style.display === "none" || research.style.display === "") {
       research.style.display = "block";
       event2.target.innerHTML = "-";
@@ -62,6 +58,29 @@ function Registration() {
       event2.target.innerHTML = "+";
     }
   }
+  function toggleContent3(event3) {
+    console.log("Button clicked"); // Log to check if the event handler is triggered
+
+    const parentElement3 = event3.target.closest(".registration-assesment1-head");
+    console.log("Parent element:", parentElement3); // Log to check the parent element
+
+    if (!parentElement3) return;
+
+    const assesment = parentElement3.nextElementSibling;
+    console.log("Assesment element:", assesment); // Log to check the assesment element
+
+    if (!assesment) return;
+
+    // Toggle the display directly without checking the current state
+    if (assesment.style.display === "none") {
+        assesment.style.display = "block";
+        event3.target.innerHTML = "-";
+    } else {
+        assesment.style.display = "none";
+        event3.target.innerHTML = "+";
+    }
+}
+
 
   return (
     <div className="registration-container">
@@ -148,7 +167,7 @@ Kindly note that no teams have been allocated a team number for the ITPM module 
           <br></br>
           <article className="registration-section2">
             <h3>ASSESMENT 1</h3>
-            <button onClick={toggleContent}>+</button>
+            <button onClick={(event) => toggleContent3(event)}>+</button>
           </article>
           <br></br>
           <article className="registration-section3">
@@ -166,7 +185,24 @@ Kindly note that no teams have been allocated a team number for the ITPM module 
 
 For groups listed under the "No Sub" sheet, it is mandatory to specify their assigned lab group in Column G next to each student before February 17, 2024.
 
-Kindly note that no teams have been allocated a team number for the ITPM module yet. <br></br>Register using form below </p>
+Kindly note that no teams have been allocated a team number for the ITPM module yet. <br></br>Register using form below <br></br><br></br>
+<br></br>
+<Link
+        to="/Research"
+        className="Supun_FetchData view-group-button"
+        style={{
+          display: 'inline-block',
+          padding: '8px 16px', // Smaller button size
+          border: '2px solid black', // Black frame
+          backgroundColor: '#333', // Ash background color
+          textDecoration: 'none',
+          color: 'white', // White text
+          fontSize: '14px', // Smaller font size
+          fontWeight: 'bold',
+        }}
+      >
+        Publish Research
+      </Link></p>
            
 <br></br>
             <br></br>
@@ -194,6 +230,8 @@ Kindly note that no teams have been allocated a team number for the ITPM module 
       </main>
       {showAddPannelModal && <GroupRegistrationForm onClose={() => { setShowAddPannelModal(false) }} />}
       {showRegFetchdata && <RegData onClose={() => { setShowRegFetchdata(false) }} />}
+      {showResearchPublicationForm && <rPublish onClose={() => { setShowResearchPublicationForm(false) }} />}
+
 
     </div>
   );

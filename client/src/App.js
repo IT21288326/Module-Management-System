@@ -40,7 +40,11 @@ import MarkSheet from './screens/supervisor/AssesmentMarks';
 import MarkingForm from './screens/supervisor/MarkingForm';
 import MarkingTableNew from './screens/supervisor/MarkingTableNew';
 import Update from './screens/supervisor/Update';
+
+import ResearchPublicationForm from './componant/Student/Research';
+
 import Marksheet from './screens/supervisor/final_marksheet';
+
 
 
 function App() {
@@ -97,6 +101,10 @@ function App() {
             <Route path='/Registration' element={<Reg />} />
             <Route path='/Regform' element={<GroupRegistrationForm />} />
             <Route path='FetchReg' element={<GroupRegistrationTable/>} />
+
+            <Route path='/research' element={<ResearchPublicationForm/>} />
+
+
 
             
             
