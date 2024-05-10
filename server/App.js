@@ -24,6 +24,7 @@ import markingRubricRoutes from './routes/supervisor/MarkingRubrics.js'
 import groupRegistrationRoutes from './routes/supervisor/GroupRegistration.js'
 import markingRoutes from './routes/supervisor/SaveMarking.js';
 import publicationRoutes  from './routes/student/publishRoutes.js'
+import assesmentRoute from './routes/project-member/assesmnetRoute.js'
 
 
 
@@ -73,7 +74,7 @@ app.use('/presentation-pannel', presentationPannelRoute);
 app.use('/groupNumbers', getGrpRegistrationNumberRoute);
 app.get('/pannel-Ids', getAllPannelNames);//getPannelNames Route
 app.use('/markingRubrics', markingRubricsRoute);
-//app.use('/assesment', assesmentRoute);
+app.use('/assesment', assesmentRoute);
 
 
 app.use('/otp', otp);
