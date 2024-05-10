@@ -15,7 +15,6 @@ import PresentationsTable from './screens/examiner/DisplayPMarks'
 import SidebarExaminer from './componant/SidebarExaminer';
 import SidebarProjMember from './componant/project-member/side-bar-proj-member/SidebarProjMember';
 import AssignProjectForm from './screens/coordinator/assignProjectMember';
-// import AddAssessmentForm from './componant/project-member/Add Assesment/AddAssesment';
 import LoginForm from './screens/authentication/login';
 import AddProjectCoordinator from './screens/coordinator/addNewCoordinator';
 

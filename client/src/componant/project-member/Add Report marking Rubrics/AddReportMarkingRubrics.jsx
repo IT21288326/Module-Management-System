@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import CancelIcon from '@mui/icons-material/Cancel';
 import './addReportMarkingRubrics.scss'; // Import custom CSS for styling
@@ -7,6 +7,22 @@ const AddReportMarkingRubrics = ({ onClose, reloadMarkingRubrics }) => {
   const [type, setType] = useState('');
   const [markingRows, setMarkingRows] = useState([{ markingArea: '', marks: '' }]);
   const [modalVisible, setModalVisible] = useState(true); // State to control modal visibility
+  const [reportTypes, setReportTypes] = useState([]); // State to hold the report types
+
+  useEffect(() => {
+    // Fetch the report types when the component mounts
+    const fetchReportTypes = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/assesment/titles/report');
+        const data = await response.json();
+        setReportTypes(data);
+      } catch (error) {
+        console.error('Failed to fetch report types:', error);
+      }
+    };
+
+    fetchReportTypes();
+  }, []);
 
   const handleAddMarkingRow = () => {
     setMarkingRows([...markingRows, { markingArea: '', marks: '' }]);
@@ -119,14 +135,11 @@ const AddReportMarkingRubrics = ({ onClose, reloadMarkingRubrics }) => {
                 required
               >
                 <option value="">Choose a Report Type</option>
-                <option value="Topic Assessment Form Report">Topic Assessment Form Report</option>
-                <option value="Project Charter Report">Project Charter Report</option>
-                <option value="Status Document 1 Report">Status Document 1 Report</option>
-                <option value="Log Book Report">Log Book Report</option>
-                <option value="Proposal Document Report">Proposal Document Report</option>
-                <option value="Status Document 2 Report">Status Document 2 Report</option>
-                <option value="Final Report">Final Report</option>
-                {/* Add more report type options as needed */}
+                {reportTypes.map((reportType, index) => (
+                  <option key={index} value={reportType}>
+                    {reportType}
+                  </option>
+                ))}
               </select>
             </div>
             {markingRows.map((row, index) => (
@@ -158,7 +171,7 @@ const AddReportMarkingRubrics = ({ onClose, reloadMarkingRubrics }) => {
             <button type="button" onClick={handleAddMarkingRow} className='Report_Add_Field_Button'>
               Add Fields
             </button>
-            <button type="button" onClick={ handleRemoveMarkingRow} className='Report_Remove_Field_Button'>
+            <button type="button" onClick={handleRemoveMarkingRow} className='Report_Remove_Field_Button'>
               Remove Fields
             </button>
             <div className="form-submit-btn">
@@ -172,3 +185,5 @@ const AddReportMarkingRubrics = ({ onClose, reloadMarkingRubrics }) => {
 };
 
 export default AddReportMarkingRubrics;
+
+

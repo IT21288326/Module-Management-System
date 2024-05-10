@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DeleteIcon from '@mui/icons-material/Delete';
-import UpdateIcon from '@mui/icons-material/Update';
 import AddIcon from '@mui/icons-material/Add';
 import Swal from 'sweetalert2';
 import './reportMarkingRubricsView.scss';
@@ -18,14 +17,8 @@ const ReportMarkingRubricsView = () => {
   const fetchMarkingRubrics = async () => {
     try {
       const response = await axios.get('http://localhost:3001/markingRubrics');
-      const filteredRubrics = response.data.filter(
-        rubric => rubric.type === 'Topic Assessment Form Report' || 
-        rubric.type === 'Project Charter Report'|| 
-        rubric.type === 'Status Document 1 Report'|| 
-        rubric.type === 'Log Book Report'|| 
-        rubric.type === 'Proposal Document Report'|| 
-        rubric.type === 'Status Document 2 Report'|| 
-        rubric.type === 'Final Report'
+      const filteredRubrics = response.data.filter(rubric => 
+        rubric.type.endsWith('Report')
       );
       setMarkingRubrics(filteredRubrics);
     } catch (error) {
@@ -69,19 +62,20 @@ const ReportMarkingRubricsView = () => {
   
       if (result.isConfirmed) {
         const rubricIdsToDelete = markingRubrics
+          .filter(rubric => rubric.type.endsWith('Report'))
           .map(rubric => rubric._id);
-
+  
         await Promise.all(
           rubricIdsToDelete.map(async rubricId => {
             await axios.delete(`http://localhost:3001/markingRubrics/${rubricId}`);
           })
         );
-
+  
         fetchMarkingRubrics();
         Swal.fire('Deleted!', 'All records have been deleted.', 'success');
       }
     } catch (error) {
-      console.error('Error deleting all report marking rubrics:', error);
+      console.error('Error deleting all presentation schedules:', error);
       Swal.fire('Error', 'Failed to delete all records.', 'error');
     }
   };
