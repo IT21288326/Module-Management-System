@@ -1,0 +1,74 @@
+/* Add custom styles */
+.card {
+  background-color: #f8f9fa; /* Light gray background color */
+  border: 1px solid #dee2e6; /* Light gray border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.card-body {
+  padding: 20px; /* Add padding inside the card */
+}
+
+.list-group-item {
+  border: none; /* Remove border from list items */
+  background-color: transparent; /* Make list items transparent */
+}
+
+/* Add colorful designs */
+.card-header {
+  background-color: #007bff; /* Blue background color */
+  color: #fff; /* White text color */
+  padding: 10px; /* Add padding to the card header */
+  border-radius: 10px 10px 0 0; /* Rounded corners on the top */
+}
+
+.list-group-item {
+  background-color: #f1f8ff; /* Light blue background color */
+  color: #495057; /* Dark text color */
+}
+
+.list-group-item:nth-child(odd) {
+  background-color: #fff; /* White background color for odd list items */
+}
+
+.list-group-item:nth-child(even) {
+  background-color: #f1f8ff; /* Light blue background color for even list items */
+}
+
+/* Add some space between columns */
+.mb-2 {
+  margin-bottom: 10px; /* Add margin between columns */
+}
+/* Add custom styles */
+.card {
+  background-color: #f8f9fa; /* Light gray background color */
+  border: 1px solid #dee2e6; /* Light gray border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.card-body {
+  padding: 20px; /* Add padding inside the card */
+}
+
+.list-group-item {
+  font-weight: bold; /* Bold text */
+}
+/* Add custom styles */
+.card {
+  background-color: #f8f9fa; /* Light gray background color */
+  border: 1px solid #dee2e6; /* Light gray border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  width: 100%; /* Expand card to fill the width */
+}
+
+.card-body {
+  padding: 20px; /* Add padding inside the card */
+}
+
+.list-group-item {
+  font-weight: bold; /* Bold text */
+}
+

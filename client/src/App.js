@@ -32,6 +32,19 @@ import SidebarCoSup from './componant/SidebarCoSupervisor';
 import Edit from './screens/co-supervisor/edit';
 import backgroundImage from './img/back1.jpg';
 
+import GroupRegistrationForm from './componant/Student/grpRegForm'
+import GroupRegistrationTable from './componant/Student/RegFetchdata';
+import MarksheetStatistics from './screens/supervisor/MarksheetStatistics'
+
+import MarkSheet from './screens/supervisor/AssesmentMarks';
+import MarkingForm from './screens/supervisor/MarkingForm';
+import MarkingTableNew from './screens/supervisor/MarkingTableNew';
+import Update from './screens/supervisor/Update';
+
+import ResearchPublicationForm from './componant/Student/Research';
+
+import Marksheet from './screens/supervisor/final_marksheet';
+
 
 
 function App() {
@@ -56,8 +69,8 @@ function App() {
 
           {/* savidya */}
             <Route path='/' element={<SidebarSup />} />
-
-            
+            <Route path='/marksheet' element={<MarkSheet />} />
+            <Route path='/marksheetstat' element={<MarksheetStatistics />} />
 
             <Route path='/ex' element={<SidebarExaminer />} />
             <Route path='/displayrmarks' element={<DisplayRMarks />} />
@@ -74,6 +87,10 @@ function App() {
             <Route path='/update' element={<DisplayMarks/>}/>
             <Route path='/co-sup' element={<SidebarCoSup/>}/>
             <Route path='/edit' element={<Edit/>}/>
+            <Route path='/last' element={<MarkingForm/>}/>
+            <Route path='/lastta' element={<MarkingTableNew/>}/>
+            <Route path='/lastup' element={<Update/>}/>
+            <Route path='/finalgrade' element={<Marksheet/>}/>
 
           {/* Rusith */}
             <Route path='/projMemberSideBar' element={<SidebarProjMember />} />
@@ -82,7 +99,15 @@ function App() {
               
           {/* Supun */}
             <Route path='/Registration' element={<Reg />} />
-              
+            <Route path='/Regform' element={<GroupRegistrationForm />} />
+            <Route path='FetchReg' element={<GroupRegistrationTable/>} />
+
+            <Route path='/research' element={<ResearchPublicationForm/>} />
+
+
+
+            
+            
        
 
           </Routes>
