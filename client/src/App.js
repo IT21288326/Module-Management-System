@@ -15,7 +15,6 @@ import PresentationsTable from './screens/examiner/DisplayPMarks'
 import SidebarExaminer from './componant/SidebarExaminer';
 import SidebarProjMember from './componant/project-member/side-bar-proj-member/SidebarProjMember';
 import AssignProjectForm from './screens/coordinator/assignProjectMember';
-import AddAssesment from './screens/coordinator/addAssesment';
 import LoginForm from './screens/authentication/login';
 import AddProjectCoordinator from './screens/coordinator/addNewCoordinator';
 
@@ -35,17 +34,27 @@ import backgroundImage from './img/back1.jpg';
 
 import GroupRegistrationForm from './componant/Student/grpRegForm'
 import GroupRegistrationTable from './componant/Student/RegFetchdata';
-
+import MarksheetStatistics from './screens/supervisor/MarksheetStatistics'
 
 import MarkSheet from './screens/supervisor/AssesmentMarks';
 import MarkingForm from './screens/supervisor/MarkingForm';
 import MarkingTableNew from './screens/supervisor/MarkingTableNew';
 import Update from './screens/supervisor/Update';
+
 import ResearchPublicationForm from './componant/Student/Research';
+
+import Marksheet from './screens/supervisor/final_marksheet';
+
+
 
 function App() {
   return (
-    <div className="app" style={{ background: '-webkit-linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%)'}}>
+    <div className="app" style={{
+      background:
+        '-webkit-linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%)',
+          width: '100%',
+          height: '100%'
+    }}>
       <BrowserRouter>
           <Routes>
 
@@ -54,7 +63,6 @@ function App() {
             <Route path='/signUp-staff' element={<StaffSignUpForm />} />
             <Route path='/otp' element={<OTPver/> } />
             <Route path='/assignProjectMember' element={<AssignProjectForm/>} />
-            <Route path='/addAssesment' element={<AddAssesment/>} />
             <Route path='/login' element={<LoginForm/>} />            
             <Route path='/markTable' element={<MarksTable/>} />
             <Route path='/addnewPC' element={<AddProjectCoordinator/>} />
@@ -62,7 +70,7 @@ function App() {
           {/* savidya */}
             <Route path='/' element={<SidebarSup />} />
             <Route path='/marksheet' element={<MarkSheet />} />
-            
+            <Route path='/marksheetstat' element={<MarksheetStatistics />} />
 
             <Route path='/ex' element={<SidebarExaminer />} />
             <Route path='/displayrmarks' element={<DisplayRMarks />} />
@@ -82,16 +90,22 @@ function App() {
             <Route path='/last' element={<MarkingForm/>}/>
             <Route path='/lastta' element={<MarkingTableNew/>}/>
             <Route path='/lastup' element={<Update/>}/>
+            <Route path='/finalgrade' element={<Marksheet/>}/>
 
           {/* Rusith */}
             <Route path='/projMemberSideBar' element={<SidebarProjMember />} />
+            
             
               
           {/* Supun */}
             <Route path='/Registration' element={<Reg />} />
             <Route path='/Regform' element={<GroupRegistrationForm />} />
             <Route path='FetchReg' element={<GroupRegistrationTable/>} />
+
             <Route path='/research' element={<ResearchPublicationForm/>} />
+
+
+
             
             
        

@@ -3,7 +3,9 @@ import ReportMarks from '../screens/supervisor/ReportMarks';
 import ReportsTable from '../screens/supervisor/DisplayRMarks';
 import TableWithStudents from '../screens/supervisor/SearchGroups';
 import SupervisorDashboard from './Dashboard/SupervisorDashboard';
-
+import MarkingForm from '../screens/supervisor/MarkingForm'
+import MarkingTableNew from '../screens/supervisor/MarkingTableNew'
+import Marksheet from '../screens/supervisor/final_marksheet'
 export default function SidebarSup() {
   const [activeLink, setActiveLink] = useState("Dashboard"); // State to keep track of active link
 
@@ -33,7 +35,7 @@ export default function SidebarSup() {
                 </ul>
               </li>
               <li className={activeLink === "Supervising Project Details" ? "active" : ""}>
-                <a href="#" onClick={() => handleLinkClick("Supervising Project Details")}>Supervising Project Details</a>
+                <a href="#" onClick={() => handleLinkClick("Supervising Project Details")}>Comprehensive Marksheet</a>
               </li>
             </ul>
           </div>
@@ -41,9 +43,9 @@ export default function SidebarSup() {
 
         {/* Page Content  */}
         <div id="content" className="p-4 p-md-5">
-          {activeLink === "Enter Marks" && <ReportMarks />}
-          {activeLink === "View Marks" && <ReportsTable />}
-          {activeLink === "Supervising Project Details" && <TableWithStudents />}
+          {activeLink === "Enter Marks" && <MarkingForm />}
+          {activeLink === "View Marks" && <MarkingTableNew />}
+          {activeLink === "Supervising Project Details" && <Marksheet />}
           {activeLink === "Dashboard" && <SupervisorDashboard />}
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SupervisorDashboard from './Dashboard/SupervisorDashboard';
 import DisplayMarks from '../screens/co-supervisor/DisplayMarks';
+import Update from '../screens/supervisor/Update'
 export default function SidebarCoSup() {
   const [activeLink, setActiveLink] = useState("Dashboard"); // State to keep track of active link
 
@@ -27,7 +28,7 @@ export default function SidebarCoSup() {
 
         {/* Page Content  */}
         <div id="content" className="p-4 p-md-5">
-          {activeLink === "Marks" && <DisplayMarks />}
+          {activeLink === "Marks" && <Update />}
           {activeLink === "Dashboard" && <SupervisorDashboard />}
         </div>
       </div>

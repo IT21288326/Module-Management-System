@@ -57,7 +57,7 @@ export const deleteAssessment = async (req, res) => {
 // get titles of assessments of type 'report'
 export const getReportAssessmentTitles = async (req, res) => {
     try {
-      const assessments = await Assessment.find({ assement_type: 'report' }, 'assement_Name');
+      const assessments = await Assessment.find({ assement_type: 'Report' }, 'assement_Name');
       const titles = assessments.map(assessment => assessment.assement_Name);
       res.status(200).json(titles);
     } catch (error) {
@@ -68,10 +68,11 @@ export const getReportAssessmentTitles = async (req, res) => {
 // get titles of assessments of type 'presentation'
 export const getPresentationAssessmentTitles = async (req, res) => {
     try {
-      const assessments = await Assessment.find({ assement_type: 'presentation' }, 'assement_Name');
+      const assessments = await Assessment.find({ assement_type: 'Presentation' }, 'assement_Name');
       const titles = assessments.map(assessment => assessment.assement_Name);
       res.status(200).json(titles);
     } catch (error) {
       res.status(404).json({ message: error.message });
     }
   };
+  
