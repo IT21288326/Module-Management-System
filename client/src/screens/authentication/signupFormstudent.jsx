@@ -57,6 +57,7 @@ const StudentSignUpForm = () => {
           title: 'Sign Up Successful!',
           text: 'You have successfully signed up as a student.',
         });
+        window.location.href = 'http://localhost:3000/login';
       } catch (error) {
         console.error('Error signing up student:', error);
         // Handle error

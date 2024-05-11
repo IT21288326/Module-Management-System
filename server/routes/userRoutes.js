@@ -8,7 +8,7 @@ import {createUser, getAllUsers,getUserById,updateUserById,deleteUserById,getPro
 router.post('/users', createUser);
 
 // Route to retrieve all users
-router.get('/users', getAllUsers);
+router.get('/users/all', getAllUsers);
 
 // Route to retrieve a single user by ID
 router.get('/users/:id', getUserById);

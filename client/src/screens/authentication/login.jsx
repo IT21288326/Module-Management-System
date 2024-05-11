@@ -468,13 +468,27 @@ const LoginForm = () => {
         localStorage.setItem('authToken', token);
 
         // Check the user's role and redirect accordingly
-        if (user.staffRoles === 'projectCoordinator') {
+        if (user.role === 'student') {
             // Redirect to project coordinator's page
-            window.location.href = 'http://localhost:3000/coo';
+            window.location.href = 'http://localhost:3000/registration';
         } else {
+          if(user.staffRoles.includes('examiner')){
             // Redirect to default URL provided in the response
-            window.location.href = 'http://localhost:3000/coo';
+            window.location.href = 'http://localhost:3000/ex';
         }
+      else if(user.staffRoles.includes('projectCoordinator')){
+        window.location.href = 'http://localhost:3000/';
+        
+      }else if(user.staffRoles.includes('projectMember')){
+        window.location.href = 'http://localhost:3000/projMemberSideBar';
+      }
+      else if(user.staffRoles.includes('co-supervisor')){
+        window.location.href = 'http://localhost:3000/co-sup';
+      }
+      else if(user.staffRoles.includes('supervisor')){
+        window.location.href = 'http://localhost:3000/'
+      }
+    }
     } catch (err) {
         // Enhanced error handling
         console.error('Server error:', err);

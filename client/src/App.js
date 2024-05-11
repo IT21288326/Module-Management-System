@@ -36,6 +36,7 @@ import MarkSheet from './screens/supervisor/AssesmentMarks';
 import MarkingForm from './screens/supervisor/MarkingForm';
 import MarkingTableNew from './screens/supervisor/MarkingTableNew';
 import Update from './screens/supervisor/Update';
+import UseControl from './screens/coordinator/UsersControl'
 function App() {
   return (
     <div className="app" style={{ background: '-webkit-linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%)'}}>
@@ -51,7 +52,7 @@ function App() {
             <Route path='/login' element={<LoginForm/>} />            
             <Route path='/markTable' element={<MarksTable/>} />
             <Route path='/addnewPC' element={<AddProjectCoordinator/>} />
-
+            <Route path='/userControl' element={<UseControl/>}/>
           {/* savidya */}
             <Route path='/' element={<SidebarSup />} />
             <Route path='/marksheet' element={<MarkSheet />} />
