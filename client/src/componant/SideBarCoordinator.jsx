@@ -80,6 +80,7 @@ import AddAssessment from '../screens/coordinator/addAssesment';
 import AddProjectCoordinator from '../screens/coordinator/addNewCoordinator';
 import AssignProjectForm from '../screens/coordinator/assignProjectMember';
 import MarksTable from '../screens/coordinator/marksTable';
+import UserManagement from '../screens/coordinator/UsersControl';
 
 export default function SidebarSup() {
   const [activeLink, setActiveLink] = useState("Dashboard"); // State to keep track of active link
@@ -114,6 +115,9 @@ export default function SidebarSup() {
                   <li>
                     <a href="#" onClick={() => handleLinkClick("project coordinator")}>Assign project coordinator</a>
                   </li>
+                  <li>
+                    <a href="#" onClick={() => handleLinkClick("UserManagement")}>Users</a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -122,11 +126,12 @@ export default function SidebarSup() {
 
         {/* Page Content  */}
         <div id="content" className="p-4 p-md-5">
-          {activeLink === "Add assessment" && <AddAssessment />}
+          {/* {activeLink === "Add assessment" && <AddAssessment />} */}
           {activeLink === "View Marks" && <MarksTable />}
           {activeLink === "project member" && <AssignProjectForm />}
           {activeLink === "project coordinator" && <AddProjectCoordinator/>}
           {activeLink === "Dashboard" && <DashboardCoordinator />}
+          {activeLink === "UserManagement" && <UserManagement/>}
         </div>
       </div>
     </div>

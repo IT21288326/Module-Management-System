@@ -45,7 +45,9 @@ const StaffSignUpForm = () => {
           icon: 'success',
           title: 'Sign Up Successful!',
           text: 'You have successfully signed up as a staff.',
+          
         });
+        window.location.href = 'http://localhost:3000/login';
       } catch (error) {
         console.error('Error signing up student:', error);
         // Handle error

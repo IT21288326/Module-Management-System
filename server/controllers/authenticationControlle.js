@@ -125,7 +125,7 @@ export async function login(req, res) {
 
         // Determine redirect URL based on user's role
         let redirectURL;
-        if (user.staffRole === 'projectCoordinator') {
+        if (user.staffRoles === 'projectCoordinator') {
             console.log('User is a project coordinator');
             redirectURL = 'http://localhost:3000/coo';
         } else {

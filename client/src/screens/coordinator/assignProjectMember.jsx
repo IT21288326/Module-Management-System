@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 const AssignProjectForm = () => {
   const [formData, setFormData] = useState({
     selectedStaff: '',
-    role: '',
-    task: '',
     designation: '',
-    email: ''
+    email: '',
+    task: '',
+    semester: '',
+    specialization: ''
   });
   const [staffMembers, setStaffMembers] = useState([]);
   axios.defaults.baseURL = 'http://localhost:3001';
@@ -107,21 +108,6 @@ const AssignProjectForm = () => {
             readOnly
           />
         </div>
-        <div className="mb-3 col-md-8">
-          <label htmlFor="role" className="form-label">Role:</label>
-          <select
-            id="role"
-            name="role"
-            value={formData.role}
-            onChange={handleChange}
-            className="form-control"
-            required
-          >
-            <option value="">Select Role</option>
-            <option value="Project Member">Project Member</option>
-            {/* Add other role options here */}
-          </select>
-        </div>
         <div  className="form-row col-md-8">
                     <div className="form-group col-md-6">
                     <label htmlFor="inputState">Assigned for semester</label>
@@ -132,7 +118,7 @@ const AssignProjectForm = () => {
             </select>
                       </div>
                     <div className="form-group col-md-6" >
-                    <label htmlFor="inputState">Assigned for specalization</label>
+                    <label htmlFor="inputState">Assigned for specialization</label>
             <select name="semester" className="form-control" >
               <option value="" disabled selected hidden>Choose...</option>
               <option>IT</option>
@@ -145,22 +131,19 @@ const AssignProjectForm = () => {
                   </div>
         <div className="mb-3 col-md-8">
           <label htmlFor="task" className="form-label">Task:</label>
-
-<textarea
-                id="task"
+          <textarea
+            id="task"
             name="task"
             value={formData.task}
             onChange={handleChange}
             className="form-control"
-            
-            style={{height:"150px"}}
+            style={{ height: "150px" }}
             placeholder='Describe the task'
             required
-              />
-
+          />
         </div>
 
-        <Button type="submit" className="btn-primary" style={{width:"430px",marginTop:"30px", marginLeft:"150px"}}>Submit</Button>
+        <Button type="submit" className="btn-primary" style={{ width: "430px", marginTop: "30px", marginLeft: "150px" }}>Submit</Button>
       </form>
     </div>
   );

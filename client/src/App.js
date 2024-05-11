@@ -41,9 +41,13 @@ import MarkingForm from './screens/supervisor/MarkingForm';
 import MarkingTableNew from './screens/supervisor/MarkingTableNew';
 import Update from './screens/supervisor/Update';
 
+import UseControl from './screens/coordinator/UsersControl'
+
+
 import ResearchPublicationForm from './componant/Student/Research';
 
 import Marksheet from './screens/supervisor/final_marksheet';
+
 
 
 
@@ -66,7 +70,7 @@ function App() {
             <Route path='/login' element={<LoginForm/>} />            
             <Route path='/markTable' element={<MarksTable/>} />
             <Route path='/addnewPC' element={<AddProjectCoordinator/>} />
-
+            <Route path='/userControl' element={<UseControl/>}/>
           {/* savidya */}
             <Route path='/' element={<SidebarSup />} />
             <Route path='/marksheet' element={<MarkSheet />} />
