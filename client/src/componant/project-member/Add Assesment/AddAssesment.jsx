@@ -58,7 +58,7 @@ const AddAssessmentForm = ({onClose}) => {
           <button className="Russa_close-modal-button" onClick={onClose}>
             <CancelIcon />
           </button>
-          <h1 className="Russa_add_pr_shd_form-title">Add New Schedule Record</h1>
+          <h1 className="Russa_add_pr_shd_form-title">Add Assesment</h1>
           <form onSubmit={handleSubmit}>
             <div className="user-input-box">
               <label>Assessment Type:</label>
