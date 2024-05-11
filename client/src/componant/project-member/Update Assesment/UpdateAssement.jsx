@@ -73,7 +73,7 @@ const UpdateAssesment = ({ onClose, AssesmentId, onSuccess }) => {
           <button className="Russa_close-modal-button" onClick={onClose}>
             <CancelIcon />
           </button>
-          <h1 className="Russa_add_pr_shd_form-title">Update Assessment Record</h1>
+          <h1 className="Russa_add_pr_shd_form-title">Update Assessment</h1>
           <form onSubmit={handleUpdate}>
               <div className="user-input-box">
                 <label htmlFor="assessmentName">Assessment Name</label>
