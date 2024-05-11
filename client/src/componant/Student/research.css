@@ -1,0 +1,123 @@
+.imesh_grpReg_main-user-info {
+  display: flex;
+  justify-content: space-between; /* Distribute space between columns */
+}
+
+.column {
+  flex: 1; /* Each column takes equal space */
+  margin-right: 20px; /* Adjust spacing between columns as needed */
+}
+
+.user-input-box {
+  margin-bottom: 20px; /* Adjust vertical spacing between input boxes */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #686a6b, #343438); /* Adjust gradient colors as needed */
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px; /* Adjust the max-width as needed */
+  width: 100%; /* Ensure the modal is responsive */
+  max-height: 80%;
+  overflow: auto;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.form-title {
+  font-size: 26px;
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: 6px;
+  color: #fff;
+  border-bottom: solid 1px #fff;
+}
+
+.user-input-box {
+  flex-basis: calc(50% - 10px); /* Adjust the width of each input box */
+  padding-bottom: 15px;
+}
+
+.user-input-box label {
+  display: block;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.user-input-box input,
+.user-input-box select {
+  width: 100%;
+  height: 40px;
+  border-radius: 7px;
+  outline: none;
+  border: 1px solid #fff;
+  padding: 0 10px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.user-input-box input::placeholder,
+.user-input-box select::placeholder {
+  color: #fff; /* Change placeholder text color to white */
+}
+
+.user-input-box select option {
+  color: #000; /* Change the text color of dropdown options to black */
+}
+
+.form-submit-btn {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.form-submit-btn button[type="submit"] {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  outline: none;
+}
+
+.form-submit-btn button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.form-submit-btn button[type="submit"]:focus {
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+.form-submit-btn button[type="submit"]:active {
+  transform: translateY(1px);
+}

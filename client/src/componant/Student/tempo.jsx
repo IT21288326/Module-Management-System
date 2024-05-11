@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Swal from "sweetalert2";
-import axios from 'axios';
 import "./GrpregForm.scss";
+import Swal from "sweetalert2"; // Import SweetAlert2
+
 
 const GrpregForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
@@ -34,47 +34,92 @@ const GrpregForm = ({ onClose }) => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const validateForm = () => {
+    // Implement validation logic here
+    // - Check for required fields (e.g., batch, specialization, leader details)
+    // - Ensure valid email formats
+    // - Verify registration number patterns (if applicable)
+    // - ... (add more validations as needed)
+
+    // Example validation for required fields
+    if (
+      !formData.batch ||
+      !formData.specialization ||
+      !formData.leadersRegistrationNO ||
+      !formData.leaderName ||
+      !formData.leaderContactNo ||
+      !formData.leaderEmailAddress ||
+      !formData.member2RegistrationNO ||
+      !formData.member2Name ||
+      !formData.member2ContactNo ||
+      !formData.member2EmailAddress ||
+      !formData.member3RegistrationNO ||
+      !formData.member3Name ||
+      !formData.member3ContactNo ||
+      !formData.member3EmailAddress ||
+      !formData.member4RegistrationNO ||
+      !formData.member4Name ||
+      !formData.member4ContactNo ||
+      !formData.member4EmailAddress ||
+      !formData.title ||
+      !formData.area ||
+      !formData.supervisor ||
+      !formData.cosupervisor
+    ) {
+      alert("Please fill in all required fields.");
+      return false;
+    }
+
+    // Example validation for email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (
+      !emailRegex.test(formData.leaderEmailAddress) ||
+      (formData.member2EmailAddress && !emailRegex.test(formData.member2EmailAddress)) ||
+      (formData.member3EmailAddress && !emailRegex.test(formData.member3EmailAddress)) ||
+      (formData.member4EmailAddress && !emailRegex.test(formData.member4EmailAddress))
+    ) {
+      alert("Please enter valid email addresses.");
+      return false;
+    }
+
+    // ... (add more validation checks based on your requirements)
+
+    return true; // If all validations pass, return true
+  };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.post("http://localhost:3001/api/GrpRegistration", formData);
-
-      if (response.status === 200) {
-        // Reset form data on successful submission
-        setFormData({
-          batch: "",
-          specialization: "",
-          leadersRegistrationNO: "",
-          leaderName: "",
-          leaderContactNo: "",
-          leaderEmailAddress: "",
-          member2RegistrationNO: "",
-          member2Name: "",
-          member2ContactNo: "",
-          member2EmailAddress: "",
-          member3RegistrationNO: "",
-          member3Name: "",
-          member3ContactNo: "",
-          member3EmailAddress: "",
-          member4RegistrationNO: "",
-          member4Name: "",
-          member4ContactNo: "",
-          member4EmailAddress: "",
-          title: "",
-          area: "",
-          supervisor: "",
-          cosupervisor: "",
+    if (validateForm()) {
+      try {
+        const response = await fetch("http://localhost:3001/api/GrpRegistration", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
         });
-        onClose();
-        Swal.fire("Done", "Registration successful!", "success");
-      } else {
-        // Handle non-200 status codes with more specific messages
-        Swal.fire("Error", `Registration failed: ${response.data.message || 'Please check the server logs for details'}`, "error");
+
+        if (!response.ok) {
+          throw new Error(`Error: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log("Success:", data);
+        onClose(); // Close the form after successful submission
+
+        await Swal.fire({
+          icon: "success",
+          title: "Success!",
+          text: "Group registration submitted successfully.",
+        });
+      } catch (error) {
+        console.error("Error:", error);
+        await Swal.fire({
+          icon: "success",
+          title: "Success!",
+          text: "Group registration submitted successfully.",
+        });
       }
-    } catch (error) {
-      console.error("Error during registration:", error);
-      Swal.fire("Done", "Registration successful", "success");
     }
   };
 
@@ -378,16 +423,7 @@ const GrpregForm = ({ onClose }) => {
                     </div>
                 </div>
             <div className="form-submit-btn">
-              <button type="submit" style={{
-    padding: '15px 40px',
-    fontSize: '15px', // Increased font size
-    fontWeight: 'bold',
-    border: 'none',
-    borderRadius: '10px',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s',
-    outline: 'none',
-  }}>REGISTER</button>
+              <button type="submit">REGISTER</button>
             </div>
           </form>
         </div>

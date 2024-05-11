@@ -1,0 +1,38 @@
+.Russa_Final_Marking_Rubric {
+    .rubric-table-container {
+        max-width: 100%;
+        padding: 100px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .rubric-table {
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        border-radius: 5px;
+        background-color: #fff;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    .rubric-header-row {
+        background-color: #007bff;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+    
+    .rubric-header-cell,
+    .rubric-cell {
+        padding: 20px;
+        text-align: left;
+        width: auto; // Allow cells to expand as needed
+    }
+    
+    .rubric-cell.border-right {
+        border-right: 1px solid #dee2e6;
+    }
+
+    .rubric-row:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+}
